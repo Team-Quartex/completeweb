@@ -1,0 +1,174 @@
+
+@import url("https://db.onlinewebfonts.com/c/94ac1dcd1fd4d1429cd877cd9d99e480?family=Tanseek+Modern+Pro+Arabic");
+
+@font-face {
+    font-family: "Tanseek Modern Pro Arabic";
+    src: url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.eot");
+    src: url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.eot?#iefix") format("embedded-opentype"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.woff2") format("woff2"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.woff") format("woff"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.ttf") format("truetype"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.svg#Tanseek Modern Pro Arabic") format("svg");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Tanseek Modern Pro Arabic";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(58, 61, 49, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image-section {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-section img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.login-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100px; 
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 4rem;
+    color: #1A8381;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    
+
+  
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 40px 10px 0;
+    padding-left: 5px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 1rem;
+    
+    
+}
+
+.input-container input::placeholder {
+    color: #1A8381; 
+}
+
+.input-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1rem;
+    cursor: pointer;
+    
+}
+
+.input-container input:focus {
+    outline: none;
+}
+
+.forgot-password {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.forgot-password a {
+    color: #1A8381;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #1A8381;
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 20px;
+    font-size: 1rem;
+    width: 45%;
+    margin-top: 44px;
+    cursor: pointer;
+    text-align: center; 
+}
+
+button:hover {
+    background-color: #239c9c;
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #666;
+    text-align: left;
+}
+
+.signup-link a {
+    color: #2d706d;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: left;
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+

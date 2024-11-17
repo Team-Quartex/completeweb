@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="assets/nine arch.jpg" alt="Nine Arch Bridge">
+        </div>
+        <div class="login-section">
+            <div class="logo">
+                
+            </div>
+            <h2>Welcome,</h2>
+            <p style="text-align: center;color: red; font-size: 30px;" id="error"></p>
+            <form id="myForm">
+                <div class="input-container">
+                    <input type="text" id="username" placeholder="Username"  required>
+                    <i class="fa-regular fa-user"></i>
+                </div>
+
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Password"  required>
+                    <i class="fa-solid fa-eye" onclick="togglePassword()" id="togglePassword"></i> 
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#">Forget Password?</a> 
+                </div>
+                
+                <button type="submit" id="login-btn">Login</button>
+                
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="signup.html">Create</a></p>
+                </div>
+            </form>
+            <footer>
+                <p>Copyright © 2024 Gallery. All Rights Reserved</p>
+            </footer>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = document.getElementById("togglePassword");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+
+@import url("https://db.onlinewebfonts.com/c/94ac1dcd1fd4d1429cd877cd9d99e480?family=Tanseek+Modern+Pro+Arabic");
+
+@font-face {
+    font-family: "Tanseek Modern Pro Arabic";
+    src: url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.eot");
+    src: url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.eot?#iefix") format("embedded-opentype"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.woff2") format("woff2"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.woff") format("woff"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.ttf") format("truetype"),
+         url("https://db.onlinewebfonts.com/t/94ac1dcd1fd4d1429cd877cd9d99e480.svg#Tanseek Modern Pro Arabic") format("svg");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: "Tanseek Modern Pro Arabic";
+}
+
+.signup-container {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    
+}
+
+
+.image-section {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.image-section img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.form-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #1A8381;
+}
+
+
+
+.logo img {
+    width: 100px; 
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px 5px;
+    margin-bottom: 2rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    color: #333;
+    background-color: transparent;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-bottom: 2px solid #CCC; 
+}
+
+input::placeholder {
+    color: #1A8381; 
+}
+
+
+.terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 14px;
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+button {
+    background-color: #1A8381;
+    color: white;
+    padding: 7px;
+    font-size: 1rem;
+    text-align: center; 
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 45%;
+}
+
+button:hover {
+    background-color: #239c9c;
+}
+
+
+
+
+.signin-link {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #666;
+    text-align: left;
+}
+
+.signin-link a {
+    color: #1A8381;
+    text-decoration: none;
+}
+
+footer {
+    text-align: left;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: #999;
+}
+

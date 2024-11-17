@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style/signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="image-section">
+            <img src="assets/sgiriya.jpg" alt="Sign Up Image">
+        </div>
+        <div class="form-section">
+            <div class="logo">
+                <img src="your-logo.png" alt="Logo"> 
+            </div>
+            <h1>Hello There,</h1>
+            <p id="error"></p>
+            <form id="signupForm">
+                
+                <input type="text" id="username" name="name" placeholder="User name" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="text" id="name" name="name" placeholder="What We call you" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Agree to terms and conditions</label>
+                </div>
+
+                <button type="submit">Sign up</button>
+
+                <div class="signin-link">
+                    <p>Already have an account? <a href="login.html">Log in</a></p>
+                </div>
+            
+            </form>
+            <footer>
+                <p>Copyright © 2024. Custom. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+    <script src="js/signup.js"></script>
+</body>
+</html>
