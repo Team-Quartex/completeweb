@@ -9,4 +9,4 @@ fetch('http://localhost:8000/api/check-cookie', {
         window.location.href = 'login.html' ;
     }
 })
-.catch(error => console.error('Error:', error));
+.catch(error => window.location.href = 'login.html');

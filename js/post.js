@@ -1,3 +1,4 @@
+window.postsArray = []
 export async function loadPost() {
   const requestOptions = {
     method: "GET",
@@ -20,7 +21,8 @@ export async function loadPost() {
 
     // Get the feed container
     const mainContent = document.getElementById("feed-container");
-
+    window.postsArray.length = 0; // Clear the array in case of reload
+    window.postsArray.push(...posts);
     posts.forEach((post) => {
       // Construct the post HTML
       const postElement = document.createElement("div");
@@ -139,6 +141,11 @@ export async function loadPost() {
         default:
           break;
       }
+      const formattedDescription = post.description.replace(/#\w+/g, match => {
+        return `<span class="hashtag">${match}</span>`; // Wrap hashtags in a <span> with 'hashtag' class
+      }).replace(/@\w+/g, match => {
+          return `<span class="location">${match}</span>`; // Wrap locations/mentions in a <span> with 'location' class
+      });
       postElement.innerHTML = `
                 <div class="post">
                     <div class="post-header">
@@ -153,7 +160,7 @@ export async function loadPost() {
                         </div>
                     </div>
                     <div class="post-content">
-                        <p>${post.description}</p>
+                        <p>${formattedDescription}</p>
                     </div>
                     ${imagecontent}
                     <div class="post-footer">

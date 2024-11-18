@@ -626,3 +626,13 @@ left: 170px;
     overflow-y: auto;
     max-height: 85vh;
 }
+
+.hashtag {
+    color: blue; /* Color for hashtags */
+    font-weight: bold;
+}
+
+.location {
+    color: green; /* Color for @mentions or locations */
+    font-style: italic;
+}
