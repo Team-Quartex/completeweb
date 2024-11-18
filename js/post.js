@@ -1,10 +1,12 @@
 window.postsArray = []
+import {formatPostTime} from './utilities.js'
+
 export async function loadPost() {
   const requestOptions = {
     method: "GET",
     credentials: "include",
   };
-
+  // call api and get posts
   try {
     const response = await fetch(
       "http://localhost:8000/api/posts/getall",
@@ -141,11 +143,11 @@ export async function loadPost() {
         default:
           break;
       }
-      const formattedDescription = post.description.replace(/#\w+/g, match => {
-        return `<span class="hashtag">${match}</span>`; // Wrap hashtags in a <span> with 'hashtag' class
-      }).replace(/@\w+/g, match => {
-          return `<span class="location">${match}</span>`; // Wrap locations/mentions in a <span> with 'location' class
-      });
+      // Format Description
+      const formattedDescription = post.description
+        .replace(/#\w+/g, match => `<span class="hashtag">${match}</span>`)
+        .replace(/@\w+/g, match => `<span class="location">${match}</span>`)
+        .replace(/\n/g, '<br>');
       postElement.innerHTML = `
                 <div class="post">
                     <div class="post-header">
@@ -210,34 +212,7 @@ export async function loadPost() {
   }
 }
 
-function formatPostTime(postTime) {
-    const postDate = new Date(postTime); // Parse the provided date string
-    const now = new Date(); // Get the current date and time
-    const timeDiff = now - postDate; // Difference in milliseconds
-    const seconds = Math.floor(timeDiff / 1000); // Difference in seconds
-    const minutes = Math.floor(seconds / 60); // Difference in minutes
-    const hours = Math.floor(minutes / 60); // Difference in hours
-    const days = Math.floor(hours / 24); // Difference in days
-    const weeks = Math.floor(days / 7); // Difference in weeks
 
-    if(seconds<60){
-      return `${seconds} seconds ago`
-    }
-    else if(minutes<60){
-      return `${minutes} minutes ago`
-    }
-    else if (hours < 24) {
-        // If within the past two days, show hours
-        return `${hours} hours ago`;
-    } else if (days <= 7) {
-        // If within the past week, show days
-        return `${days} days ago`;
-    } else {
-        // Show month and day
-        const options = { month: 'long', day: 'numeric' }; // E.g., "November 15"
-        return postDate.toLocaleDateString(undefined, options);
-    }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   loadPost();
