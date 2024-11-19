@@ -23,15 +23,7 @@
           />
           <h2 class="user-name" id="user-name">User Name</h2>
           <p class="user-handle" id="username">@username</p>
-          <div class="user-stats">
-            <div>
-              <div class="stat-value">0</div>
-              <div>Followers</div>
-            </div>
-            <div>
-              <div class="stat-value">12</div>
-              <div>Following</div>
-            </div>
+          <div class="user-stats" id="user-stats">
           </div>
         </div>
         <nav>
@@ -117,11 +109,11 @@
                   <span> Image/Video</span>
                 </div>
               </label>
-              <input type="file" name="file-1[]" id="file-1-location" class="post-action inputfile" data-multiple-caption="{count} files selected" multiple />
-              <label for="file-1-location" class="post-action">
+              
+              <label for="citySearch" class="post-action">
                 <div class="action-icons">
-                  <span class="icons"><i class="fi fi-rr-marker"></i></span>
-                  <span> Location</span>
+                  <input type="text" name="citySearch" id="citySearch" class="post-action inputfile" placeholder="Type a city name..." autocomplete="off"  />
+                  <div class="city-suggestions" id="city-suggestions"></div>
                 </div>
               </label>
               <input type="file" name="file-1[]" id="file-1-public" class="post-action inputfile" data-multiple-caption="{count} files selected" multiple />
@@ -330,7 +322,7 @@
     <script type="module" src="js/form.js"></script>
     <script type="module" src="js/search.js"></script>
     <script type="module" src="js/savedpost.js"></script>
-
+    <script type="module" src="./js/citysuggestions.js"></script>
 
     <script>
       function setupFileUpload(buttonId, fileNameId) {

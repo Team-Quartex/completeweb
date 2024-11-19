@@ -1,4 +1,6 @@
 // Export function to render posts
+const userData = JSON.parse(localStorage.getItem('userData'));
+
 import {formatPostTime} from './utilities.js'
 export function renderPosts(posts, container) {
     posts.forEach((post) => {
@@ -98,23 +100,31 @@ export function renderPosts(posts, container) {
             .replace(/#\w+/g, match => `<span class="hashtag">${match}</span>`)
             .replace(/@\w+/g, match => `<span class="location">${match}</span>`)
             .replace(/\n/g, '<br>');
+        
+        // location show
+        const locationdata  = post.location ? `<span class="location">@${post.location}</span> <br>`:'';
+        const verify = post.verify === 'yes' ? `<i class="fi fi-rr-globe"></i>` : ``;
+        const followBtn = post.isFollowed === 'no' && post.verify === 'yes' && userData.userid != post.UserId ? `<a class="follow-btn">Follow</a>` : ``;
 
         // Construct post inner HTML
         postElement.innerHTML = `
             <div class="post">
                 <div class="post-header">
-                    <img
-                        src="http://127.0.0.1:8000/uploads/${post.profilePic}"
-                        alt="${post.name}}"
-                        class="post-avatar"
-                    />
-                    <div class="post-user-info">
-                        <span class="post-username">${post.name}</span>
-                        <span class="post-time">${formatPostTime(post.postTime)}</span>
-                    </div>
+                  <img
+                  src="http://127.0.0.1:8000/uploads/${post.profilePic}"
+                    alt="${post.name}"
+                    class="post-avatar"
+                  />
+                  <div class="post-user-info">
+                    <div class="name-verified">
+                    <span class="post-username">${post.name}</span><span class="verified">${verify}</span>
+                    ${followBtn}
+                  </div>
+                    <span class="post-time">${formatPostTime(post.postTime)}</span>
+                  </div>
                 </div>
                 <div class="post-content">
-                    <p>${formattedDescription}</p>
+                    <p>${locationdata} ${formattedDescription}</p>
                 </div>
                 ${imagecontent}
                 <div class="post-footer">
