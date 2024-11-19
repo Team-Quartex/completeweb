@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Social Media Feed</title>
     <link rel="stylesheet" href="/style/styles.css" />
+    <link rel="stylesheet" href="/style/functional.css" />
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
     
@@ -298,6 +299,44 @@
         </div>
       </main>
 
+      
+
+      <!-- open post view -->
+      <div class="comment-viewer-background" id="comment-viewer">
+       
+        <div class="comment-box">
+          <p class="close-btn" onclick="closepostview()"><i class="fi fi-sr-circle-xmark"></i></p>
+          <div class="post-detailed-container">
+          <h1 class="post-owner-name" id="post-owner-name">User's Post</h1>
+        </div>
+        <div class="post-images-comment">
+          <img
+            src="https://via.placeholder.com/300x200"
+            alt="Sri Lanka 1"
+            class="post-image-comment"
+          />
+        
+    
+         
+        </div>
+        
+
+        <div class="comment-section-input">
+          <input type="text" name="" id="" placeholder="Type a comment..."  class="comment-section">  
+          <button class="reaction">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'%3E%3C/circle%3E%3Ccircle cx='6' cy='12' r='3'%3E%3C/circle%3E%3Ccircle cx='18' cy='19' r='3'%3E%3C/circle%3E%3Cline x1='8.59' y1='13.51' x2='15.42' y2='17.49'%3E%3C/line%3E%3Cline x1='15.41' y1='6.51' x2='8.59' y2='10.49'%3E%3C/line%3E%3C/svg%3E"
+              alt="Share"
+            />
+            Share
+          </button>
+          
+        </div>
+        
+        </div>
+
+      </div>
+
 
       <!--Suggestions-->
       <aside class="right-sidebar">
@@ -350,6 +389,15 @@
                 }
             });
         }
+        function closepostview(){
+            document.getElementById("comment-viewer").style.display="none";
+            
+        }
+        function openpostview(){
+            document.getElementById("comment-viewer").style.display="block";
+            
+        }
+
 
         setupFileUpload('uploadButton', 'fileName1');
         setupFileUpload('uploadButton1', 'fileName2');

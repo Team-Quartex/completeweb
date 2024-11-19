@@ -5,7 +5,7 @@ import {formatPostTime} from './utilities.js'
 import {loadsuggestions} from './suggetions.js'
 
 export function renderPosts(posts, container) {
-    posts.forEach((post) => {
+    posts.forEach((post,index) => {
         // Construct the post HTML
         const postElement = document.createElement("div");
         postElement.classList.add("feed"); // Add feed class
@@ -110,7 +110,7 @@ export function renderPosts(posts, container) {
         
         // Construct post inner HTML
         postElement.innerHTML = `
-            <div class="post">
+            <div class="post" data-index="${index}">
                 <div class="post-header">
                   <img
                   src="http://127.0.0.1:8000/uploads/${post.profilePic}"
@@ -186,5 +186,14 @@ export function renderPosts(posts, container) {
             loadsuggestions()
         });
     });
+
+    const postViews = document.querySelectorAll('.post');
+    postViews.forEach((postview)=>{
+        postview.addEventListener('click',()=>{
+            document.getElementById("comment-viewer").style.display="block";
+            const nameArray = posts[postview.dataset.index].name.split(" ");
+            document.getElementById('post-owner-name').innerHTML = `${nameArray[0]}'s Post`;
+        });
+    })
 }
 

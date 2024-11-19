@@ -233,12 +233,11 @@ left: 170px;
 .post-actions {
     display: flex;
     justify-content: space-between;
-    
+    position: relative;
 }
 .action-icons{
     display: flex;
     gap:10px;
-    position: relative;
    
 }
 .uploaded-images {
@@ -341,7 +340,8 @@ left: 170px;
     justify-content: space-between;
     overflow-y: auto;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    
 }
 
 .post-image {
@@ -377,6 +377,7 @@ left: 170px;
 
 
 .post-footer {
+    margin-top: 10px;
     display: flex;
     gap: 20px;
     justify-content: space-between;
@@ -787,53 +788,3 @@ left: 170px;
   #saved-post-container{
     display: none;
   }
-.hashtag {
-    color: blue; /* Color for hashtags */
-    font-weight: bold;
-}
-
-.location {
-    color: green; /* Color for @mentions or locations */
-    font-style: italic;
-}
-
-#citySearch:focus {
-    outline: none;
-}
-
-.city-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-radius: 0 0 5px 5px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
-}
-
-.city-suggestions div {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-}
-
-.city-suggestions div:last-child {
-    border-bottom: none;
-}
-
-.city-suggestions div:hover {
-    background-color: #f0f0f0;
-}
-
-.removeDisplay {
-    opacity: 1;
-    transition: opacity 0.5s ease, visibility 0s 0.5s; /* Fade out with delay */
-    visibility: visible;
-}
-
-.removeDisplay.hidden {
-    opacity: 0;
-    visibility: hidden; /* Make it completely hidden */
-}
