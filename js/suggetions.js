@@ -1,4 +1,4 @@
-async function loadsuggestions() {
+export const loadsuggestions=async()=> {
     const requestOptions = {
       method: "GET",
       credentials: "include",
@@ -17,7 +17,8 @@ async function loadsuggestions() {
       const suggestionsData = await response.json(); // Assuming the API returns JSON
   
       const suggestions = document.getElementById("suggestions");
-  
+      suggestions.innerHTML ='';
+      suggestions.innerHTML = '<h3>Suggestions</h3>';
       // Clear any existing content
   
       suggestionsData.forEach((user) => {

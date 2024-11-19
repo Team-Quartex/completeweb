@@ -826,3 +826,14 @@ left: 170px;
 .city-suggestions div:hover {
     background-color: #f0f0f0;
 }
+
+.removeDisplay {
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0s 0.5s; /* Fade out with delay */
+    visibility: visible;
+}
+
+.removeDisplay.hidden {
+    opacity: 0;
+    visibility: hidden; /* Make it completely hidden */
+}

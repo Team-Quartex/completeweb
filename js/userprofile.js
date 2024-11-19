@@ -32,7 +32,7 @@ async function getUserDetails() {
               <div>Following</div>
             </div>`:`
             <div>
-              <div class="stat-value">${userDetails.followers_count}</div>
+              <div class="stat-value" id="user-following-count">${userDetails.followers_count}</div>
               <div>Following</div>
             </div>`;
 

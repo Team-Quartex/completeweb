@@ -1,7 +1,9 @@
 // Export function to render posts
 const userData = JSON.parse(localStorage.getItem('userData'));
-
+import {addFollow} from './follow.js'
 import {formatPostTime} from './utilities.js'
+import {loadsuggestions} from './suggetions.js'
+
 export function renderPosts(posts, container) {
     posts.forEach((post) => {
         // Construct the post HTML
@@ -104,8 +106,8 @@ export function renderPosts(posts, container) {
         // location show
         const locationdata  = post.location ? `<span class="location">@${post.location}</span> <br>`:'';
         const verify = post.verify === 'yes' ? `<i class="fi fi-rr-globe"></i>` : ``;
-        const followBtn = post.isFollowed === 'no' && post.verify === 'yes' && userData.userid != post.UserId ? `<a class="follow-btn">Follow</a>` : ``;
-
+        const followBtn = post.isFollowed === 'no' && post.verify === 'yes' && userData.userid != post.UserId ? `<button class="follow-btn removeDisplay"  data-user="${post.UserId}">Follow</button>` : ``;
+        
         // Construct post inner HTML
         postElement.innerHTML = `
             <div class="post">
@@ -169,4 +171,20 @@ export function renderPosts(posts, container) {
         // Append the post to the provided container
         container.appendChild(postElement);
     });
+    const buttonQuery = document.querySelectorAll('.follow-btn')
+    buttonQuery.forEach((button) => {
+        button.addEventListener('click', function () {
+            const userId = this.dataset.user; 
+            buttonQuery.forEach((button)=>{
+                if(button.dataset.user===userId){
+                    button.classList.add('hidden')
+                }
+            })
+            addFollow(userId);
+            var count = parseInt(document.getElementById('user-following-count').innerHTML)+1;
+            document.getElementById('user-following-count').innerHTML = count;
+            loadsuggestions()
+        });
+    });
 }
+

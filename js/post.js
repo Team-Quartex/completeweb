@@ -27,6 +27,7 @@ export async function loadPost() {
     window.postsArray.length = 0; // Clear the array in case of reload
     window.postsArray.push(...posts);
     renderPosts(posts, mainContent);
+    
   } catch (error) {
     console.error("Error loading posts:", error);
   }
@@ -36,5 +37,6 @@ export async function loadPost() {
 
 document.addEventListener("DOMContentLoaded", () => {
   loadPost();
+  
 }); // Call the function to load posts
 
