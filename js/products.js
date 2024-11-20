@@ -85,7 +85,7 @@ async function loadProducts() {
                     <div class="item-details">
                         <h3>${product.name}</h3>
 
-                        <div class="rating" data-rating="3">
+                        <div class="rating" data-rating="${product.avgReviewRate}">
                             <i class="fas fa-star star" ></i>
                             <i class="fas fa-star star" ></i>
                             <i class="fas fa-star star" ></i>
@@ -97,8 +97,8 @@ async function loadProducts() {
                         </p>
                         
                         <button class="for-rent-btn">For Rent</button>
-                        <div class="favorite-icon">
-                            <i class="fas fa-heart"></i>
+                        <div class="favorite-icon" data-productid="${product.productId}">
+                            <i data-productid="${product.productId}" class="fas fa-heart ${product.isFavourite==='Yes'? 'active':''}"></i>
                         </div>
                     </div>
                     
@@ -106,8 +106,71 @@ async function loadProducts() {
             `
             marketplace.appendChild(procductItem);
         });
+
+        document.querySelectorAll('.rating').forEach((ratingContainer) => {
+          const ratingValue = parseInt(ratingContainer.getAttribute('data-rating')); // Get the rating value (1 to 5)
+          
+          // Clear existing stars
+          ratingContainer.innerHTML = '';
+
+          // Loop through 5 stars
+          for (let i = 1; i <= 5; i++) {
+              const star = document.createElement('i');
+              star.classList.add('fas', 'fa-star', 'star'); // Add the star icon class
+
+              if (i <= ratingValue) {
+                  star.classList.add('active'); // Add 'active' class for yellow stars
+              } else {
+                  star.classList.add('inactive'); // Add 'inactive' class for gray stars
+              }
+
+              ratingContainer.appendChild(star);
+          }
+      });
+      document.querySelectorAll('.favorite-icon .fas.fa-heart').forEach((icon) => {
+        icon.addEventListener('click', () => {
+            const produtID = icon.dataset.productid;
+            icon.classList.toggle('active');
+            const isFavorite = icon.classList.contains('active');
+            isFavorite? addtofavourite(produtID): removetofavourite(produtID);
+            console.log(`Item ${isFavorite ? 'added to' : 'removed from'} ${produtID} favorites`);
+        });
+      }); 
         
       } catch (error) {
         console.error("Error loading posts:", error);
       }
+}
+ 
+
+function addtofavourite(productid){
+  const addfavourite = fetch(
+    "http://localhost:8000/api/products/addfavourite",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Ensure you're sending JSON
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        productid: productid,
+      }),
+    }
+  );
+}
+
+function removetofavourite(productid){
+  const addfavourite = fetch(
+    "http://localhost:8000/api/products/removeFavourite",
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json", // Ensure you're sending JSON
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        productid: productid,
+      }),
+    }
+  );
 }
