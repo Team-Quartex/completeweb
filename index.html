@@ -6,6 +6,7 @@
     <title>Social Media Feed</title>
     <link rel="stylesheet" href="/style/styles.css" />
     <link rel="stylesheet" href="/style/functional.css" />
+    <link rel="stylesheet" href="/style/marketplace.css" />
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
     
@@ -45,7 +46,7 @@
             <span class="icons"><i class="fi fi-sr-bookmark"></i></span>
             Saved Posts
           </div>
-          <div class="nav-item">
+          <div class="nav-item" id="marketplace-btn">
             <span class="icons"><i class="fi fi-sr-shopping-cart"></i></span>
             Market Place
           </div>
@@ -276,28 +277,281 @@
       </main>
 
       <!--Saved Posts-->
-      <main class="main-content" id="saved-post-container">
-        <div class="header">
-          <h1>Saved Posts</h1>
-          <div class="header-buttons">
-           
+          <main class="main-content" id="saved-post-container">
+            <div class="header">
+              <h1>Saved Posts</h1>
+              <div class="header-buttons">
+              
+              
+                <button class="header-button" onclick="opensearch(event)">
+                  <img
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E"
+                    alt="Search"
+                    width="20"
+                    height="20"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="post-scroller" id="save-posts">
+              
+              <!--Feed Section-->
+              
+            </div>
+          </main>
+  
+  <!--MarketPlace-->
+    <main class="main" id="marketplace">
+      <div class="header-with-search">
+          <h1>Market Place</h1>
+
+      <!-- Search Bar -->
+          <div class="search-bar-marketplace">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Search items">
           
-            <button class="header-button" onclick="opensearch(event)">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E"
-                alt="Search"
-                width="20"
-                height="20"
-              />
-            </button>
           </div>
+      </div>
+
+      <div class="image-scroll-horizontal" id="image-scroll-horizontal">
+          <div class="image-box">
+              <a href="#">
+                  <img src="Market_Place/assets/image (7).png" alt="Item 1">
+              </a>   
+          </div>
+          <div class="image-box">
+            <a href="#">
+                <img src="Market_Place/assets/image (2).png" alt="Item 1">
+            </a>   
         </div>
-        <div class="post-scroller" id="save-posts">
+
+          <div class="image-box">
+              <a href="#">
+                  <img src="Market_Place/assets/image (6).png" alt="Item 2">
+              </a>    
+          </div>
+
+          <div class="image-box">
+              <a href="#">
+                  <img src="Market_Place/assets/image (5).png" alt="Item 3">
+              </a>    
+          </div>
+
+          <div class="image-box">
+              <a href="#">
+                  <img src="Market_Place/assets/image (6).png" alt="Item 4">
+              </a>
+          </div>
+
+          <div class="image-box">
+              <a href="#">
+                  <img src="Market_Place/assets/image (7).png" alt="Item 4">
+              </a>
+          </div>
+
+          <div class="image-box">
+              <a href="#">
+                  <img src="Market_Place/assets/image (6).png" alt="Item 4">
+              </a>    
+          </div>
+
           
-          <!--Feed Section-->
+          <!-- Add more image boxes  -->
+      </div>
+      
+
+
+
+      <!-- Marketplace Grid -->
+    <div class="marketplace-grid" id="marketplace-grid">
+    <!-- Item 1 -->
+    <div class="marketplace-item">
+    <div class="item-container">
+      <div class="item-image">
+          <a href="#">
+              <img src="assets/image (1).png" alt="Handmade Wooden Bowl">
+          </a>    
+      </div>
+      <div class="item-details">
+          <h3>Item Name</h3>
+
+          <div class="rating" data-rating="3">
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+          </div> <br>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
           
-        </div>
-      </main>
+          <button class="for-rent-btn">For Rent</button>
+          <div class="favorite-icon">
+              <i class="fas fa-heart"></i>
+          </div>
+      </div>
+      
+    </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="marketplace-item">
+    <div class="item-container">
+      <div class="item-image">
+          <a href="#">
+              <img src="assets/image (2).png" alt="Handmade Wooden Bowl">
+          </a> 
+      </div>
+      <div class="item-details">
+          <h3>Item Name</h3>
+
+          <div class="rating" data-rating="3" >
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+          </div> <br>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          
+          <button class="for-rent-btn">For Rent</button>
+          <div class="favorite-icon">
+              <i class="fas fa-heart"></i>
+          </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="marketplace-item">
+    <div class="item-container">
+      <div class="item-image">
+          <a href="#">
+              <img src="assets/image.png" alt="Handmade Wooden Bowl">
+          </a>    
+      </div>
+      <div class="item-details">
+          <h3>Item Name</h3>
+
+          <div class="rating"  data-rating="4">
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+          </div> <br>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          
+          <button class="for-rent-btn">For Rent</button>
+          <div class="favorite-icon">
+              <i class="fas fa-heart"></i>
+          </div>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- Item 4 -->
+    <div class="marketplace-item">
+    <div class="item-container">
+      <div class="item-image">
+          <a href="#">
+              <img src="assets/image (8).png" alt="Handmade Wooden Bowl">
+          </a>    
+      </div>
+      <div class="item-details">
+          <h3>Item Name</h3>
+
+          <div class="rating" data-rating="2">
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+          </div> <br>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          
+          <button class="for-rent-btn">For Rent</button>
+          <div class="favorite-icon">
+              <i class="fas fa-heart"></i>
+          </div>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- Item 5 -->
+    <div class="marketplace-item">
+    <div class="item-container">
+      <div class="item-image">
+          <a href="#">
+              <img src="Market_Place/assets/image (5).png" alt="Handmade Wooden Bowl">
+          </a>    
+      </div>
+      <div class="item-details">
+          <h3>Item Name</h3>
+
+          <div class="rating" data-rating="3">
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+          </div> <br>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          
+          <button class="for-rent-btn">For Rent</button>
+          <div class="favorite-icon">
+              <i class="fas fa-heart"></i>
+          </div>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- Item 6 -->
+    <div class="marketplace-item">
+    <div class="item-container">
+      <div class="item-image">
+          <a href="#">
+          <img src="/Market_Place/assets/ (7).png" alt="Handmade Wooden Bowl">
+          </a>
+      </div>
+      <div class="item-details">
+          <h3>Item Name</h3>
+
+          <div class="rating" data-rating="4">
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+              <i class="fas fa-star star" ></i>
+          </div> <br>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          
+      <div class="button-icon-container"></div>
+      <button class="for-rent-btn">For Rent</button>
+      <div class="favorite-icon">
+          <i class="fas fa-heart"></i>
+      </div>
+    </div>
+    </div>
+    <!-- Add more items -->
+    </div>
+
+    </main>
+
 
       
 
@@ -356,6 +610,7 @@
     <script src="js/navigations.js"></script>
     <script src="js/main.js"></script>
     <script src="js/userprofile.js"></script>
+    <script src="./js/products.js"></script>
     <script type="module" src="js/post.js"></script>
     <script type="module" src="js/suggetions.js"></script>
     <script type="module" src="js/form.js"></script>
@@ -364,6 +619,8 @@
     <script type="module" src="./js/citysuggestions.js"></script>
 
     <script>
+      
+
       function setupFileUpload(buttonId, fileNameId) {
             // Create a hidden input element programmatically
             const inputFile = document.createElement('input');
@@ -377,6 +634,8 @@
             document.getElementById(buttonId).addEventListener('click', () => {
                 inputFile.click(); // Trigger the file input dialog
             });
+
+            
 
             // Handle file selection
             inputFile.addEventListener('change', (event) => {

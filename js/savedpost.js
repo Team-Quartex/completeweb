@@ -1,10 +1,10 @@
-import {formatPostTime} from './utilities.js'
 import { renderPosts } from './renderposts.js';
 
 document.getElementById('savepost-btn').addEventListener('click',()=>{
     document.getElementById('saved-post-container').style.display='block';
     document.getElementById('post-container').style.display='none';
     document.getElementById('search').style.display='none';
+    document.getElementById('marketplace').style.display='none';
     showSavedPost();
   });
 

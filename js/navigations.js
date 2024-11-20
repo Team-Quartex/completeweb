@@ -3,6 +3,7 @@
     document.getElementById("saved-post-container").style.display="none";
     document.getElementById('post-container').style.display='block';
     document.getElementById('search').style.display='none';
+    document.getElementById('marketplace').style.display='none';
   }
 
   const searchContainer = document.getElementById('search');
@@ -49,4 +50,6 @@ function openpostview(){
     document.getElementById("comment-viewer").style.display="block";
     
 }
+
+
 
