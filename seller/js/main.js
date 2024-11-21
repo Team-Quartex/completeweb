@@ -129,22 +129,30 @@ async function showDateReservation(date) {
 
 function updateTable(data) {
   const table = document.getElementById("details-table").querySelector("tbody");
-  table.innerHTML = ""; 
-  console.log(data)
-  data.forEach((detail) => {
+  table.innerHTML = "";
+  if(data.length===0){
     const rowElement = document.createElement("tr");
     rowElement.innerHTML = `
-      <th>${detail.userName}</th>
-      <th>${detail.productName}</th>
-      <th>${detail.qty}</th>
-      <th>${detail.price}</th>
-      <th>${detail.email}</th>
-      <th>Description</th>
-      <th>${detail.status}</th>
+      <th colspan="7" style="text-align:center">No reservation Available</th>
     `;
-
-    table.appendChild(rowElement)
-  });
+    table.appendChild(rowElement);
+  } 
+  else{
+    data.forEach((detail) => {
+      const rowElement = document.createElement("tr");
+      rowElement.innerHTML = `
+        <th>${detail.userName}</th>
+        <th>${detail.productName}</th>
+        <th>${detail.qty}</th>
+        <th>${detail.price}</th>
+        <th>${detail.email}</th>
+        <th>Description</th>
+        <th>${detail.status}</th>
+      `;
+  
+      table.appendChild(rowElement)
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
