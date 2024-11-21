@@ -1,3 +1,4 @@
+
 async function getUserDetails() {
     const requestOptions = {
         method: "GET",
@@ -17,6 +18,8 @@ async function getUserDetails() {
     
         const userDetails = await response.json(); // Assuming the API returns JSON
         console.log(userDetails);
+        const userData = userDetails;  
+        localStorage.setItem('userData', JSON.stringify(userDetails));
         document.getElementById('user-name').innerHTML = userDetails.name;
         document.getElementById('username').innerHTML = '@'+userDetails.username;
         document.getElementById('user-img').src = `http://127.0.0.1:8000/uploads/${userDetails.profilepic}`;

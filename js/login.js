@@ -25,8 +25,6 @@ document.getElementById('myForm').addEventListener('submit', function (event) {
     })
     .then(result => {
         console.log(result); 
-        const userData = result;  
-        localStorage.setItem('userData', JSON.stringify(userData));
         // Uncomment this line to redirect after successful login
         window.location.href = 'index.html'; 
     })

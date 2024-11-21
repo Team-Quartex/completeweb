@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trova Sellers Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Trova Sellers</div>
+        <div class="nav-item active" data-tab="dashboard"><i data-feather="layout"></i> Dashboard</div>
+        <div class="nav-item" data-tab="add-products"><i data-feather="package"></i> Add Products</div>
+        <div class="nav-item" data-tab="earnings"><i data-feather="dollar-sign"></i> Your Earnings</div>
+        <div class="nav-item" data-tab="profile"><i data-feather="user"></i> Profile</div>
+        <div class="nav-item" data-tab="settings"><i data-feather="settings"></i> Settings</div>
+    </div>
+    <div class="main-content show-content">
+        <div class="header">
+            <h1>Overview</h1>
+            <div style="display: flex; align-items: center;">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search here...">
+                    <i data-feather="search"></i>
+                </div>
+                <div class="header-icons">
+                    <i data-feather="bell"></i>
+                    <i data-feather="more-vertical"></i>
+                </div>
+            </div>
+        </div>
+        <div id="dashboard" class="tab-content active">
+            <div class="grid">
+                <div class="card calendar">
+                    <div class="calendar-header">
+                        <h2>Calendar</h2>
+                        <div class="calendar-nav">
+                            <button id="prevMonth"><i data-feather="chevron-left"></i></button>
+                            <span id="currentMonth" style="margin: 0 16px;"></span>
+                            <button id="nextMonth"><i data-feather="chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div id="calendarGrid" class="calendar-grid"></div>
+                    <button class="done-btn">Done</button>
+                </div>
+                <div class="card earnings">
+                    <h2>Today's Earning</h2>
+                    <div class="big-number">$7500</div>
+                </div>
+                <div class="card categories">
+                    <h2>Total Categories</h2>
+                    <div class="big-number">5</div>
+                </div>
+                <div class="card metric">
+                    <div class="metric-icon" style="background-color: #FFF2E5;">
+                        <i data-feather="package" style="color: #FF8A00;"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="big-number">165</div>
+                        <p>All Products</p>
+                    </div>
+                </div>
+                <div class="card metric">
+                    <div class="metric-icon" style="background-color: #E5F7F2;">
+                        <i data-feather="check-circle" style="color: #00A389;"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="big-number">16</div>
+                        <p>Best out Products</p>
+                    </div>
+                </div>
+                <div class="card metric">
+                    <div class="metric-icon" style="background-color: #E5F0FF;">
+                        <i data-feather="shopping-bag" style="color: #0066FF;"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="big-number">16</div>
+                        <p>New Orders</p>
+                    </div>
+                </div>
+                <div class="card reservations">
+                    <h2>Reservations</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Item Name</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>Item Name</td>
+                                <td>Quantity</td>
+                                <td>$00.00</td>
+                                <td>+94123456789</td>
+                                <td><span class="status-badge">✓</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="add-products" class="tab-content">
+            <h2>Add Products</h2>
+            <p>This is where you can add new products.</p>
+        </div>
+        <div id="earnings" class="tab-content">
+            <h2>Your Earnings</h2>
+            <p>Here you can view your earnings details.</p>
+        </div>
+        <div id="profile" class="tab-content">
+            <h2>Profile</h2>
+            <p>Manage your profile information here.</p>
+        </div>
+        <div id="settings" class="tab-content">
+            <h2>Settings</h2>
+            <p>Adjust your account settings here.</p>
+        </div>
+    </div>
+    <!-- Add products start -->
+    <div class="main-content">
+        <h1>Products</h1>
+    </div>
+    <!-- Add products end -->
+
+    <!-- your earnings start -->
+    <div class="main-content">
+        <h1>Earnings</h1>
+    </div>
+    <!-- Your earnings end -->
+    
+    <!-- Profile start -->
+    <div class="main-content">
+        <h1>Profile Start</h1>
+    </div>
+    <!-- Profile end -->
+
+    <!-- Setting Start -->
+    <div class="main-content">
+        <h1>Settings</h1>
+    </div>
+    <!-- Setting end -->
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/main.js">
+        
+    </script>
+
+    <script>
+        const contents = document.querySelectorAll('.main-content');
+        const navbtns = document.querySelectorAll('.nav-item');
+        navbtns.forEach((button,index)=>{
+            button.addEventListener('click',()=>{
+                navbtns.forEach((navbtn)=>navbtn.classList.remove('active'));
+                button.classList.add('active');
+                contents.forEach((content)=>content.classList.remove('show-content'));
+                contents[index].classList.add('show-content');
+            })
+        })
+    </script>
+</body>
+</html>

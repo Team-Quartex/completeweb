@@ -392,14 +392,18 @@ left: 170px;
 }
 
 .reaction {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 15px;
     color: #65676b;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    gap: 5px;
+}
 
+.likeicon{
+    color: red;
 }
 
 .reaction img {

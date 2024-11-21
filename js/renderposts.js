@@ -1,23 +1,23 @@
 // Export function to render posts
-const userData = JSON.parse(localStorage.getItem('userData'));
-import {addFollow} from './follow.js'
-import {formatPostTime} from './utilities.js'
-import {loadsuggestions} from './suggetions.js'
+const userData = JSON.parse(localStorage.getItem("userData"));
+import { addFollow } from "./follow.js";
+import { formatPostTime } from "./utilities.js";
+import { loadsuggestions } from "./suggetions.js";
 
 export function renderPosts(posts, container) {
-    posts.forEach((post,index) => {
-        // Construct the post HTML
-        const postElement = document.createElement("div");
-        postElement.classList.add("feed"); // Add feed class
-        let imagecontent = "";
+  posts.forEach((post, index) => {
+    // Construct the post HTML
+    const postElement = document.createElement("div");
+    postElement.classList.add("feed"); // Add feed class
+    let imagecontent = "";
 
-        // Handle image rendering based on the number of images
-        switch (post.images.length) {
-            case 0:
-                imagecontent = "";
-                break;
-            case 1:
-                imagecontent = `
+    // Handle image rendering based on the number of images
+    switch (post.images.length) {
+      case 0:
+        imagecontent = "";
+        break;
+      case 1:
+        imagecontent = `
                     <div class="post-images">
                         <img
                         src="http://127.0.0.1:8000/uploads/${post.images[0]}"
@@ -25,9 +25,9 @@ export function renderPosts(posts, container) {
                         class="post-image-1"
                         />
                     </div>`;
-                break;
-            case 2:
-                imagecontent = `
+        break;
+      case 2:
+        imagecontent = `
                     <div class="post-images">
                         <img
                         src="http://127.0.0.1:8000/uploads/${post.images[0]}"
@@ -40,9 +40,9 @@ export function renderPosts(posts, container) {
                         class="post-image-2"
                         />
                     </div>`;
-                break;
-            case 3:
-                imagecontent = `
+        break;
+      case 3:
+        imagecontent = `
                     <div class="post-images">
                         <img
                         src="http://127.0.0.1:8000/uploads/${post.images[0]}"
@@ -60,9 +60,9 @@ export function renderPosts(posts, container) {
                         class="post-image-3"
                         />
                     </div>`;
-                break;
-            case 4:
-                imagecontent = `
+        break;
+      case 4:
+        imagecontent = `
                     <div class="post-images">
                         <img
                         src="http://127.0.0.1:8000/uploads/${post.images[0]}"
@@ -85,31 +85,44 @@ export function renderPosts(posts, container) {
                         class="post-image-4"
                         />
                     </div>`;
-                break;
-            default:
-                imagecontent = post.images.slice(0, 5).map((img, index) => `
+        break;
+      default:
+        imagecontent = post.images
+          .slice(0, 5)
+          .map(
+            (img, index) => `
                     <img
                         src="http://127.0.0.1:8000/uploads/${img}"
                         alt="Image ${index + 1}"
                         class="post-image"
                     />
-                `).join('');
-                break;
-        }
+                `
+          )
+          .join("");
+        break;
+    }
+    const struserId = String(userData.userid);
+    post.likeduser.includes(struserId) ? console.log("TRUE "+post.postId) : console.log("fALSE "+post.postId)
+    // Format description with hashtags and mentions
+    const formattedDescription = post.description
+      .replace(/#\w+/g, (match) => `<span class="hashtag">${match}</span>`)
+      .replace(/@\w+/g, (match) => `<span class="location">${match}</span>`)
+      .replace(/\n/g, "<br>");
 
-        // Format description with hashtags and mentions
-        const formattedDescription = post.description
-            .replace(/#\w+/g, match => `<span class="hashtag">${match}</span>`)
-            .replace(/@\w+/g, match => `<span class="location">${match}</span>`)
-            .replace(/\n/g, '<br>');
-        
-        // location show
-        const locationdata  = post.location ? `<span class="location">@${post.location}</span> <br>`:'';
-        const verify = post.verify === 'yes' ? `<i class="fi fi-rr-globe"></i>` : ``;
-        const followBtn = post.isFollowed === 'no' && post.verify === 'yes' && userData.userid != post.UserId ? `<button class="follow-btn removeDisplay"  data-user="${post.UserId}">Follow</button>` : ``;
-        
-        // Construct post inner HTML
-        postElement.innerHTML = `
+    // location show
+    const locationdata = post.location
+      ? `<span class="location">@${post.location}</span> <br>`
+      : "";
+    const verify =
+      post.verify === "yes" ? `<i class="fi fi-rr-globe"></i>` : ``;
+    const followBtn =
+      post.isFollowed === "no" &&
+      post.verify === "yes" &&
+      userData.userid != post.UserId
+        ? `<button class="follow-btn removeDisplay"  data-user="${post.UserId}">Follow</button>`
+        : ``;
+    // Construct post inner HTML
+    postElement.innerHTML = `
             <div class="post" data-index="${index}">
                 <div class="post-header">
                   <img
@@ -119,10 +132,14 @@ export function renderPosts(posts, container) {
                   />
                   <div class="post-user-info">
                     <div class="name-verified">
-                    <span class="post-username">${post.name}</span><span class="verified">${verify}</span>
+                    <span class="post-username">${
+                      post.name
+                    }</span><span class="verified">${verify}</span>
                     ${followBtn}
                   </div>
-                    <span class="post-time">${formatPostTime(post.postTime)}</span>
+                    <span class="post-time">${formatPostTime(
+                      post.postTime
+                    )}</span>
                   </div>
                 </div>
                 <div class="post-content">
@@ -130,37 +147,35 @@ export function renderPosts(posts, container) {
                 </div>
                 ${imagecontent}
                 <div class="post-footer">
-                            <div class="post-reactions">
+                            <div class="post-reactions likeclass" >
+                                <div class="reaction" >
+                                ${
+                                    post.likeduser.includes(struserId)
+                                    ? `
+                                    <i class="fi fi-sr-heart likeicon likebutton" data-status="true" data-postid="${post.postId}"></i>
+                                    <p class="likeicon">${post.likeduser.length}</p>
+                                    `
+                                    : `
+                                    <i class="fi fi-rr-heart likebutton" data-status="false" data-postid="${post.postId}"></i>
+                                    <p >${post.likeduser.length}</p>
+                                    `
+                                }
+                                </div>
                                 <button class="reaction">
-                                <img
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'%3E%3C/path%3E%3C/svg%3E"
-                                    alt="Like"
-                                />
-                                ${post.likeduser.length}
-                                </button>
-                                <button class="reaction">
-                                <img
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'%3E%3C/path%3E%3C/svg%3E"
-                                    alt="Comment"
-                                />
-                                ${post.comments===0? 0 :post.comments}
-                            
+                                    <i class="fi fi-rr-comments"></i>
+                                    <p >${
+                                      post.comments === 0 ? 0 : post.comments
+                                    }</p>
                                 </button>
                             <button class="reaction">
-                                <img
-                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'%3E%3C/circle%3E%3Ccircle cx='6' cy='12' r='3'%3E%3C/circle%3E%3Ccircle cx='18' cy='19' r='3'%3E%3C/circle%3E%3Cline x1='8.59' y1='13.51' x2='15.42' y2='17.49'%3E%3C/line%3E%3Cline x1='15.41' y1='6.51' x2='8.59' y2='10.49'%3E%3C/line%3E%3C/svg%3E"
-                                alt="Share"
-                                />
+                                <i class="fi fi-rr-share"></i>
                                 Share
                             </button>
                             <div class="comment-section-input">
                                 <input type="text" name="" id="" placeholder="Type a comment..."  class="comment-section">  
                                 <button class="reaction">
-                                <img
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'%3E%3C/circle%3E%3Ccircle cx='6' cy='12' r='3'%3E%3C/circle%3E%3Ccircle cx='18' cy='19' r='3'%3E%3C/circle%3E%3Cline x1='8.59' y1='13.51' x2='15.42' y2='17.49'%3E%3C/line%3E%3Cline x1='15.41' y1='6.51' x2='8.59' y2='10.49'%3E%3C/line%3E%3C/svg%3E"
-                                    alt="Share"
-                                />
-                                Share
+                                <i class="fi fi-sr-paper-plane-top"></i>
+                                Sent
                                 </button>
                                 
                             </div>
@@ -168,32 +183,99 @@ export function renderPosts(posts, container) {
             </div>
         `;
 
-        // Append the post to the provided container
-        container.appendChild(postElement);
+    // Append the post to the provided container
+    container.appendChild(postElement);
+  });
+  const buttonQuery = document.querySelectorAll(".follow-btn");
+  buttonQuery.forEach((button) => {
+    button.addEventListener("click", function () {
+      const userId = this.dataset.user;
+      buttonQuery.forEach((button) => {
+        if (button.dataset.user === userId) {
+          button.classList.add("hidden");
+        }
+      });
+      addFollow(userId);
+      var count =
+        parseInt(document.getElementById("user-following-count").innerHTML) + 1;
+      document.getElementById("user-following-count").innerHTML = count;
+      loadsuggestions();
     });
-    const buttonQuery = document.querySelectorAll('.follow-btn')
-    buttonQuery.forEach((button) => {
-        button.addEventListener('click', function () {
-            const userId = this.dataset.user; 
-            buttonQuery.forEach((button)=>{
-                if(button.dataset.user===userId){
-                    button.classList.add('hidden')
-                }
-            })
-            addFollow(userId);
-            var count = parseInt(document.getElementById('user-following-count').innerHTML)+1;
-            document.getElementById('user-following-count').innerHTML = count;
-            loadsuggestions()
-        });
-    });
+  });
 
-    const postViews = document.querySelectorAll('.post');
-    postViews.forEach((postview)=>{
-        postview.addEventListener('click',()=>{
-            document.getElementById("comment-viewer").style.display="block";
-            const nameArray = posts[postview.dataset.index].name.split(" ");
-            document.getElementById('post-owner-name').innerHTML = `${nameArray[0]}'s Post`;
-        });
-    })
+  const postViews = document.querySelectorAll(".post");
+  postViews.forEach((postview) => {
+    postview.addEventListener("click", () => {
+      document.getElementById("comment-viewer").style.display = "block";
+      const nameArray = posts[postview.dataset.index].name.split(" ");
+      document.getElementById(
+        "post-owner-name"
+      ).innerHTML = `${nameArray[0]}'s Post`;
+    });
+  });
+
+  const likebtns = document.querySelectorAll(".likebutton");
+likebtns.forEach((like) => {
+  like.addEventListener("click", (event) => {
+    event.stopPropagation(); // Prevent event bubbling
+    const status = like.dataset.status;
+    const postid = like.dataset.postid; // Retrieve post ID
+    const likesCountElement = like.nextElementSibling; // Assuming <p> is the next sibling of <i>
+    let likesCount = parseInt(likesCountElement.textContent); // Get current like count
+
+    if (status === "true") {
+      // Change to unliked state
+      like.classList.remove("fi-sr-heart","likeicon");
+      like.classList.add("fi-rr-heart");
+      like.dataset.status = "false";
+      likesCount--; // Decrement like count
+      likesCountElement.classList.remove("likeicon");
+      remove(postid)
+    } else {
+      // Change to liked state
+      like.classList.remove("fi-rr-heart");
+      like.classList.add("fi-sr-heart","likeicon");
+      like.dataset.status = "true";
+      likesCount++; // Increment like count
+      likesCountElement.classList.add("likeicon");
+      addLike(postid)
+    }
+
+    // Update the likes count in the <p> element
+    likesCountElement.textContent = likesCount;
+    likesCountElement.classList.add("updated-class"); // Optional: Add a class to indicate a visual change
+  });
+});
 }
 
+function addLike(postid){
+    const addfavourite = fetch(
+        "http://localhost:8000/api/likes/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Ensure you're sending JSON
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            postId: postid,
+          }),
+        }
+      );
+}
+
+function remove(postid){
+    const addfavourite = fetch(
+        "http://localhost:8000/api/likes/remove",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json", // Ensure you're sending JSON
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            postId: postid,
+          }),
+        }
+      );
+}
