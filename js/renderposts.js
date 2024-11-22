@@ -137,9 +137,9 @@ export function renderPosts(posts, container) {
                     }</span><span class="verified">${verify}</span>
                     ${followBtn}
                   </div>
-                    <span class="post-time">${formatPostTime(
+                    <span class="post-time">${
                       post.postTime
-                    )}</span>
+                    }</span>
                   </div>
                 </div>
                 <div class="post-content">
