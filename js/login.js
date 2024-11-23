@@ -1,3 +1,4 @@
+const error = document.getElementById('error')
 document.getElementById('myForm').addEventListener('submit', function (event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
@@ -17,16 +18,20 @@ document.getElementById('myForm').addEventListener('submit', function (event) {
         credentials: "include" // Ensures cookies are sent with the request
     })
     .then(response => {
-        if (!response.ok) {
-            // Handle HTTP errors
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+            if(response.status===200){
+                console.log(response.status);
+                window.location.href = 'index.html';
+            }
+            else if(response.status===404){
+                error.innerHTML='User Not Found';
+            }
+            else if(response.status===400){
+                error.innerHTML='User name or password wrong';
+            }
+            else{
+                error.innerHTML='Check Connection';
+            }
         return response.json(); // Assuming the response is in JSON format
-    })
-    .then(result => {
-        console.log(result); 
-        // Uncomment this line to redirect after successful login
-        window.location.href = 'index.html'; 
     })
     .catch(error => {
         console.error('Error:', error);
