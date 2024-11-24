@@ -385,7 +385,7 @@
           class="fi fi-sr-circle-xmark"
           style="font-size: 20px;text-decoration: none;color: black;"></i></a>
       <h1>Notifications</h1>
-      <div class="notification-scroller">
+      <div class="notification-scroller" id="notification-scroller">
         <div class="notifications">
           <div class="usr-notify-details">
             <div class="image-and-icon">
@@ -495,6 +495,7 @@
     <script type="module" src="js/search.js"></script>
     <script type="module" src="js/savedpost.js"></script>
     <script type="module" src="./js/citysuggestions.js"></script>
+    <script type="module" src="./js/renderNotifications.js"></script>
 
     <script>
       
@@ -534,9 +535,7 @@
             document.getElementById("comment-viewer").style.display="block";
             
         }
-        document.getElementById('notification-panel-button').addEventListener('click',()=>{
-          document.getElementById("Notificaionpanel").style.width = "28.0vw";
-        });
+        
 
         function closeNav() {
     document.getElementById("Notificaionpanel").style.width = "0";

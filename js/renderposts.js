@@ -10,7 +10,6 @@ export function renderPosts(posts, container) {
     const postElement = document.createElement("div");
     postElement.classList.add("feed"); // Add feed class
     let imagecontent = "";
-
     // Handle image rendering based on the number of images
     switch (post.images.length) {
       case 0:
@@ -102,7 +101,7 @@ export function renderPosts(posts, container) {
         break;
     }
     const struserId = String(userData.userid);
-    post.likeduser.includes(struserId) ? console.log("TRUE "+post.postId) : console.log("fALSE "+post.postId)
+    // post.likeduser.includes(struserId) ? console.log("TRUE "+post.postId) : console.log("fALSE "+post.postId)
     // Format description with hashtags and mentions
     const formattedDescription = post.description
       .replace(/#\w+/g, (match) => `<span class="hashtag">${match}</span>`)
@@ -156,7 +155,7 @@ export function renderPosts(posts, container) {
                                     <p class="likeicon">${post.likeduser.length}</p>
                                     `
                                     : `
-                                    <i class="fi fi-rr-heart likebutton" data-status="false" data-postid="${post.postId}"></i>
+                                    <i class="fi fi-rr-heart likebutton" data-status="false" data-postid="${post.postId}" data-postuser="${post.UserId}"></i>
                                     <p >${post.likeduser.length}</p>
                                     `
                                 }
@@ -219,7 +218,7 @@ likebtns.forEach((like) => {
   like.addEventListener("click", (event) => {
     event.stopPropagation(); // Prevent event bubbling
     const status = like.dataset.status;
-    const UserId = like.dataset.UserId;
+    const UserId = like.dataset.postuser;
     const postid = like.dataset.postid; // Retrieve post ID
     const likesCountElement = like.nextElementSibling; // Assuming <p> is the next sibling of <i>
     let likesCount = parseInt(likesCountElement.textContent); // Get current like count
@@ -239,6 +238,7 @@ likebtns.forEach((like) => {
       like.dataset.status = "true";
       likesCount++; // Increment like count
       likesCountElement.classList.add("likeicon");
+      console.log(UserId)
       addLike(postid,UserId)
     }
 
@@ -260,12 +260,13 @@ function addLike(postid,userId){
           credentials: "include",
           body: JSON.stringify({
             postId: postid,
+            postuser: userId,
           }),
         }
       );
 }
 
-function remove(postid){
+function remove(postid,userId){
     const addfavourite = fetch(
         "http://localhost:8000/api/likes/remove",
         {
@@ -276,6 +277,7 @@ function remove(postid){
           credentials: "include",
           body: JSON.stringify({
             postId: postid,
+            postuser: userId,
           }),
         }
       );
