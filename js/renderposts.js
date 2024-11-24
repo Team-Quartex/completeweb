@@ -152,7 +152,7 @@ export function renderPosts(posts, container) {
                                 ${
                                     post.likeduser.includes(struserId)
                                     ? `
-                                    <i class="fi fi-sr-heart likeicon likebutton" data-status="true" data-postid="${post.postId}"></i>
+                                    <i class="fi fi-sr-heart likeicon likebutton" data-status="true" data-postid="${post.postId}" data-postuser="${post.UserId}"></i>
                                     <p class="likeicon">${post.likeduser.length}</p>
                                     `
                                     : `
@@ -219,6 +219,7 @@ likebtns.forEach((like) => {
   like.addEventListener("click", (event) => {
     event.stopPropagation(); // Prevent event bubbling
     const status = like.dataset.status;
+    const UserId = like.dataset.UserId;
     const postid = like.dataset.postid; // Retrieve post ID
     const likesCountElement = like.nextElementSibling; // Assuming <p> is the next sibling of <i>
     let likesCount = parseInt(likesCountElement.textContent); // Get current like count
@@ -230,7 +231,7 @@ likebtns.forEach((like) => {
       like.dataset.status = "false";
       likesCount--; // Decrement like count
       likesCountElement.classList.remove("likeicon");
-      remove(postid)
+      remove(postid,UserId)
     } else {
       // Change to liked state
       like.classList.remove("fi-rr-heart");
@@ -238,7 +239,7 @@ likebtns.forEach((like) => {
       like.dataset.status = "true";
       likesCount++; // Increment like count
       likesCountElement.classList.add("likeicon");
-      addLike(postid)
+      addLike(postid,UserId)
     }
 
     // Update the likes count in the <p> element
@@ -248,7 +249,7 @@ likebtns.forEach((like) => {
 });
 }
 
-function addLike(postid){
+function addLike(postid,userId){
     const addfavourite = fetch(
         "http://localhost:8000/api/likes/add",
         {
