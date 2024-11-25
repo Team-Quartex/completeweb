@@ -1,170 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trova Sellers Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/addproduct.css" />
+    <link rel="stylesheet" href="style/earnings.css" />
+  </head>
+  <body>
     <div class="sidebar">
-        <div class="logo">Trova Sellers</div>
-        <div class="nav-item active" data-tab="dashboard"><i data-feather="layout"></i> Dashboard</div>
-        <div class="nav-item" data-tab="add-products"><i data-feather="package"></i> Add Products</div>
-        <div class="nav-item" data-tab="earnings"><i data-feather="dollar-sign"></i> Your Earnings</div>
-        <div class="nav-item" data-tab="profile"><i data-feather="user"></i> Profile</div>
-        <div class="nav-item" data-tab="settings"><i data-feather="settings"></i> Settings</div>
+      <div class="logo">Trova Sellers</div>
+      <div class="nav-item active" data-tab="dashboard">
+        <i data-feather="layout"></i> Dashboard
+      </div>
+      <div class="nav-item" data-tab="add-products">
+        <i data-feather="package"></i> Add Products
+      </div>
+      <div class="nav-item" data-tab="earnings">
+        <i data-feather="dollar-sign"></i> Your Earnings
+      </div>
+      <div class="nav-item" data-tab="profile">
+        <i data-feather="user"></i> Profile
+      </div>
+      <div class="nav-item" data-tab="settings">
+        <i data-feather="settings"></i> Settings
+      </div>
     </div>
     <div class="main-content show-content">
-        <div class="header">
-            <h1>Overview</h1>
-            <div style="display: flex; align-items: center;">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search here...">
-                    <i data-feather="search"></i>
-                </div>
-                <div class="header-icons">
-                    <i data-feather="bell"></i>
-                    <i data-feather="more-vertical"></i>
-                </div>
+      <div class="header">
+        <h1>Overview</h1>
+        <div style="display: flex; align-items: center">
+          <div class="search-bar">
+            <input type="text" placeholder="Search here..." />
+            <i data-feather="search"></i>
+          </div>
+          <div class="header-icons">
+            <i data-feather="bell"></i>
+            <i data-feather="more-vertical"></i>
+          </div>
+        </div>
+      </div>
+      <div id="dashboard" class="tab-content active">
+        <div class="grid">
+          <div class="card calendar">
+            <div class="calendar-header">
+              <h2>Calendar</h2>
+              <div class="calendar-nav">
+                <button id="prevMonth">
+                  <i data-feather="chevron-left"></i>
+                </button>
+                <span id="currentMonth" style="margin: 0 16px"></span>
+                <button id="nextMonth">
+                  <i data-feather="chevron-right"></i>
+                </button>
+              </div>
             </div>
-        </div>
-        <div id="dashboard" class="tab-content active">
-            <div class="grid">
-                <div class="card calendar">
-                    <div class="calendar-header">
-                        <h2>Calendar</h2>
-                        <div class="calendar-nav">
-                            <button id="prevMonth"><i data-feather="chevron-left"></i></button>
-                            <span id="currentMonth" style="margin: 0 16px;"></span>
-                            <button id="nextMonth"><i data-feather="chevron-right"></i></button>
-                        </div>
-                    </div>
-                    <div id="calendarGrid" class="calendar-grid"></div>
-                    <button class="done-btn">Done</button>
-                </div>
-                <div class="card earnings">
-                    <h2>Today's Earning</h2>
-                    <div class="big-number">$7500</div>
-                </div>
-                <div class="card categories">
-                    <h2>Total Categories</h2>
-                    <div class="big-number">5</div>
-                </div>
-                <div class="card metric">
-                    <div class="metric-icon" style="background-color: #FFF2E5;">
-                        <i data-feather="package" style="color: #FF8A00;"></i>
-                    </div>
-                    <div class="metric-content">
-                        <div class="big-number">165</div>
-                        <p>All Products</p>
-                    </div>
-                </div>
-                <div class="card metric">
-                    <div class="metric-icon" style="background-color: #E5F7F2;">
-                        <i data-feather="check-circle" style="color: #00A389;"></i>
-                    </div>
-                    <div class="metric-content">
-                        <div class="big-number">16</div>
-                        <p>Best out Products</p>
-                    </div>
-                </div>
-                <div class="card metric">
-                    <div class="metric-icon" style="background-color: #E5F0FF;">
-                        <i data-feather="shopping-bag" style="color: #0066FF;"></i>
-                    </div>
-                    <div class="metric-content">
-                        <div class="big-number">16</div>
-                        <p>New Orders</p>
-                    </div>
-                </div>
-                <div class="card reservations">
-                    <h2>Reservations</h2>
-                    <table id="details-table">
-                        <thead>
-                            <tr>
-                                <th>User Name</th>
-                                <th>Item Name</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                <th>Contact</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>Item Name</td>
-                                <td>Quantity</td>
-                                <td>$00.00</td>
-                                <td>+94123456789</td>
-                                <td></td>
-                                <td><span class="status-badge">✓</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div id="calendarGrid" class="calendar-grid"></div>
+            <button class="done-btn">Done</button>
+          </div>
+          <div class="card earnings">
+            <h2>Today's Earning</h2>
+            <div class="big-number">$7500</div>
+          </div>
+          <div class="card categories">
+            <h2>Total Categories</h2>
+            <div class="big-number">5</div>
+          </div>
+          <div class="card metric">
+            <div class="metric-icon" style="background-color: #fff2e5">
+              <i data-feather="package" style="color: #ff8a00"></i>
             </div>
+            <div class="metric-content">
+              <div class="big-number">165</div>
+              <p>All Products</p>
+            </div>
+          </div>
+          <div class="card metric">
+            <div class="metric-icon" style="background-color: #e5f7f2">
+              <i data-feather="check-circle" style="color: #00a389"></i>
+            </div>
+            <div class="metric-content">
+              <div class="big-number">16</div>
+              <p>Best out Products</p>
+            </div>
+          </div>
+          <div class="card metric">
+            <div class="metric-icon" style="background-color: #e5f0ff">
+              <i data-feather="shopping-bag" style="color: #0066ff"></i>
+            </div>
+            <div class="metric-content">
+              <div class="big-number">16</div>
+              <p>New Orders</p>
+            </div>
+          </div>
+          <div class="card reservations">
+            <h2>Reservations</h2>
+            <table id="details-table">
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                  <th>Item Name</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Contact</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>Item Name</td>
+                  <td>Quantity</td>
+                  <td>$00.00</td>
+                  <td>+94123456789</td>
+                  <td></td>
+                  <td><span class="status-badge">✓</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div id="add-products" class="tab-content">
-            <h2>Add Products</h2>
-            <p>This is where you can add new products.</p>
-        </div>
-        <div id="earnings" class="tab-content">
-            <h2>Your Earnings</h2>
-            <p>Here you can view your earnings details.</p>
-        </div>
-        <div id="profile" class="tab-content">
-            <h2>Profile</h2>
-            <p>Manage your profile information here.</p>
-        </div>
-        <div id="settings" class="tab-content">
-            <h2>Settings</h2>
-            <p>Adjust your account settings here.</p>
-        </div>
+      </div>
+      <div id="add-products" class="tab-content">
+        <h2>Add Products</h2>
+        <p>This is where you can add new products.</p>
+      </div>
+      <div id="earnings" class="tab-content">
+        <h2>Your Earnings</h2>
+        <p>Here you can view your earnings details.</p>
+      </div>
+      <div id="profile" class="tab-content">
+        <h2>Profile</h2>
+        <p>Manage your profile information here.</p>
+      </div>
+      <div id="settings" class="tab-content">
+        <h2>Settings</h2>
+        <p>Adjust your account settings here.</p>
+      </div>
     </div>
     <!-- Add products start -->
     <div class="main-content">
-        <h1>Products</h1>
+      <h2>Add Products</h2>
+      <p>This is where you can add new products.</p>
+      <div class="content">
+        <div class="add-product-section">
+          <form id="productForm">
+            <div class="form-group">
+              <input
+                type="text"
+                id="productName-add"
+                placeholder="Product Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="productDescription">Product Description</label>
+              <textarea id="productDescription" class="form-control" rows="4">
+              </textarea>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="number"
+                id="productPrice-add"
+                placeholder="Product Price"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="number"
+                id="qty-add"
+                placeholder="Product Quantity"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <select id="productCategory" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="category 1">category 1</option>
+                <option value="category 2">category 2</option>
+                <option value="category 3">category 3</option>
+                <option value="category 4">category 4</option>
+                <option value="category 5">category 5</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input type="file" id="fileInput" multiple />
+              <label for="fileInput" class="custom-file-label"
+                >Choose Files</label
+              >
+              <div id="filePreview" class="hidden"></div>
+            </div>
+
+            <input
+              type="submit"
+              id="listProductBtn"
+              value="List Down Product"
+            />
+          </form>
+          <p style="font-size: 16px;color: green;text-align: center; display: none;" id="res-add"></p>
+        </div>
+
+        <div class="product-list-section" id="product-list-section">
+          <div class="product-item pending">
+            <div class="product-image">
+              <img src="" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="assets/expired.png"
+              alt="Pending"
+              class="status-icon"
+              title="Status: Pending"
+            />
+          </div>
+
+          <div class="product-item pending">
+            <div class="product-image">
+              <img src="" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="assets/expired.png"
+              alt="Pending"
+              class="status-icon"
+              title="Status: Pending"
+            />
+          </div>
+
+          <div class="product-item approved">
+            <div class="product-image">
+              <img src="assets/image (2).png" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="assets/mark.png"
+              alt="Approved"
+              class="status-icon"
+              title="Status: Approved"
+            />
+          </div>
+
+          <div class="product-item approved">
+            <div class="product-image">
+              <img src="assets/image (2).png" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="assets/mark.png"
+              alt="Approved"
+              class="status-icon"
+              title="Status: Approved"
+            />
+          </div>
+
+          <div class="product-item approved">
+            <div class="product-image">
+              <img src="assets/image (1).png" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="assets/mark.png"
+              alt="Approved"
+              class="status-icon"
+              title="Status: Approved"
+            />
+          </div>
+
+          <div class="product-item rejected">
+            <div class="product-image">
+              <img src="" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="multiply.png"
+              alt="Rejected"
+              class="status-icon"
+              title="Status: Rejected"
+            />
+          </div>
+
+          <div class="product-item rejected">
+            <div class="product-image">
+              <img src="" alt="" />
+            </div>
+
+            <div>
+              <h3>Product Name</h3>
+              <h6>Description...</h6>
+              <p>LKR 0.00</p>
+            </div>
+
+            <img
+              src="assets/multiply.png"
+              alt="Rejected"
+              class="status-icon"
+              title="Status: Rejected"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Add products end -->
 
     <!-- your earnings start -->
     <div class="main-content">
-        <h1>Earnings</h1>
+      <h2>Your Earnings</h2>
+      <p>Here you can view your earnings details.</p>
+      <div class="dashboard">
+        <div class="card total-earning">
+          <h3>Total earning</h3>
+          <p class="amount">LKR 1,250,000</p>
+          <br />
+          <br />
+          <br />
+          <p class="info">10% increased than previous month</p>
+        </div>
+        <div class="card withdrawal">
+          <h3 class="h3">Withdrawal Amount</h3>
+          <p class="amount">LKR 50,000</p>
+          <p class="info">
+            Please note that you cannot withdraw less than $1000
+          </p>
+          <button class="withdraw-button">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="most-rented-container">
+        <h3>Most rented items</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Item ID</th>
+              <th>Item Name</th>
+              <th>Rented Count</th>
+              <th>Commission</th>
+              <th>Total Earning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>IID001</td>
+              <td>Item Name</td>
+              <td>999</td>
+              <td>LKR 1500.00</td>
+              <td>LKR 45000.00</td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <td>2</td>
+              <td>IID002</td>
+              <td>Item Name</td>
+              <td>995</td>
+              <td>LKR 4500.00</td>
+              <td>LKR 75000.00</td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <td>3</td>
+              <td>IID003</td>
+              <td>Item Name</td>
+              <td>750</td>
+              <td>LKR 2500.00</td>
+              <td>LKR 45000.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- Your earnings end -->
-    
+
     <!-- Profile start -->
     <div class="main-content">
-        <h1>Profile Start</h1>
+      <h1>Profile Start</h1>
     </div>
     <!-- Profile end -->
 
     <!-- Setting Start -->
     <div class="main-content">
-        <h1>Settings</h1>
+      <h1>Settings</h1>
     </div>
     <!-- Setting end -->
 
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="js/main.js">
-        
-    </script>
-
-    <script>
-        const contents = document.querySelectorAll('.main-content');
-        const navbtns = document.querySelectorAll('.nav-item');
-        navbtns.forEach((button,index)=>{
-            button.addEventListener('click',()=>{
-                navbtns.forEach((navbtn)=>navbtn.classList.remove('active'));
-                button.classList.add('active');
-                contents.forEach((content)=>content.classList.remove('show-content'));
-                contents[index].classList.add('show-content');
-            })
-        })
-    </script>
-</body>
+    <script src="js/main.js"></script>
+    <script type="module" src="js/Seller-add products.js"></script>
+    <script type="module" src="js/addproducts.js"></script>
+    <script type="module" src="./js/navigation.js"></script>
+    <script type="module" src="./js/product.js"></script>
+  </body>
 </html>

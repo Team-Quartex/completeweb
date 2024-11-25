@@ -187,7 +187,8 @@ export function renderPosts(posts, container) {
   });
   const buttonQuery = document.querySelectorAll(".follow-btn");
   buttonQuery.forEach((button) => {
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
       const userId = this.dataset.user;
       buttonQuery.forEach((button) => {
         if (button.dataset.user === userId) {

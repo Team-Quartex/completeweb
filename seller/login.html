@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sellers-Login</title>
+  <link rel="stylesheet" href="./style/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+</head>
+<body>
+  <div class="container">
+
+    <!-- Left Panel -->
+    <div id="leftPanel" class="left-panel login-color">
+
+        <div class="branding">
+            <h1>Quartex</h1>
+            <p>Account Center</p>
+          </div>
+
+          <div class="app-name">
+            <h2>Trova</h2>
+            <p>Sellers</p>
+          </div>
+
+          <div class="footer">
+            <p>Copyright &copy; 2024 Quartex. All Rights Reserved!</p>
+          </div>
+          </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+
+      <!-- Login Form -->
+      <div class="form-container">
+
+      <form id="login-seller">
+        <div id="loginForm" class="form active">
+
+            <div class="form-section">
+                <h1>Login</h1>
+                <h2 style="color: #238688;" class="main-text">Have a good day...</h2>
+                  <div class="input-container">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" id="username-login" placeholder="User Name" required />
+                  </div>
+
+            <div class="input-container">
+              <input type="password" id="password-login" placeholder="Password" required />
+            </div>
+
+
+        <p class="forgot-password"> <a href="#">Forgot password?</p> </a>
+            <p style="text-align: center;height: 30px; color: red;" id="login-error" ></p>
+            <button class="login-button">Login</button> <br> <br>
+
+        <p class="toggle-link login-text">
+          <span class="text-black">Become a new seller?</span>
+          <span class="text-green" onclick="toggleForms()">Create Account</span>
+        </p>
+        
+      </div>
+    </form>
+
+  </div>
+</div>
+
+      <!-- Signup Form -->
+      <div class="form-container">
+      <form id="sign-form">
+      <div id="signupForm" class="form">
+
+        <div class="form-section">
+        <h1>Signup</h1>
+        <h2 style="color: #1C4E4E;" class="seller">Hi, Seller</h2>
+        
+        <div class="input-container-signup">
+        
+          <input type="text" id="name-sign"  placeholder="Name" required />
+        </div>
+    
+        <div class="input-container-signup">
+     
+          <input type="email" id="email-sign" placeholder="Email" required />
+        </div>
+    
+        
+
+        <div class="input-container-signup">
+          
+            <input type="text" id="businessname-sign" placeholder="Bussiness Name" required />
+        </div>
+
+        <div class="input-container-signup">
+          
+            <input type="text" id="address-sign" placeholder="Address" required />
+        </div>
+        
+        <div class="input-container-signup">
+          
+            <input type="text" id="city-sign" placeholder="City" required />
+        </div>
+
+        <div class="input-container-signup">
+          
+            <input type="text" id="username-sign" placeholder="username" required />
+          </div>
+
+        <div class="input-container-signup">
+       
+          <input type="password" id="password-sign" placeholder="Password" required />
+        </div>
+    
+
+        <div class="checkbox">
+          <input type="checkbox" required />
+          <span>I agree to terms and conditions</span>
+        </div>
+
+        <button class="signup-button">Sign Up</button> <br> <br>
+        <span class="text-black">Already have an account?</span>
+          <span class="text-green" onclick="toggleForms()">Log in</span>
+
+      </div>
+    </div>
+  </form>
+   
+ 
+  <script src="./js/login.js"></script>
+  <script>
+    // Toggle between Login and Signup forms
+    function toggleForms() {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const leftPanel = document.getElementById('leftPanel');
+      document.getElementById('login-error').innerHTML = "";
+      // Toggle active forms
+      loginForm.classList.toggle('active');
+      signupForm.classList.toggle('active');
+
+      // Change left panel color and button styles
+      if (loginForm.classList.contains('active')) {
+        leftPanel.classList.add('login-color');
+        leftPanel.classList.remove('signup-color');
+      } else {
+        leftPanel.classList.add('signup-color');
+        leftPanel.classList.remove('login-color');
+      }
+    }
+  </script>
+</body>
+</html>

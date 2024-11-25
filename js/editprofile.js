@@ -51,7 +51,9 @@ async function getedituserDetails() {
         edit_name.value = userDetails.name;
         edit_username.value = userDetails.username;
         edit_email.value = userDetails.email;
-        edit_phone.value = '0712875690';
+        edit_phone.value = userDetails.mobile        ;
+        edit_adress.value = userDetails.address;
+
 
       } catch (error) {
         console.error("Error loading posts:", error);
