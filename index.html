@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/style/functional.css" />
     <link rel="stylesheet" href="/style/marketplace.css" />
     <link rel="stylesheet" href="/style/notification.css" />
+    <link rel="stylesheet" href="/style/setting.css" />
+    <link rel="stylesheet" href="/style/postview.css" />
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
     <script src="https://kit.fontawesome.com/e82ac91667.js" crossorigin="anonymous"></script>
@@ -51,7 +53,7 @@
             <span class="icons"><i class="fi fi-sr-shopping-cart"></i></span>
             Market Place
           </div>
-          <div class="nav-item">
+          <div class="nav-item" onclick="openSetiings()">
             <span class="icons"><i class="fi fi-sr-settings"></i></span>
             Settings
           </div>
@@ -276,6 +278,7 @@
         </div>
         
       </main>
+      <!-- Search End -->
 
       <!--Saved Posts-->
           <main class="main-content" id="saved-post-container">
@@ -323,44 +326,79 @@
 
     </main>
 
-
+<!-- Market palce end -->
       
 
       <!-- open post view -->
+      <<!--Comment Viewer-->
       <div class="comment-viewer-background" id="comment-viewer">
-       
         <div class="comment-box">
-          <p class="close-btn" onclick="closepostview()"><i class="fi fi-sr-circle-xmark"></i></p>
-          <div class="post-detailed-container">
-          <h1 class="post-owner-name" id="post-owner-name">User's Post</h1>
+          <!-- Close Button -->
+          <p class="close-btn" onclick="closepostview()">×</p>
+      
+          <!-- Post Header -->
+          <div class="comment-post-header">
+            <img src="https://via.placeholder.com/50" alt="User Avatar" class="comment-user-avatar">
+            <div class="post-details">
+              <h3 class="post-owner-name">User's Name</h3>
+              <p class="post-time">2 hours ago</p>
+            </div>
+            <div class="post-options">...</div>
+          </div>
+      
+          <!-- Post Content -->
+          <div class="post-content">
+            <h1 class="post-title">A Beautiful View of Nature</h1>
+            <div class="post-images-comment">
+              <img src="https://via.placeholder.com/500x300" alt="Post Image" class="post-image-comment">
+            </div>
+          </div>
+      
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <div class="action-button"><i class="fi fi-rr-heart"></i> 3.2K Likes</div>
+            <div class="action-button"><i class="fi fi-rr-comments"></i> 55K Comments</div>
+            <div class="action-button"><i class="fi fi-rr-share"></i> 45K Shares</div>
+          </div>
+      
+          <!-- Comments Section -->
+          <div class="comment-box-section">
+            <div class="comment">
+              <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+              <div class="comment-content">
+                <h4 class="comment-user">John Doe</h4>
+                <p class="comment-text">This looks amazing!</p>
+                <p class="comment-time">1 hour ago</p>
+              </div>
+            </div>
+            <div class="comment">
+              <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+              <div class="comment-content">
+                <h4 class="comment-user">Jane Smith</h4>
+                <p class="comment-text">I wish I could visit this place someday!</p>
+                <p class="comment-time">30 mins ago</p>
+              </div>
+            </div>
+            <div class="comment">
+              <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+              <div class="comment-content">
+                <h4 class="comment-user">Jane Smith</h4>
+                <p class="comment-text">I wish I could visit this place someday!</p>
+                <p class="comment-time">30 mins ago</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Comment Input -->
+          <div class="comment-input-section">
+            <img src="https://via.placeholder.com/40" alt="User Avatar" class="input-avatar">
+            <input type="text" placeholder="Write a comment..." class="comment-input">
+            <button class="comment-post-button">Post</button>
+          </div>
         </div>
-        <div class="post-images-comment">
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="Sri Lanka 1"
-            class="post-image-comment"
-          />
-        
-    
-         
-        </div>
-        
-
-        <div class="comment-section-input">
-          <input type="text" name="" id="" placeholder="Type a comment..."  class="comment-section">  
-          <button class="reaction">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'%3E%3C/circle%3E%3Ccircle cx='6' cy='12' r='3'%3E%3C/circle%3E%3Ccircle cx='18' cy='19' r='3'%3E%3C/circle%3E%3Cline x1='8.59' y1='13.51' x2='15.42' y2='17.49'%3E%3C/line%3E%3Cline x1='15.41' y1='6.51' x2='8.59' y2='10.49'%3E%3C/line%3E%3C/svg%3E"
-              alt="Share"
-            />
-            Share
-          </button>
-          
-        </div>
-        
-        </div>
-
       </div>
+      
+      <!-- post view end -->
 
 
       <!--Suggestions-->
@@ -386,102 +424,90 @@
           style="font-size: 20px;text-decoration: none;color: black;"></i></a>
       <h1>Notifications</h1>
       <div class="notification-scroller" id="notification-scroller">
-        <div class="notifications">
-          <div class="usr-notify-details">
-            <div class="image-and-icon">
-              <img src="images/profile.png" alt>
-              <div class="icon-indicator">
-                <span class="notify-icon"><i class="fi fi-sr-heart"
-                    style="color:  #ff2f00;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
-
-              </div>
-            </div>
-            <div class="notification-text">
-              <h2>User Name</h2>
-              <span>Commented on your post</span>
-            </div>
-          </div>
-          <div class="new-indicator"></div>
-        </div>
-
-        <div class="notifications">
-          <div class="usr-notify-details">
-            <div class="image-and-icon">
-              <img src="images/profile.png" alt>
-              <div class="icon-indicator">
-                <span class="notify-icon"><i class="fi fi-sr-comment-dots"
-                    style="color:  #238688;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
-
-              </div>
-            </div>
-            <div class="notification-text">
-              <h2>User Name</h2>
-              <span>Liked on your post</span>
-            </div>
-          </div>
-          <div class="new-indicator"></div>
-        </div>
-
-        <div class="notifications">
-          <div class="usr-notify-details">
-            <div class="image-and-icon">
-              <img src="images/profile.png" alt>
-              <div class="icon-indicator">
-                <span class="notify-icon"><i class="fi fi-sr-share"
-                    style="color:  #009dff;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
-
-              </div>
-            </div>
-            <div class="notification-text">
-              <h2>User Name</h2>
-              <span>Shared your post</span>
-            </div>
-          </div>
-          <div class="new-indicator"></div>
-        </div>
-
-        <div class="notifications">
-          <div class="usr-notify-details">
-            <div class="image-and-icon">
-              <img src="images/profile.png" alt>
-              <div class="icon-indicator">
-                <span class="notify-icon"><i class="fi fi-sr-user"
-                    style="color:  #006eff;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
-
-              </div>
-            </div>
-            <div class="notification-text">
-              <h2>User Name</h2>
-              <span>Started to follow you</span>
-            </div>
-          </div>
-          <div class="new-indicator"></div>
-        </div>
-
-        <div class="notifications">
-          <div class="usr-notify-details">
-            <img src="images/profile.png" alt>
-            <div class="notification-text">
-              <h2>User Name</h2>
-              <span>Commented on your post</span>
-            </div>
-          </div>
-          <div class="new-indicator"></div>
-        </div>
-
-        <div class="notifications">
-          <div class="usr-notify-details">
-            <img src="images/profile.png" alt>
-            <div class="notification-text">
-              <h2>User Name</h2>
-              <span>Commented on your post</span>
-            </div>
-          </div>
-          <div class="new-indicator"></div>
-        </div>
-
       </div>
     </div>
+
+    <!--Settings panel-->
+    <div id="Settingspanel" class="sidepanel">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeSetiings()"><i class="fi fi-sr-circle-xmark" style="font-size: 20px;text-decoration: none;color: black;"></i></a>
+          <h1>Settings</h1>
+
+          <div class="settings-panel-contents">
+            <div class="settings-items" id="btn-edit-profile"><i class="fi fi-rr-user-pen" style="font-size: 25px;"></i>Edit Profile Details</div>
+            <div class="settings-items" onclick="openChangePassword()"><i class="fi fi-rr-key" style="font-size: 25px;"></i>Change Password</div>
+            <div class="settings-items" onclick="openverify()"><i class="fi fi-rr-check-circle" style="font-size: 25px;"></i>Verification</div>
+            <div class="settings-items" onclick="openabout()"><i class="fi fi-rr-info" style="font-size: 25px;"></i>About Trova</div>
+            <div class="settings-items" style="color: #ff2f00;"><i class="fi fi-rr-cross-circle"style="font-size: 25px;"></i>Deactivate Account</div>
+            <div class="settings-items" style="color: #ff2f00;"><i class="fi fi-rr-trash"style="font-size: 25px;"></i>Delete Account</div>
+          </div>
+          
+        </div>
+
+      <!--Edit Profile--> 
+      
+      <div id="editprofpanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeeditProfile()"><i class="fi fi-sr-circle-xmark" style="font-size: 20px;text-decoration: none;color: black;"></i></a>
+        <h1>Edit Profile</h1>
+        <form id="update-profile">
+        <div class="profile-img-change">
+          <img src="images/profile.png" alt="" class="profile-edited-image" id="profile-edited-image">
+          <div class="input_container">
+            <label for="files" class="edit-btn"><i class="fi fi-sr-pen-circle"style="font-size:20px;"></i></label>
+            <input id="files" style="display:none;" type="file" accept="image/*">
+          </div>
+        </div>
+
+        <div class="text-edit-section">
+          
+            <input type="text" name="" id="edit-name" placeholder="Name" class="text-feilds"><br>
+            <input type="text" name="" id="edit-username" placeholder="Username" class="text-feilds" disabled><br>
+            <input type="text" name="" id="edit-email" placeholder="Email" class="text-feilds" disabled><br>
+            <input type="tel" name="" id="edit-phone" placeholder="Phone number" class="text-feilds"><br>
+            <input type="text" name="" id="edit-address" placeholder="Address" class="text-feilds"><br>
+
+            <button type="submit" id="update-profile-data" class="data-save-btn">Save</button>
+          
+        </div>
+      </form>
+        
+        
+      </div>
+    <!--Change Password-->
+      <div id="changepasswordpanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeChangePassword()"><i class="fi fi-sr-circle-xmark" style="font-size: 20px;text-decoration: none;color: black;"></i></a>
+        <h1>Change Your Password</h1>
+        <p>To Change or reset your password, Enter the email that you used to create your account firstly and then We provide a link to your email to reset your password</p>
+      <form action="">
+        <input type="email" name="" id="" placeholder="Enter your Email" class="resetpasswordinput">
+        <div class="submit-btn-password-reset">
+          <input type="submit" value="Send Link " class="resetlink">
+        </div>
+
+      </form>
+        
+        
+      </div>
+
+
+    <!--Verification-->
+    <div id="verifypanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeverify()"><i class="fi fi-sr-circle-xmark" style="font-size: 20px;text-decoration: none;color: black;"></i></a>
+      <h1>Get Trova Verified</h1>
+
+
+      
+      
+    </div>
+    <!--about-->
+    <div id="aboutpanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeabout()"><i class="fi fi-sr-circle-xmark" style="font-size: 20px;text-decoration: none;color: black;"></i></a>
+      <h1>About Trova</h1>
+
+      
+      
+    </div>
+    
+    
 
 
 
@@ -496,9 +522,14 @@
     <script type="module" src="js/savedpost.js"></script>
     <script type="module" src="./js/citysuggestions.js"></script>
     <script type="module" src="./js/renderNotifications.js"></script>
+    <script src="./js/editprofile.js"></script>
 
     <script>
       
+    
+      
+
+
 
       function setupFileUpload(buttonId, fileNameId) {
             // Create a hidden input element programmatically
@@ -545,6 +576,82 @@
         setupFileUpload('uploadButton', 'fileName1');
         setupFileUpload('uploadButton1', 'fileName2');
         setupFileUpload('uploadButton2', 'fileName3');
+
+
+        function openSetiings(){
+  document.getElementById("Settingspanel").style.width = "28.0vw";
+}
+function closeSetiings(){
+  document.getElementById("Settingspanel").style.width = "0";
+}
+
+function openeditProfile(){
+  document.getElementById("Settingspanel").style.width = "0";
+  document.getElementById("editprofpanel").style.width = "28.0vw";
+ 
+}
+function closeeditProfile(){
+  document.getElementById("Settingspanel").style.width = "28.0vw";
+  document.getElementById("editprofpanel").style.width = "0";
+}
+
+function openChangePassword(){
+  document.getElementById("Settingspanel").style.width = "0";
+  document.getElementById("changepasswordpanel").style.width = "28.0vw";
+ 
+}
+function closeChangePassword(){
+  document.getElementById("Settingspanel").style.width = "28.0vw";
+  document.getElementById("changepasswordpanel").style.width = "0";
+}
+
+function openverify(){
+  document.getElementById("Settingspanel").style.width = "0";
+  document.getElementById("verifypanel").style.width = "28.0vw";
+ 
+}
+function closeverify(){
+  document.getElementById("Settingspanel").style.width = "28.0vw";
+  document.getElementById("verifypanel").style.width = "0";
+}
+function openabout(){
+  document.getElementById("Settingspanel").style.width = "0";
+  document.getElementById("aboutpanel").style.width = "28.0vw";
+ 
+}
+function closeabout(){
+  document.getElementById("Settingspanel").style.width = "28.0vw";
+  document.getElementById("aboutpanel").style.width = "0";
+}
+
+
+
+
+
+
+
+
+
+  function actionmenu() {
+    document.getElementById("actions").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.menu-indicator')) {
+      var dropdowns = document.getElementsByClassName("action-menu");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+
+  
     </script>
   </body>
 </html>

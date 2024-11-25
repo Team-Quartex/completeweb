@@ -47,8 +47,7 @@ function closepostview(){
     
 }
 function openpostview(){
-    document.getElementById("comment-viewer").style.display="block";
-    
+    document.getElementById("comment-viewer").style.display="block";   
 }
 
 
