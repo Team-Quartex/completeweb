@@ -1,4 +1,5 @@
 import {fetchProducts,fetchCategories} from './product.js'
+import {fetchrentDetails} from './earings.js'
 
 const contents = document.querySelectorAll(".main-content");
 const navbtns = document.querySelectorAll(".nav-item");
@@ -20,7 +21,7 @@ function onTabShow(index) {
     fetchProducts();
     fetchCategories();
   }else if(index===2){
-
+    fetchrentDetails();
   }else if(index ===3){
 
   }else{
