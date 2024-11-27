@@ -193,15 +193,16 @@
 
 .comment-post-button {
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #238688;
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  outline: none;
 }
 
 .comment-post-button:hover {
-  background-color: #0056b3;
+  background-color: #1e7374;
 }
 .carousel-arrow {
   position: absolute;
