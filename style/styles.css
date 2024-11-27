@@ -295,6 +295,7 @@ left: 170px;
 }
 
 .feed {
+    flex-wrap: wrap;
     background-color: #E0EEEE;
     border-radius: 8px;
     padding: 20px;
@@ -463,7 +464,7 @@ left: 170px;
 }
 .comment-section{
     padding: 6px;
-    width: 58vw;
+    
     border-radius: 20px;
     outline: none;
     border: none;
@@ -472,6 +473,7 @@ left: 170px;
     background-color: #fff;
    justify-content: space-between;
     padding: 7px;
+    width: 58vw;
     border-radius: 40px;
    
     display: flex;

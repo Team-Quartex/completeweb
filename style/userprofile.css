@@ -1,0 +1,220 @@
+.user-profile-view{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+   
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.user-view-container {
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: hidden;
+}
+
+/* Header styles */
+.user-view-header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.user-view-back-button {
+    font-size: 24px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-view-profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-view-profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.user-view-profile-details h1 {
+    font-size: 60px;
+    margin-bottom: 5px;
+}
+
+.user-view-profile-details p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.user-view-follow-button {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Main content styles */
+.user-view-main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-view-left-column {
+    flex: 1;
+}
+
+.user-view-right-column {
+    flex: 1;
+   overflow-y: auto;
+   max-height: 65vh;
+    
+}
+
+.user-view-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-view-card h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Basic details styles */
+.user-view-basic-details dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+}
+
+.user-view-basic-details dt {
+    font-weight: bold;
+    color: #666;
+}
+
+/* Recent photos styles */
+.user-view-recent-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.user-view-recent-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Followers styles */
+.user-view-followers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-align: center;
+}
+
+.user-view-follower img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+.order-scroller{
+    
+}
+/* Order history styles */
+.user-view-order-item {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.user-view-order-item-details {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    
+    border-bottom: 0.25px solid #333;
+}
+.date-time-container{
+    margin-top: 20px;
+}
+
+.order-item-detail{
+    margin-left: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+.user-view-order-item-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-view-center-column{
+    flex: 4;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 65vh;
+    max-width: 60vw;
+    
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body{overflow-y: auto
+        ;}
+    .user-view-profile-info {
+        flex-direction: column;
+        text-align: center;
+        overflow-y: auto;
+
+    }
+
+    .user-view-profile-picture {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .user-view-main-content {
+        flex-direction: column;
+    }
+
+    .user-view-recent-photos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-view-followers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.user-profile-view-show{
+    display: block;
+    overflow-y: auto;
+}
