@@ -76,14 +76,24 @@
         <div class="post-form">
           <form id="upload-form">
             <div class="post-input-container">
-              <img id="user-img1" src="images/profile.png" alt="User Avatar" class="post-avatar" />
+              <img
+                id="user-img1"
+                src="images/Dummy.png"
+                alt="User Avatar"
+                class="post-avatar"
+              />
+             
+              <textarea rows="7" cols="30" placeholder="What's your mind..." id="add-description" class="post-input"></textarea>
+              <div class="emoji-picker-container" id="emojiPicker" style="display: none;"></div>
 
-              <textarea rows="7" cols="30" placeholder="Enter your text here" id="add-description"
-                class="post-input"></textarea>
-
-
-              <img src="images/Smile - iconSvg.co.png" alt="User Avatar" class="post-avatar" />
-
+            
+              <img
+              src="images/Smile - iconSvg.co.png"
+              alt="User Avatar"
+              class="post-avatar"
+              id="emojiButton"
+            />
+         
             </div>
             <div class="upload-img-container">
               <div class="uploaded-images">
@@ -293,76 +303,107 @@
     <!-- Market palce end -->
 
 
-    <!-- open post view -->
-    <!--Comment Viewer-->
-    <div class="comment-viewer-background" id="comment-viewer">
-      <div class="comment-box">
-        <!-- Close Button -->
-        <p class="close-btn-postview" onclick="closepostview()">×</p>
+<div class="comment-viewer-background" id="comment-viewer">
+  <div class="comment-box">
+    <!-- Close Button -->
+    <p class="close-btn-postview" onclick="closepostview()">×</p>
 
-        <!-- Post Header -->
-        <div class="comment-post-header">
-          <img src="https://via.placeholder.com/50" alt="User Avatar" class="comment-user-avatar">
-          <div class="post-details">
-            <h3 class="post-owner-name">User's Name</h3>
-            <p class="post-time">2 hours ago</p>
-          </div>
-          <div class="post-options">...</div>
+    <!-- Post Header -->
+    <div class="comment-post-header">
+      <div class="comment-post-details">
+        <img src="https://via.placeholder.com/50" alt="User Avatar" class="comment-user-avatar">
+        <div class="post-details">
+          <h3 class="post-owner-name">User's Name</h3><br>
+          <span class="post-time-comment">2 hours ago</span>
         </div>
+      </div>
+      <div class="post-options">...</div>
+    </div>
 
-        <!-- Post Content -->
-        <div class="post-content">
-          <h1 class="post-title">A Beautiful View of Nature</h1>
-          <div class="post-images-comment">
-            <img src="https://via.placeholder.com/500x300" alt="Post Image" class="post-image-comment">
-          </div>
+    <!-- Post Content -->
+    <div class="post-content">
+      <h1 class="post-title">User's Post</h1>
+      <div class="post-images-carousel">
+        <button class="carousel-arrow left-arrow" onclick="scrollCarousel('left')">&#10094;</button>
+        <div class="carousel">
+          <img src="images/banner.jpeg" alt="Post Image" class="post-image-comment">
+          <img src="images/banner.jpeg" alt="Post Image" class="post-image-comment">
+          <img src="images/banner.jpeg" alt="Post Image" class="post-image-comment">
+          <img src="images/banner.jpeg" alt="Post Image" class="post-image-comment">
+          <img src="images/banner.jpeg" alt="Post Image" class="post-image-comment">
+          
         </div>
+        <button class="carousel-arrow right-arrow" onclick="scrollCarousel('right')">&#10095;</button>
+      </div>
+    </div>
 
-        <!-- Action Bar -->
-        <div class="action-bar">
-          <div class="action-button"><i class="fi fi-rr-heart"></i> 3.2K Likes</div>
-          <div class="action-button"><i class="fi fi-rr-comments"></i> 55K Comments</div>
-          <div class="action-button"><i class="fi fi-rr-share"></i> 45K Shares</div>
+    <!-- Action Bar -->
+    <div class="action-bar">
+      <div class="action-button"><i class="fi fi-rr-heart"></i> 3.2K Likes</div>
+      <div class="action-button"><i class="fi fi-rr-comments"></i> 55K Comments</div>
+      <div class="action-button"><i class="fi fi-rr-share"></i> 45K Shares</div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comment-box-section">
+      <!-- Sample comments -->
+      <div class="comment">
+        <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+        <div class="comment-content">
+          <h4 class="comment-user">John Doe</h4>
+          <p class="comment-text">This looks amazing!</p>
+          <p class="comment-time">1 hour ago</p>
         </div>
-
-        <!-- Comments Section -->
-        <div class="comment-box-section">
-          <div class="comment">
-            <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
-            <div class="comment-content">
-              <h4 class="comment-user">John Doe</h4>
-              <p class="comment-text">This looks amazing!</p>
-              <p class="comment-time">1 hour ago</p>
-            </div>
-          </div>
-          <div class="comment">
-            <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
-            <div class="comment-content">
-              <h4 class="comment-user">Jane Smith</h4>
-              <p class="comment-text">I wish I could visit this place someday!</p>
-              <p class="comment-time">30 mins ago</p>
-            </div>
-          </div>
-          <div class="comment">
-            <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
-            <div class="comment-content">
-              <h4 class="comment-user">Jane Smith</h4>
-              <p class="comment-text">I wish I could visit this place someday!</p>
-              <p class="comment-time">30 mins ago</p>
-            </div>
-          </div>
+      </div>
+      <div class="comment">
+        <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+        <div class="comment-content">
+          <h4 class="comment-user">John Doe</h4>
+          <p class="comment-text">This looks amazing!</p>
+          <p class="comment-time">1 hour ago</p>
         </div>
-
-        <!-- Comment Input -->
-        <div class="comment-input-section">
-          <img src="https://via.placeholder.com/40" alt="User Avatar" class="input-avatar">
-          <input type="text" placeholder="Write a comment..." class="comment-input">
-          <button class="comment-post-button">Post</button>
+      </div>
+      <div class="comment">
+        <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+        <div class="comment-content">
+          <h4 class="comment-user">John Doe</h4>
+          <p class="comment-text">This looks amazing!</p>
+          <p class="comment-time">1 hour ago</p>
+        </div>
+      </div>
+      <div class="comment">
+        <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+        <div class="comment-content">
+          <h4 class="comment-user">John Doe</h4>
+          <p class="comment-text">This looks amazing!</p>
+          <p class="comment-time">1 hour ago</p>
+        </div>
+      </div>
+      <div class="comment">
+        <img src="https://via.placeholder.com/40" alt="User Avatar" class="comment-avatar">
+        <div class="comment-content">
+          <h4 class="comment-user">John Doe</h4>
+          <p class="comment-text">This looks amazing!</p>
+          <p class="comment-time">1 hour ago</p>
         </div>
       </div>
     </div>
 
-    <!-- post view end -->
+    <!-- Comment Input -->
+    <form action="">
+    <div class="comment-input-section">
+      <form action="">
+      <img src="https://via.placeholder.com/40" alt="User Avatar" class="input-avatar">
+      <input type="text" placeholder="Write a comment..." class="comment-input" id="comment-input">
+      <img src="https://via.placeholder.com/40" alt="User Avatar" class="input-avatar" id="emojiButton1">
+      <div class="emoji-picker-container" id="emojiPicker" style="display: none;"></div>
+
+      <input type="submit" class="comment-post-button" value="Post">
+    
+    </div>
+    </form>
+  </div>
+</div>
 
 
     <!--Suggestions-->
@@ -535,19 +576,24 @@
 
 
 
-
-  <script src="js/navigations.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/userprofile.js"></script>
-  <script type="module" src="./js/products.js"></script>
-  <script type="module" src="js/post.js"></script>
-  <script type="module" src="js/suggetions.js"></script>
-  <script type="module" src="js/form.js"></script>
-  <script type="module" src="js/search.js"></script>
-  <script type="module" src="js/savedpost.js"></script>
-  <script type="module" src="./js/citysuggestions.js"></script>
-  <script type="module" src="./js/renderNotifications.js"></script>
-  <script src="./js/editprofile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+    <script src="js/Emoji-picker.js"></script>
+    <script src="js/horizontal-scroller.js"></script>
+    <script src="js/navigations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/userprofile.js"></script>
+    <script type="module" src="./js/products.js"></script>
+    <script type="module" src="js/post.js"></script>
+    <script type="module" src="js/suggetions.js"></script>
+    <script type="module" src="js/form.js"></script>
+    <script type="module" src="js/search.js"></script>
+    <script type="module" src="js/savedpost.js"></script>
+    <script type="module" src="./js/citysuggestions.js"></script>
+    <script type="module" src="./js/renderNotifications.js"></script>
+    <script src="./js/editprofile.js"></script>
+    <script>
+      
+    </script>
 
   <script>
 
@@ -657,24 +703,25 @@
 
 
 
-    function actionmenu() {
-      document.getElementById("actions").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
-      if (!event.target.matches('.menu-indicator')) {
-        var dropdowns = document.getElementsByClassName("action-menu");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
+  function actionmenu() {
+    document.getElementById("actions").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.menu-indicator')) {
+      var dropdowns = document.getElementsByClassName("action-menu");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
         }
       }
     }
+  }
 
+ 
 
 
   </script>
