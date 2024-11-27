@@ -3,7 +3,9 @@ const userData = JSON.parse(localStorage.getItem("userData"));
 import { addFollow } from "./follow.js";
 import { formatPostTime } from "./utilities.js";
 import { loadsuggestions } from "./suggetions.js";
-import {showUserprofile} from './profileview.js'
+import { showUserprofile } from "./profileview.js";
+import { showPostview } from "./post-view.js";
+import {addComment} from './mainFunctions.js'
 
 export function renderPosts(posts, container) {
   posts.forEach((post, index) => {
@@ -133,8 +135,8 @@ export function renderPosts(posts, container) {
                   <div class="post-user-info">
                     <div class="name-verified">
                     <span class="post-username" data-userid="${post.UserId}">${
-                      post.name
-                    }</span><span class="verified">${verify}</span>
+      post.name
+    }</span><span class="verified">${verify}</span>
                     ${followBtn}
                   </div>
                     <span class="post-time">${post.postTime}</span>
@@ -171,7 +173,9 @@ export function renderPosts(posts, container) {
                             </button>
                             <div class="comment-section-input">
                                 <input type="text" name="" id="" placeholder="Type a comment..."  class="comment-section">  
-                                <button class="reaction">
+                                <button class="reaction add-comment" data-postId="${
+                                  post.postId
+                                }">
                                 <i class="fi fi-sr-paper-plane-top"></i>
                                 Sent
                                 </button>
@@ -205,11 +209,11 @@ export function renderPosts(posts, container) {
   const postViews = document.querySelectorAll(".post");
   postViews.forEach((postview) => {
     postview.addEventListener("click", () => {
-      document.getElementById("comment-viewer").style.display = "block";
-      const nameArray = posts[postview.dataset.index].name.split(" ");
-      document.getElementById(
-        "post-owner-name"
-      ).innerHTML = `${nameArray[0]}'s Post`;
+      // Access the dataset index for the current element
+      const index = postview.dataset.index;
+
+      // Use the index to show the post view
+      showPostview(posts[index]);
     });
   });
 
@@ -247,14 +251,44 @@ export function renderPosts(posts, container) {
       likesCountElement.classList.add("updated-class"); // Optional: Add a class to indicate a visual change
     });
   });
-  document.querySelectorAll('.post-username').forEach((user)=>{
-    user.addEventListener('click',(event)=>{
-      event.stopPropagation()
-      const userId =user.dataset.userid;
+  document.querySelectorAll(".post-username").forEach((user) => {
+    user.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const userId = user.dataset.userid;
       console.log(userId);
-      showUserprofile(userId)
-    })
-  })
+      showUserprofile(userId);
+    });
+  });
+
+  document
+    .querySelectorAll(".comment-section-input")
+    .forEach((commentContaier) => {
+      commentContaier.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
+
+    document.querySelectorAll(".add-comment").forEach((button) => {
+      button.addEventListener("click", () => {
+        const inputField = button
+          .closest(".comment-section-input")
+          .querySelector(".comment-section");
+        const commentText = inputField.value.trim();
+        const postId = button.dataset.postid; // Correct dataset attribute name
+    
+        console.log(postId); // Debugging output
+    
+        if (!commentText) {
+          alert("Please enter a comment before sending.");
+          return;
+        } else {
+          // Uncomment this line to call your comment adding function
+          addComment(commentText, postId);
+          inputField.value ="";
+          // console.log("Comment added:", commentText);
+        }
+      });
+    });
 }
 
 function addLike(postid, userId) {

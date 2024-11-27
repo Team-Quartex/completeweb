@@ -131,7 +131,8 @@ async function loadProducts() {
           }
       });
       document.querySelectorAll('.favorite-icon .fas.fa-heart').forEach((icon) => {
-        icon.addEventListener('click', () => {
+        icon.addEventListener('click', (e) => {
+            e.stopPropagation();
             const produtID = icon.dataset.productid;
             icon.classList.toggle('active');
             const isFavorite = icon.classList.contains('active');
