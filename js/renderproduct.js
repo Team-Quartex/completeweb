@@ -33,7 +33,7 @@ export async function showModel(product, id) {
     const productContainer = document.getElementById("modal-overlay");
     const productElement = `<div class="modal-container">
           <!-- Back Button -->
-          <button class="back-button">
+          <button class="back-button" id="back-button" >
               <i class="fas fa-chevron-left"></i>
           </button>
     
@@ -210,6 +210,10 @@ export async function showModel(product, id) {
       }else{
         availablemsg.innerHTML = "Check Availibility";
       }
+    })
+
+    document.getElementById('back-button').addEventListener('click',()=>{
+      itemView.classList.remove("model-show");
     })
 
   } catch (error) {
