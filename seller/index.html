@@ -8,9 +8,17 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css'>
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/addproduct.css" />
     <link rel="stylesheet" href="style/earnings.css" />
+    <link rel="stylesheet" href="style/seller-profile.css" />
+    <link rel="stylesheet" href="style/notification.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   </head>
   <body>
     <div class="sidebar">
@@ -39,7 +47,7 @@
             <input type="text" placeholder="Search here..." />
             <i data-feather="search"></i>
           </div>
-          <div class="header-icons">
+          <div class="header-icons" onclick="openNav()">
             <i data-feather="bell"></i>
             <i data-feather="more-vertical"></i>
           </div>
@@ -405,15 +413,179 @@
 
     <!-- Profile start -->
     <div class="main-content">
-      <h1>Profile Start</h1>
+      <h2>Profile</h2>
+            <p>Manage your profile information here.</p>
+
+            <div class="profile-header">
+            <div class="profile-picture">
+                <div class="profile-picture">
+                    <img src="Dummy.png" alt="hiii">
+                    <a onclick="openeditview()" class="edit-icon"><i class="fi fi-rr-pencil"></i></a>
+                </div>
+            </div>
+
+            <div class="profile-info">
+                <h1>Seller's Name</h1>
+                <p>Quartex Verified</p>
+                
+                <div class="rating">
+                    <i class="fas fa-star star active-star" ></i>
+                    <i class="fas fa-star star active-star" ></i>
+                    <i class="fas fa-star star active-star" ></i>
+                    <i class="fas fa-star star" ></i>
+                    <i class="fas fa-star star" ></i>
+                    <span>2.5K Ratings</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="green-line">
+
+        <!-- Profile Details -->
+        <div class="profile-details">
+            <!-- Left Container -->
+            <div class="details-container">
+                <div class="grid-details">
+                    <div><strong>Name</strong></div>
+                    <div>Name</div>
+
+                    <div><strong>Email</strong></div>
+                    <div>Email</div>
+
+                    <div><strong>Username</strong></div>
+                    <div>Username</div>
+
+                    <div><strong>Location</strong></div>
+                    <div>Location</div>
+
+                    <div><strong>Telephone number</strong></div>
+                    <div>Telephone number</div>
+
+                    <div><strong>Active Status</strong></div>
+                    <div>Active Status</div>
+                    
+                    <div><strong>Verifications</strong></div>
+                    <div>Verifications</div>
+                </div>
+               
+            </div>
+
+            <!-- Right Container -->
+            <div class="edit-container" id="edit-container">
+                <form action="">
+                <input type="text" placeholder="Name">
+                <input type="text" placeholder="User Name">
+                <input type="email" placeholder="Email">
+                <input type="tel" placeholder="Telephone number">
+                <div class="profile-input_container">
+                  <label for="files" class="btn">Choose Profile Image</label>
+                  <div class="profile-image-update">
+                    <img src="" alt="" id="profile-image-updater">
+                  </div>
+                  <input id="files" style="display:none;" type="file">
+                  
+                  
+                </div>
+               
+                <div class="action-btn-save">
+                <input type="submit" class="save-btn" value="Save" style="background-color: #00A389;color: #fff;">
+                <input type="reset" class="save-btn" value="Cancel" onclick="closeeditview()">
+                
+              </div>
+                
+              </form>
+            </div>
+        </div>
+      </div>
     </div>
     <!-- Profile end -->
 
     <!-- Setting Start -->
     <div class="main-content">
-      <h1>Settings</h1>
+      <h2>Settings</h2>
+      <p>Adjust your account settings here.</p>
     </div>
     <!-- Setting end -->
+
+    <!--Notification Center-->
+    <div id="mySidepanel" class="sidepanel">
+      <div class="notification-header">
+      <h1>Notification Center </h1><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    </div>
+      <div class="notification-scroller">
+      <div class="notifications">
+        <div class="usr-notify-details">
+          <div class="image-and-icon">
+            <img src="logo trova-02.png" alt="" style="border: #00A389 1px solid;">
+            <div class="icon-indicator">
+              <span class="notify-icon"><i class="fi fi-ss-pending" style="color:  #ffb700;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
+             
+            </div>
+          </div>
+       <div class="notification-text">
+        <h2>Team Quartex</h2>
+        <span>Your item is pending to approve</span>
+       </div>
+      </div>
+       <div class="new-indicator"></div>
+      </div>
+      <div class="notifications">
+        <div class="usr-notify-details">
+          <div class="image-and-icon">
+            <img src="Dummy.png" alt="">
+            <div class="icon-indicator">
+              <span class="notify-icon"><i class="fi fi-ss-order-history" style="color:  #0c664c;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
+             
+            </div>
+          </div>
+       <div class="notification-text">
+        <h2>User Name</h2>
+        <span>Ordered </span><span>Item Name</span>
+        <div class="detail-text">
+        <span>Quantity</span>
+        <span>Date</span>
+      </div>
+       </div>
+      </div>
+       <div class="new-indicator"></div>
+      </div>
+      <div class="notifications">
+        <div class="usr-notify-details">
+          <div class="image-and-icon">
+            <img src="logo trova-02.png" alt="" style="border: #00A389 1px solid;">
+            <div class="icon-indicator">
+              <span class="notify-icon"><i class="fi fi-ss-vote-nay" style="color:  #a10010;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
+             
+            </div>
+          </div>
+       <div class="notification-text">
+        <h2>Team Quartex</h2>
+        <div class="item-detail"></div>
+        <span>Your item has been declined</span>
+       </div>
+      </div>
+       <div class="new-indicator"></div>
+      </div>
+      <div class="notifications">
+        <div class="usr-notify-details">
+          <div class="image-and-icon">
+            <img src="logo trova-02.png" alt="" style="border: #00A389 1px solid;">
+            <div class="icon-indicator">
+              <span class="notify-icon"><i class="fi fi-ss-check-circle" style="color:  #00A389;font-size:20px;padding: 8px; background-color: #fff; border-radius: 50%;"></i></span>
+             
+            </div>
+          </div>
+       <div class="notification-text">
+        <h2>Team Quartex</h2>
+        <div class="item-detail"></div>
+        <span>Your item has been approved</span>
+       </div>
+      </div>
+       <div class="new-indicator"></div>
+      </div>
+    </div>
+    </div>
+    
 
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="js/main.js"></script>
@@ -422,5 +594,21 @@
     <script type="module" src="./js/navigation.js"></script>
     <script type="module" src="./js/product.js"></script>
     <script type="module" src="./js/earings.js"></script>
+    <script src="./js/profileview.js"></script>
+    <script>
+      function openeditview(){
+          document.getElementById('edit-container').style.display="block";
+      }
+      function closeeditview(){
+          document.getElementById('edit-container').style.display="none";
+      }
+      function openNav() {
+        document.getElementById("mySidepanel").style.width = "30vw";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidepanel").style.width = "0";
+      }             
+    </script>
   </body>
 </html>
