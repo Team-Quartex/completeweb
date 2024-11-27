@@ -24,6 +24,7 @@ async function getUserDetails() {
         document.getElementById('username').innerHTML = '@'+userDetails.username;
         document.getElementById('user-img').src = `http://127.0.0.1:8000/uploads/${userDetails.profilepic}`;
         document.getElementById('user-img1').src = `http://127.0.0.1:8000/uploads/${userDetails.profilepic}`;
+        document.getElementById('hidden-id').innerHTML = userDetails.userid;
 
         const followsContainer = document.getElementById('user-stats');
         const follows = userDetails.verify === 'yes'?        `<div>

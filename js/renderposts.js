@@ -3,6 +3,7 @@ const userData = JSON.parse(localStorage.getItem("userData"));
 import { addFollow } from "./follow.js";
 import { formatPostTime } from "./utilities.js";
 import { loadsuggestions } from "./suggetions.js";
+import {showUserprofile} from './profileview.js'
 
 export function renderPosts(posts, container) {
   posts.forEach((post, index) => {
@@ -131,14 +132,12 @@ export function renderPosts(posts, container) {
                   />
                   <div class="post-user-info">
                     <div class="name-verified">
-                    <span class="post-username">${
+                    <span class="post-username" data-userid="${post.UserId}">${
                       post.name
                     }</span><span class="verified">${verify}</span>
                     ${followBtn}
                   </div>
-                    <span class="post-time">${
-                      post.postTime
-                    }</span>
+                    <span class="post-time">${post.postTime}</span>
                   </div>
                 </div>
                 <div class="post-content">
@@ -149,7 +148,7 @@ export function renderPosts(posts, container) {
                             <div class="post-reactions likeclass" >
                                 <div class="reaction" >
                                 ${
-                                    post.likeduser.includes(struserId)
+                                  post.likeduser.includes(struserId)
                                     ? `
                                     <i class="fi fi-sr-heart likeicon likebutton" data-status="true" data-postid="${post.postId}" data-postuser="${post.UserId}"></i>
                                     <p class="likeicon">${post.likeduser.length}</p>
@@ -215,71 +214,73 @@ export function renderPosts(posts, container) {
   });
 
   const likebtns = document.querySelectorAll(".likebutton");
-likebtns.forEach((like) => {
-  like.addEventListener("click", (event) => {
-    event.stopPropagation(); // Prevent event bubbling
-    const status = like.dataset.status;
-    const UserId = like.dataset.postuser;
-    const postid = like.dataset.postid; // Retrieve post ID
-    const likesCountElement = like.nextElementSibling; // Assuming <p> is the next sibling of <i>
-    let likesCount = parseInt(likesCountElement.textContent); // Get current like count
+  likebtns.forEach((like) => {
+    like.addEventListener("click", (event) => {
+      event.stopPropagation(); // Prevent event bubbling
+      const status = like.dataset.status;
+      const UserId = like.dataset.postuser;
+      const postid = like.dataset.postid; // Retrieve post ID
+      const likesCountElement = like.nextElementSibling; // Assuming <p> is the next sibling of <i>
+      let likesCount = parseInt(likesCountElement.textContent); // Get current like count
 
-    if (status === "true") {
-      // Change to unliked state
-      like.classList.remove("fi-sr-heart","likeicon");
-      like.classList.add("fi-rr-heart");
-      like.dataset.status = "false";
-      likesCount--; // Decrement like count
-      likesCountElement.classList.remove("likeicon");
-      remove(postid,UserId)
-    } else {
-      // Change to liked state
-      like.classList.remove("fi-rr-heart");
-      like.classList.add("fi-sr-heart","likeicon");
-      like.dataset.status = "true";
-      likesCount++; // Increment like count
-      likesCountElement.classList.add("likeicon");
-      console.log(UserId)
-      addLike(postid,UserId)
-    }
+      if (status === "true") {
+        // Change to unliked state
+        like.classList.remove("fi-sr-heart", "likeicon");
+        like.classList.add("fi-rr-heart");
+        like.dataset.status = "false";
+        likesCount--; // Decrement like count
+        likesCountElement.classList.remove("likeicon");
+        remove(postid, UserId);
+      } else {
+        // Change to liked state
+        like.classList.remove("fi-rr-heart");
+        like.classList.add("fi-sr-heart", "likeicon");
+        like.dataset.status = "true";
+        likesCount++; // Increment like count
+        likesCountElement.classList.add("likeicon");
+        console.log(UserId);
+        addLike(postid, UserId);
+      }
 
-    // Update the likes count in the <p> element
-    likesCountElement.textContent = likesCount;
-    likesCountElement.classList.add("updated-class"); // Optional: Add a class to indicate a visual change
+      // Update the likes count in the <p> element
+      likesCountElement.textContent = likesCount;
+      likesCountElement.classList.add("updated-class"); // Optional: Add a class to indicate a visual change
+    });
   });
-});
+  document.querySelectorAll('.post-username').forEach((user)=>{
+    user.addEventListener('click',(event)=>{
+      event.stopPropagation()
+      const userId =user.dataset.userid;
+      console.log(userId);
+      showUserprofile(userId)
+    })
+  })
 }
 
-function addLike(postid,userId){
-    const addfavourite = fetch(
-        "http://localhost:8000/api/likes/add",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json", // Ensure you're sending JSON
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            postId: postid,
-            postuser: userId,
-          }),
-        }
-      );
+function addLike(postid, userId) {
+  const addfavourite = fetch("http://localhost:8000/api/likes/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Ensure you're sending JSON
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      postId: postid,
+      postuser: userId,
+    }),
+  });
 }
 
-function remove(postid,userId){
-    const addfavourite = fetch(
-        "http://localhost:8000/api/likes/remove",
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json", // Ensure you're sending JSON
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            postId: postid,
-            postuser: userId,
-          }),
-        }
-      );
+function remove(postid, userId) {
+  const addfavourite = fetch("http://localhost:8000/api/likes/remove", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json", // Ensure you're sending JSON
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      postId: postid,
+      postuser: userId,
+    }),
+  });
 }
