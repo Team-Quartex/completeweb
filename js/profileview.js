@@ -40,14 +40,15 @@ export async function showUserprofile(userId) {
         : ``;
     const bodyElement = `
             <div class="user-view-container">
+            <a id="user-view-back-button" class="user-view-back-button" aria-label="Go back"><i class="fi fi-rr-angle-left"></i></a>
                 <header class="user-view-header">
-                    <a id="user-view-back-button" class="user-view-back-button" aria-label="Go back">&#8592;</a>
+                    
                     <div class="user-view-profile-info">
                         <img src="http://127.0.0.1:8000/uploads/${userDetails.profilepic}" alt="User profile picture"
                             class="user-view-profile-picture" />
                         <div class="user-view-profile-details">
                             <h1>${userDetails.name}</h1>
-                            <p>@${userDetails.name}</p>
+                            <p class="user-name-view">@${userDetails.name}</p>
                             ${followerElement}
                             ${followBtn}
                         </div>
@@ -97,8 +98,9 @@ export async function showUserprofile(userId) {
                     </div>
 
                     <div class="user-view-right-column" id="user-view-right-column">
-                        <section class="user-view-card">
+                        <section class="user-view-card order-card" >
                             <h2>Order History</h2>
+                            
                             <div class="user-view-order-item">
                                 <div class="user-view-order-item-details">
                                     <img src="https://via.placeholder.com/50" alt="Order item 1"
@@ -303,19 +305,23 @@ async function showOrders(holder) {
     console.log(orders);
 
     orders.forEach((element) => {
-      const orderCard = `<div class="user-view-order-item">
+      const orderCard = `<div class="order-scroller">
+                               <div class="user-view-order-item">
                                 <div class="user-view-order-item-details">
                                     <img src="http://127.0.0.1:8000/uploads/${element.productImage}" alt="Order item 3"
                                         class="user-view-order-item-image" />
-                                    <div>
-                                        <p>${element.productName}</p>
-                                        <p>${element.qty}</p>
+                                    <div class="order-item-detail">
+                                        <p>Item: ${element.productName}</p>
+                                        <p>Qty: ${element.qty}</p>
+                                        <p>LKR ${element.tot}</p><br>
                                     </div>
                                 </div>
-                                <p>${element.tot}</p><br>
-                                <p>reserve date${element.orderTime}</p><br>
-                                <p>start ${element.startDate}</p><br>
-                                <p>end ${element.endDate}</p><br>
+                                <div class="date-time-container">
+                                <p><b>Reserve date:</b> ${element.orderTime}</p><br>
+                                <p><b>Start:</b> ${element.startDate}</p><br>
+                                <p><b>End:</b> ${element.endDate}</p><br>
+                                </div>
+                            </div>
                             </div>`;
       holder.innerHTML += orderCard;
     });

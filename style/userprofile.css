@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: white;
     position: fixed;
+   
     top: 0;
     left: 0;
     display: none;
@@ -10,15 +11,19 @@
 
 .user-view-container {
     max-width: 100vw;
+    max-height: 100vh;
     margin: 0 auto;
     padding: 20px;
+    overflow-y: hidden;
 }
 
 /* Header styles */
 .user-view-header {
+    padding: 10px;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .user-view-back-button {
@@ -34,15 +39,15 @@
 }
 
 .user-view-profile-picture {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
 }
 
 .user-view-profile-details h1 {
-    font-size: 24px;
+    font-size: 60px;
     margin-bottom: 5px;
 }
 
@@ -74,6 +79,9 @@
 
 .user-view-right-column {
     flex: 1;
+   overflow-y: auto;
+   max-height: 65vh;
+    
 }
 
 .user-view-card {
@@ -81,6 +89,7 @@
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -129,18 +138,36 @@
     border-radius: 50%;
     margin-bottom: 5px;
 }
-
+.order-scroller{
+    
+}
 /* Order history styles */
 .user-view-order-item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    overflow-y: auto;
     align-items: center;
     margin-bottom: 15px;
+    border-bottom: 1px solid #333;
 }
 
 .user-view-order-item-details {
     display: flex;
+    text-align: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    
+    border-bottom: 0.25px solid #333;
+}
+.date-time-container{
+    margin-top: 20px;
+}
+
+.order-item-detail{
+    margin-left: 20px;
+    display: flex;
+    gap: 30px;
 }
 
 .user-view-order-item-image {
@@ -154,14 +181,20 @@
     flex: 4;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 80vh;
+    max-height: 65vh;
+    max-width: 60vw;
+    
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
+    body{overflow-y: auto
+        ;}
     .user-view-profile-info {
         flex-direction: column;
         text-align: center;
+        overflow-y: auto;
+
     }
 
     .user-view-profile-picture {
@@ -183,4 +216,5 @@
 }
 .user-profile-view-show{
     display: block;
+    overflow-y: auto;
 }
