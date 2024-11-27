@@ -1,3 +1,5 @@
+var totEarnings;
+var remainingBalance;
 export const fetchrentDetails = async () => {
     const requestOptions = {
       method: "GET",
@@ -49,3 +51,99 @@ export const fetchrentDetails = async () => {
     }
   };
   
+export const sellerEarnings = async() => {
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  try {
+    const response = await fetch(
+      "http://localhost:8000/api/seller/sellerearnings",
+      requestOptions
+    );
+
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+
+    const status = await response.json(); // Assuming the API returns JSON
+    console.log(status);
+    // document.getElementById('amount').innerHTML = status.earnings;
+    document.getElementById('earnings-tot').innerHTML = `LKR ${status.earnings}`;
+    totEarnings = status.earnings;
+
+
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+}
+
+export const sellerWithdraw = async() => {
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  try {
+    const response = await fetch(
+      "http://localhost:8000/api/seller/sellerwithdraw",
+      requestOptions
+    );
+
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+
+    const status = await response.json(); // Assuming the API returns JSON
+    console.log(status);
+
+    remainingBalance = totEarnings - status[0].total_withdraw;
+    console.log(status.total_withdraw)
+    document.getElementById("amount").innerHTML = `LKR ${remainingBalance}`;
+
+
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+}
+
+document.getElementById('withdraw-button').addEventListener('click',(e)=>{
+  e.preventDefault();
+  const maxWithdraw = remainingBalance - 1000;
+  const withdrawContainer = document.getElementById('withdraw-container');
+  const element = `<div class="center-withdraw">
+        <h4>Max Withdraw Amount LKR ${maxWithdraw}</h4>
+        <input type="number"  id="withdraw-amount">
+        <button id="withdraw-now">Withdraw</button>
+      </div>`
+  withdrawContainer.innerHTML = element;
+  withdrawContainer.classList.add('show');
+
+  document.getElementById('withdraw-now').addEventListener('click',(e)=>{
+    e.preventDefault();
+    const amount = document.getElementById('withdraw-now').value;
+    addwithdraw(amount);
+    withdrawContainer.classList.remove('show');
+  })
+})
+
+function addwithdraw(amount){
+  const data = JSON.stringify({
+    "amount": amount
+});
+
+fetch("http://localhost:8000/api/seller/addwithdraw", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: data,
+    credentials: "include" // Ensures cookies are sent with the request
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+}

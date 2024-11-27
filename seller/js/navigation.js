@@ -1,5 +1,5 @@
 import {fetchProducts,fetchCategories} from './product.js'
-import {fetchrentDetails} from './earings.js'
+import {fetchrentDetails,sellerEarnings,sellerWithdraw} from './earings.js'
 
 const contents = document.querySelectorAll(".main-content");
 const navbtns = document.querySelectorAll(".nav-item");
@@ -22,6 +22,8 @@ function onTabShow(index) {
     fetchCategories();
   }else if(index===2){
     fetchrentDetails();
+    sellerEarnings();
+    sellerWithdraw();
   }else if(index ===3){
 
   }else{

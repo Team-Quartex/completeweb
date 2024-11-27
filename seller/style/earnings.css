@@ -209,3 +209,28 @@ body {
     background-color: #f1f1f1;
   }
   
+.withdraw-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.center-withdraw{
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: 30vh;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+.show{
+  display: flex;
+}

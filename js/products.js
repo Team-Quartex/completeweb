@@ -1,190 +1,183 @@
-import {showModel} from './renderproduct.js'
+import { showModel } from './renderproduct.js';
+
+let products = []; // Global product array
+
+// Event listener for marketplace button
 document.getElementById("marketplace-btn").addEventListener("click", () => {
-  document.getElementById("marketplace").style.display = "block";
-  document.getElementById("saved-post-container").style.display = "none";
-  document.getElementById("post-container").style.display = "none";
+    document.getElementById("marketplace").style.display = "block";
+    document.getElementById("saved-post-container").style.display = "none";
+    document.getElementById("post-container").style.display = "none";
 
-  // load Category
-  loadCategory()
-  // load products
-  loadProducts()
+    loadCategory(); // Load categories
+    loadProducts(); // Load products
 });
-var products = [];
+
+// Load categories from API and render them
 async function loadCategory() {
-  const requestOptions = {
-    method: "GET",
-    credentials: "include",
-  };
-  // call api and get posts
-  try {
-    const response = await fetch(
-      "http://localhost:8000/api/products/category",
-      requestOptions
-    );
+    const requestOptions = {
+        method: "GET",
+        credentials: "include",
+    };
 
-    // Check if the response is successful
-    if (!response.ok) {
-      throw new Error("Failed to fetch posts");
+    try {
+        const response = await fetch("http://localhost:8000/api/products/category", requestOptions);
+        if (!response.ok) throw new Error("Failed to fetch categories");
+
+        const productsCategory = await response.json();
+        renderCategories(productsCategory);
+    } catch (error) {
+        console.error("Error loading categories:", error);
     }
-    
-    const productsCategory = await response.json(); // Assuming the API returns JSON
-    console.log(productsCategory);
-
-    const categoryContainer = document.getElementById('image-scroll-horizontal');
-    categoryContainer.innerHTML = '';
-    
-    productsCategory.forEach((category,index) => {
-        const catgeoryElement  = document.createElement("div");
-        catgeoryElement.classList.add("image-box")
-        catgeoryElement.innerHTML = `
-            <a href="#">
-                  <img src="http://127.0.0.1:8000/uploads/${category.image}" alt="Item ${index}">
-            </a>  
-        `
-        categoryContainer.appendChild(catgeoryElement);
-    });
-    
-  } catch (error) {
-    console.error("Error loading posts:", error);
-  }
 }
 
+// Render categories in the category container
+function renderCategories(categories) {
+    const categoryContainer = document.getElementById('image-scroll-horizontal');
+    categoryContainer.innerHTML = '';
 
+    categories.forEach((category, index) => {
+        const categoryElement = document.createElement("div");
+        categoryElement.classList.add("image-box");
+        categoryElement.setAttribute("data-category-id", category.categoryId); // Add category ID
+        categoryElement.innerHTML = `
+            <a href="#">
+                <img src="http://127.0.0.1:8000/uploads/${category.image}" alt="Category ${index}">
+            </a>
+        `;
+        categoryContainer.appendChild(categoryElement);
+
+        // Add click event listener for category filtering
+        categoryElement.addEventListener("click", () => {
+            filterProductsByCategory(category.categoryId);
+        });
+    });
+}
+
+// Load products from API and populate the global products array
 async function loadProducts() {
     const requestOptions = {
         method: "GET",
         credentials: "include",
-      };
-      // call api and get posts
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/products/viewall",
-          requestOptions
-        );
-    
-        // Check if the response is successful
-        if (!response.ok) {
-          throw new Error("Failed to fetch posts");
-        }
-        
-        products.length = 0;
-        products = await response.json(); // Assuming the API returns JSON
-        console.log(products);
-    
-        const marketplace = document.getElementById('marketplace-grid');
-        marketplace.innerHTML = '';
-        
-        products.forEach((product,index) => {
-            const procductItem  = document.createElement("div");
-            procductItem.classList.add("marketplace-item")
-            procductItem.innerHTML = `
-                <div class="item-container" data-index=${product.productId}>
-                    <div class="item-image">
-                        <a href="#">
-                            <img src="http://127.0.0.1:8000/uploads/${product.images[0]}" alt="Handmade Wooden Bowl">
-                        </a>    
-                    </div>
-                    <div class="item-details">
-                        <h3>${product.name}</h3>
+    };
 
-                        <div class="rating" data-rating="${product.avgReviewRate}">
-                            <i class="fas fa-star star" ></i>
-                            <i class="fas fa-star star" ></i>
-                            <i class="fas fa-star star" ></i>
-                            <i class="fas fa-star star" ></i>
-                            <i class="fas fa-star star" ></i>
-                        </div> <br>
-                        <p>
-                            ${product.description}
-                        </p>
-                        <div class="button-icon-container">
-                          <button class="for-rent-btn">For Rent</button>
-                          <div class="favorite-icon" data-productid="${product.productId}">
-                              <i data-productid="${product.productId}" class="fas fa-heart ${product.isFavourite==='Yes'? 'active':''}"></i>
-                          </div>
+    try {
+        const response = await fetch("http://localhost:8000/api/products/viewall", requestOptions);
+        if (!response.ok) throw new Error("Failed to fetch products");
+
+        products.length = 0;
+        products.push(...await response.json()); // Populate the global products array
+        renderProducts(products); // Render all products initially
+    } catch (error) {
+        console.error("Error loading products:", error);
+    }
+}
+
+// Filter products by category ID and render them
+function filterProductsByCategory(categoryId) {
+    const filteredProducts = products.filter(product => product.categoryId === categoryId);
+    renderProducts(filteredProducts);
+}
+
+// Render products in the marketplace
+function renderProducts(productsToRender) {
+    const marketplace = document.getElementById('marketplace-grid');
+    marketplace.innerHTML = '';
+
+    productsToRender.forEach((product, index) => {
+        const productItem = document.createElement("div");
+        productItem.classList.add("marketplace-item");
+        productItem.innerHTML = `
+            <div class="item-container" data-index=${product.productId}>
+                <div class="item-image">
+                    <a href="#">
+                        <img src="http://127.0.0.1:8000/uploads/${product.images[0]}" alt="Product ${index}">
+                    </a>    
+                </div>
+                <div class="item-details">
+                    <h3>${product.name}</h3>
+                    <div class="rating" data-rating="${product.avgReviewRate}">
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                    </div><br>
+                    <p>${product.description}</p>
+                    <div class="button-icon-container">
+                        <button class="for-rent-btn">For Rent</button>
+                        <div class="favorite-icon" data-productid="${product.productId}">
+                            <i data-productid="${product.productId}" class="fas fa-heart ${product.isFavourite === 'Yes' ? 'active' : ''}"></i>
                         </div>
                     </div>
-                    
-                    </div>
-            `
-            marketplace.appendChild(procductItem);
-        });
+                </div>
+            </div>
+        `;
+        marketplace.appendChild(productItem);
+    });
 
-        document.querySelectorAll('.rating').forEach((ratingContainer) => {
-          const ratingValue = parseInt(ratingContainer.getAttribute('data-rating')); // Get the rating value (1 to 5)
-          
-          // Clear existing stars
-          ratingContainer.innerHTML = '';
+    updateStarRatings();
+    setupFavoriteListeners();
+    setupProductClickListeners();
+}
 
-          // Loop through 5 stars
-          for (let i = 1; i <= 5; i++) {
-              const star = document.createElement('i');
-              star.classList.add('fas', 'fa-star', 'star'); // Add the star icon class
+// Update star ratings dynamically
+function updateStarRatings() {
+    document.querySelectorAll('.rating').forEach((ratingContainer) => {
+        const ratingValue = parseInt(ratingContainer.getAttribute('data-rating'));
+        ratingContainer.innerHTML = '';
+        for (let i = 1; i <= 5; i++) {
+            const star = document.createElement('i');
+            star.classList.add('fas', 'fa-star', 'star');
+            star.classList.add(i <= ratingValue ? 'active' : 'inactive');
+            ratingContainer.appendChild(star);
+        }
+    });
+}
 
-              if (i <= ratingValue) {
-                  star.classList.add('active'); // Add 'active' class for yellow stars
-              } else {
-                  star.classList.add('inactive'); // Add 'inactive' class for gray stars
-              }
-
-              ratingContainer.appendChild(star);
-          }
-      });
-      document.querySelectorAll('.favorite-icon .fas.fa-heart').forEach((icon) => {
+// Set up event listeners for favorite icons
+function setupFavoriteListeners() {
+    document.querySelectorAll('.favorite-icon .fas.fa-heart').forEach((icon) => {
         icon.addEventListener('click', (e) => {
             e.stopPropagation();
-            const produtID = icon.dataset.productid;
+            const productId = icon.dataset.productid;
             icon.classList.toggle('active');
             const isFavorite = icon.classList.contains('active');
-            isFavorite? addtofavourite(produtID): removetofavourite(produtID);
-            console.log(`Item ${isFavorite ? 'added to' : 'removed from'} ${produtID} favorites`);
+            isFavorite ? addToFavorite(productId) : removeFromFavorite(productId);
+            console.log(`Item ${isFavorite ? 'added to' : 'removed from'} favorites: ${productId}`);
         });
-      }); 
-        
-      } catch (error) {
-        console.error("Error loading posts:", error);
-      }
+    });
+}
 
-      document.querySelectorAll(".item-container").forEach((productElement)=>{
-        productElement.addEventListener('click',()=>{
-          // console.log("hello")
-          // console.log(productElement.dataset.index)
-          showModel(products,productElement.dataset.index);
-          // itemView.classList.add("model-show")
+// Set up click listeners for product items
+function setupProductClickListeners() {
+    document.querySelectorAll(".item-container").forEach((productElement) => {
+        productElement.addEventListener('click', () => {
+            const productId = productElement.dataset.index;
+            showModel(products, productId); // Call the imported showModel function
         });
-      })
-}
- 
-
-function addtofavourite(productid){
-  const addfavourite = fetch(
-    "http://localhost:8000/api/products/addfavourite",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Ensure you're sending JSON
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        productid: productid,
-      }),
-    }
-  );
+    });
 }
 
-function removetofavourite(productid){
-  const addfavourite = fetch(
-    "http://localhost:8000/api/products/removeFavourite",
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json", // Ensure you're sending JSON
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        productid: productid,
-      }),
-    }
-  );
+// Add a product to favorites
+function addToFavorite(productId) {
+    fetch("http://localhost:8000/api/products/addfavourite", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ productid: productId }),
+    });
 }
 
+// Remove a product from favorites
+function removeFromFavorite(productId) {
+    fetch("http://localhost:8000/api/products/removeFavourite", {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ productid: productId }),
+    });
+}

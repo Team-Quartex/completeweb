@@ -365,7 +365,7 @@
       <div class="dashboard">
         <div class="card total-earning">
           <h3>Total earning</h3>
-          <p class="amount">LKR 1,250,000</p>
+          <p class="amount" id="earnings-tot">LKR 1,250,000</p>
           <br />
           <br />
           <br />
@@ -373,11 +373,11 @@
         </div>
         <div class="card withdrawal">
           <h3 class="h3">Withdrawal Amount</h3>
-          <p class="amount">LKR 50,000</p>
+          <p class="amount" id="amount">LKR 50,000</p>
           <p class="info">
             Please note that you cannot withdraw less than $1000
           </p>
-          <button class="withdraw-button">Withdraw</button>
+          <button class="withdraw-button" id="withdraw-button">Withdraw</button>
         </div>
       </div>
 
@@ -585,6 +585,11 @@
       </div>
     </div>
     </div>
+
+    <!-- add withdrawa box -->
+     <div class="withdraw-container" id="withdraw-container">
+      
+     </div>
     
 
     <script src="https://unpkg.com/feather-icons"></script>
