@@ -81,7 +81,7 @@ async function loadProducts() {
                 <div class="item-container" data-index=${product.productId}>
                     <div class="item-image">
                         <a href="#">
-                            <img src="http://127.0.0.1:8000/uploads/test1.png" alt="Handmade Wooden Bowl">
+                            <img src="http://127.0.0.1:8000/uploads/${product.images[0]}" alt="Handmade Wooden Bowl">
                         </a>    
                     </div>
                     <div class="item-details">
@@ -97,10 +97,11 @@ async function loadProducts() {
                         <p>
                             ${product.description}
                         </p>
-                        
-                        <button class="for-rent-btn">For Rent</button>
-                        <div class="favorite-icon" data-productid="${product.productId}">
-                            <i data-productid="${product.productId}" class="fas fa-heart ${product.isFavourite==='Yes'? 'active':''}"></i>
+                        <div class="button-icon-container">
+                          <button class="for-rent-btn">For Rent</button>
+                          <div class="favorite-icon" data-productid="${product.productId}">
+                              <i data-productid="${product.productId}" class="fas fa-heart ${product.isFavourite==='Yes'? 'active':''}"></i>
+                          </div>
                         </div>
                     </div>
                     

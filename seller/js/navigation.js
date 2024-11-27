@@ -9,7 +9,7 @@ navbtns.forEach((button, index) => {
     button.classList.add("active");
     contents.forEach((content) => content.classList.remove("show-content"));
     contents[index].classList.add("show-content");
-    onTabShow(index)
+    onTabShow(index);
   });
 });
 function onTabShow(index) {
