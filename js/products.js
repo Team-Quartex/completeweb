@@ -1,3 +1,4 @@
+import {showModel} from './renderproduct.js'
 document.getElementById("marketplace-btn").addEventListener("click", () => {
   document.getElementById("marketplace").style.display = "block";
   document.getElementById("saved-post-container").style.display = "none";
@@ -8,7 +9,7 @@ document.getElementById("marketplace-btn").addEventListener("click", () => {
   // load products
   loadProducts()
 });
-
+var products = [];
 async function loadCategory() {
   const requestOptions = {
     method: "GET",
@@ -25,7 +26,7 @@ async function loadCategory() {
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }
-
+    
     const productsCategory = await response.json(); // Assuming the API returns JSON
     console.log(productsCategory);
 
@@ -65,8 +66,9 @@ async function loadProducts() {
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
         }
-    
-        const products = await response.json(); // Assuming the API returns JSON
+        
+        products.length = 0;
+        products = await response.json(); // Assuming the API returns JSON
         console.log(products);
     
         const marketplace = document.getElementById('marketplace-grid');
@@ -76,7 +78,7 @@ async function loadProducts() {
             const procductItem  = document.createElement("div");
             procductItem.classList.add("marketplace-item")
             procductItem.innerHTML = `
-                <div class="item-container">
+                <div class="item-container" data-index=${product.productId}>
                     <div class="item-image">
                         <a href="#">
                             <img src="http://127.0.0.1:8000/uploads/test1.png" alt="Handmade Wooden Bowl">
@@ -140,6 +142,15 @@ async function loadProducts() {
       } catch (error) {
         console.error("Error loading posts:", error);
       }
+
+      document.querySelectorAll(".item-container").forEach((productElement)=>{
+        productElement.addEventListener('click',()=>{
+          // console.log("hello")
+          // console.log(productElement.dataset.index)
+          showModel(products,productElement.dataset.index);
+          // itemView.classList.add("model-show")
+        });
+      })
 }
  
 
@@ -174,3 +185,4 @@ function removetofavourite(productid){
     }
   );
 }
+
