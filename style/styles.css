@@ -18,6 +18,9 @@ input[type="file"] {
     overflow: hidden;
     padding: 0.625rem 1.25rem;
 }
+.inputfile::placeholder{
+    color: #000;
+}
 input[type="file" i] {
     appearance: none;
     background-color: initial;
@@ -30,6 +33,7 @@ input[type="file" i] {
     border: initial;
     white-space: pre;
 }
+
 body {
     background-color: #ffffff;
     overflow: hidden;
@@ -193,7 +197,7 @@ left: 170px;
     filter:invert();
 }
 .post-form {
-    background-color:#E0EEEE;
+    background-color:#f0f7f7;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
@@ -202,10 +206,12 @@ left: 170px;
 
 .post-input-container {
     background-color: white;
+   
+    box-shadow: #238688 0px 0.150px 2px;
     padding: 9px;
     border-radius: 30px;
     display: flex;
-    align-items: start;
+    align-items:self-start;
     justify-content: space-between;
     margin-bottom: 15px;
     font-size: 18px;
@@ -223,18 +229,22 @@ left: 170px;
     flex-grow: 1;
     border: none;
     outline: none;
-    padding: 10px;
-    border-radius: 20px;
+   
+    margin-top: 5px;
     font-size: 16px;
 }
 .post-input::placeholder{
-    font-size: 16px;
+    font-size: 25px;
+    color:  #238688;
+    font-weight: lighter;
 }
 
 .post-actions {
     display: flex;
     justify-content: space-between;
     position: relative;
+    align-items: center;
+   
 }
 .action-icons{
     display: flex;
@@ -270,8 +280,8 @@ left: 170px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    
-    color: #65676b;
+    font-weight: bold;
+    color: #000;
 }
 
 .post-action:hover {
@@ -296,11 +306,14 @@ left: 170px;
 }
 
 .feed {
-    background-color: #E0EEEE;
+    background-color: #f0f7f7;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     margin-bottom: 3vh;
+    margin-right: 4px;
+    margin-left: 4px;
+    flex-wrap: wrap;
     
 }
 
@@ -308,13 +321,22 @@ left: 170px;
 
 .post-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
     
 }
+.post-header-user-details{
+    display: flex;
+    
+}
+.save-btn{
+    cursor: pointer;
+}
 
 .post-user-info {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     margin-left: 10px;
 }
@@ -380,6 +402,7 @@ left: 170px;
 .post-footer {
     margin-top: 10px;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
     align-items: center;
@@ -388,7 +411,8 @@ left: 170px;
 .post-reactions {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    
+    gap: 35px;
     
 }
 
@@ -470,7 +494,8 @@ left: 170px;
 }
 .comment-section{
     padding: 6px;
-    width: 58vw;
+    width: 59vw;
+    position: relative;
     border-radius: 20px;
     outline: none;
     border: none;
@@ -480,8 +505,9 @@ left: 170px;
    justify-content: space-between;
     padding: 7px;
     border-radius: 40px;
-   
+   width: 100%;
     display: flex;
+   
 }
 #search{
     display: none;
@@ -865,3 +891,4 @@ left: 170px;
   .emoji-mart {
     box-shadow: none !important; /* Remove box shadow */
   }
+  

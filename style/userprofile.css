@@ -5,12 +5,13 @@
     position: fixed;
     top: 0;
     left: 0;
+    
     display: none;
 }
 
 .user-view-container {
     max-width: 100vw;
-    margin: 0 auto;
+    margin: 0 ;
     padding: 20px;
 }
 
@@ -19,7 +20,9 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-}
+    padding-bottom: 20px;
+    border-bottom: 0.25px solid #333;
+} 
 
 .user-view-back-button {
     font-size: 24px;
@@ -34,15 +37,16 @@
 }
 
 .user-view-profile-picture {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
+   
 }
 
 .user-view-profile-details h1 {
-    font-size: 24px;
+    font-size: 60px;
     margin-bottom: 5px;
 }
 
@@ -64,8 +68,10 @@
 /* Main content styles */
 .user-view-main-content {
     display: flex;
+    flex-grow: 5;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 8px;
+    justify-content: space-between;
 }
 
 .user-view-left-column {
@@ -74,6 +80,7 @@
 
 .user-view-right-column {
     flex: 1;
+    
 }
 
 .user-view-card {
@@ -121,6 +128,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     text-align: center;
+    cursor: pointer;
 }
 
 .user-view-follower img {
@@ -128,19 +136,36 @@
     height: 60px;
     border-radius: 50%;
     margin-bottom: 5px;
+    object-fit: cover;
 }
 
 /* Order history styles */
 .user-view-order-item {
+    
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    border-bottom: 1px solid #333;
 }
 
 .user-view-order-item-details {
     display: flex;
+    
     align-items: center;
+}
+.order-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    gap: 20px;
+    border-bottom: 0.25px solid #333;
+    padding: 20px;
+}
+.order-scroller{
+    height: 2vh;
 }
 
 .user-view-order-item-image {
@@ -149,12 +174,16 @@
     border-radius: 50%;
     margin-right: 15px;
 }
-
+.item-detail{
+    display: flex;
+    justify-content: space-between;
+    gap:20px;
+}
 .user-view-center-column{
     flex: 4;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 80vh;
+    max-height: 66.5vh;
 }
 
 /* Responsive design */

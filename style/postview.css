@@ -24,7 +24,7 @@
 .close-btn-postview {
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 35px;
   font-size: 24px;
   cursor: pointer;
   color: #333;
@@ -40,6 +40,7 @@
 .comment-user-avatar {
   width: 50px;
   height: 50px;
+  object-fit: cover;
   border-radius: 50%;
   margin-right: 15px;
 }
@@ -48,10 +49,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 .comment-post-details{
   display: flex;
   align-items: center;
+  text-align: left;
+
+
 }
 .post-details h3 {
   
@@ -130,7 +135,7 @@
 .comment-box-section {
   padding: 10px;
   overflow-y: auto;
-  height: 20vh;
+  height: 15vh;
 }
 
 .comment {
@@ -230,4 +235,135 @@
 
 .carousel-arrow:hover {
   background: rgba(0, 0, 0, 0.387);
+}
+.post-view-description{
+  margin-bottom: 20px;
+  height: 10vh;
+  background-color: #fff;
+}
+@media (max-width: 1024px) {
+  .comment-box {
+    width: 80%;
+  }
+
+  .post-details h3 {
+    font-size: 14px;
+  }
+
+  .post-title {
+    font-size: 16px;
+  }
+
+  .carousel {
+    gap: 5px;
+  }
+
+  .post-image-comment {
+    max-height: 250px;
+  }
+
+  .action-bar {
+    flex-direction: column;
+  }
+
+  .action-button {
+    font-size: 12px;
+  }
+
+  .comment-box-section {
+    height: 20vh;
+  }
+}
+
+/* For Small Tablets and Mobile (768px and below) */
+@media (max-width: 768px) {
+  .comment-box {
+    width: 90%;
+  }
+
+  .comment-post-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comment-user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel {
+    gap: 3px;
+  }
+
+  .post-image-comment {
+    max-height: 200px;
+  }
+
+  .post-content {
+    padding: 10px;
+  }
+
+  .comment-box-section {
+    height: 25vh;
+  }
+
+  .comment-input {
+    padding: 8px;
+  }
+
+  .comment-post-button {
+    padding: 8px 12px;
+  }
+}
+
+/* For Mobile (480px and below) */
+@media (max-width: 480px) {
+  .comment-box {
+    width: 95%;
+    max-height: 90%;
+  }
+
+  .comment-post-header {
+    padding: 10px;
+  }
+
+  .post-title {
+    font-size: 14px;
+  }
+
+  .carousel {
+    display: block;
+    gap: 5px;
+    overflow-x: scroll;
+  }
+
+  .post-image-comment {
+    max-height: 150px;
+  }
+
+  .action-bar {
+    flex-direction: row
+  }
+
+  .action-button {
+    font-size: 12px;
+  }
+
+  .comment-box-section {
+    height: 30vh;
+  }
+
+  .comment-input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .comment-post-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+.none-carsole{
+  display: none;
 }

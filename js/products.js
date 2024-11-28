@@ -181,3 +181,12 @@ function removeFromFavorite(productId) {
         body: JSON.stringify({ productid: productId }),
     });
 }
+
+document.getElementById('search-bar-item').addEventListener('input', (event) => {
+    const searchTerm = event.target.value.toLowerCase(); 
+    const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) || 
+        product.description.toLowerCase().includes(searchTerm) 
+    );
+    renderProducts(filteredProducts); 
+});

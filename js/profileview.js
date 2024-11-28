@@ -40,8 +40,9 @@ export async function showUserprofile(userId) {
         : ``;
     const bodyElement = `
             <div class="user-view-container">
+             <a id="user-view-back-button" class="user-view-back-button" aria-label="Go back"><i class="fi fi-rr-angle-left"></i></a>
                 <header class="user-view-header">
-                    <a id="user-view-back-button" class="user-view-back-button" aria-label="Go back">&#8592;</a>
+                   
                     <div class="user-view-profile-info">
                         <img src="http://127.0.0.1:8000/uploads/${userDetails.profilepic}" alt="User profile picture"
                             class="user-view-profile-picture" />
@@ -97,7 +98,7 @@ export async function showUserprofile(userId) {
                     </div>
 
                     <div class="user-view-right-column" id="user-view-right-column">
-                        <section class="user-view-card">
+                        <section class="user-view-card order-scroller" >
                             <h2>Order History</h2>
                             <div class="user-view-order-item">
                                 <div class="user-view-order-item-details">
@@ -303,20 +304,27 @@ async function showOrders(holder) {
     console.log(orders);
 
     orders.forEach((element) => {
-      const orderCard = `<div class="user-view-order-item">
+      const orderCard = `
+      
+      <div class="user-view-order-item">
                                 <div class="user-view-order-item-details">
+                                <div class="order-header">
                                     <img src="http://127.0.0.1:8000/uploads/${element.productImage}" alt="Order item 3"
                                         class="user-view-order-item-image" />
-                                    <div>
+                                    <div class="item-detail">
                                         <p>${element.productName}</p>
                                         <p>${element.qty}</p>
+                                         <p>${element.tot}</p><br>
                                     </div>
+                                 </div>   
                                 </div>
-                                <p>${element.tot}</p><br>
+                               
                                 <p>reserve date${element.orderTime}</p><br>
                                 <p>start ${element.startDate}</p><br>
                                 <p>end ${element.endDate}</p><br>
-                            </div>`;
+                            </div>
+                            
+                            `;
       holder.innerHTML += orderCard;
     });
   } catch (error) {

@@ -20,7 +20,7 @@ export function showPostview(post) {
             <div class="post-details">
               <h3 class="post-owner-name">${
                 post.name.split(" ")[0]
-              }'s Name</h3><br>
+              }'s Post</h3><br>
               <span class="post-time-comment">${post.postTime}</span>
             </div>
           </div>
@@ -38,6 +38,7 @@ export function showPostview(post) {
             <button class="carousel-arrow right-arrow" onclick="scrollCarousel('right')">&#10095;</button>
           </div>
         </div>
+        
 
         <!-- Action Bar -->
         <div class="action-bar">
