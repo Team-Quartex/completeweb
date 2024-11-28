@@ -20,10 +20,11 @@
     left: 0;
     right: 0;
     background: #fff;
-    border-radius: 0 0 5px 5px;
+    border-radius: 20px;
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
+   
 }
 
 .city-suggestions div {

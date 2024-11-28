@@ -18,6 +18,9 @@ input[type="file"] {
     overflow: hidden;
     padding: 0.625rem 1.25rem;
 }
+.inputfile::placeholder{
+    color: #000;
+}
 input[type="file" i] {
     appearance: none;
     background-color: initial;
@@ -30,6 +33,7 @@ input[type="file" i] {
     border: initial;
     white-space: pre;
 }
+
 body {
     background-color: #ffffff;
     overflow: hidden;
@@ -239,6 +243,8 @@ left: 170px;
     display: flex;
     justify-content: space-between;
     position: relative;
+    align-items: center;
+   
 }
 .action-icons{
     display: flex;
@@ -274,8 +280,8 @@ left: 170px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    
-    color: #65676b;
+    font-weight: bold;
+    color: #000;
 }
 
 .post-action:hover {
