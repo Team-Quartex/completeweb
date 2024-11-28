@@ -1,5 +1,7 @@
 import { addFollow } from "./follow.js";
 import {loadPost} from './post.js'
+import { showUserprofile } from "./profileview.js";
+
 export const loadsuggestions = async () => {
   console.log("hi211");
   const requestOptions = {
@@ -27,6 +29,7 @@ export const loadsuggestions = async () => {
     suggestionsData.forEach((user) => {
       const suggestElement = document.createElement("div");
       suggestElement.classList.add("suggestion");
+      suggestElement.dataset.user = user.userid;
       suggestElement.innerHTML = `
           <img
             src="http://127.0.0.1:8000/uploads/${user.profilepic}"
@@ -43,7 +46,8 @@ export const loadsuggestions = async () => {
       suggestions.appendChild(suggestElement);
     });
     document.querySelectorAll(".follow-button").forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
         const userId = button.dataset.userid;
         addFollow(userId);
         loadsuggestions();
@@ -59,6 +63,15 @@ export const loadsuggestions = async () => {
         loadPost();
       });
     });
+
+    document.querySelectorAll(".suggestion").forEach((user) => {
+      user.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const userId = user.dataset.user;
+        console.log(userId);
+        showUserprofile(userId);
+      });
+    });
   } catch (error) {
     console.error("Error loading suggestions:", error);
   }
@@ -67,3 +80,7 @@ export const loadsuggestions = async () => {
 document.addEventListener("DOMContentLoaded", () => {
   loadsuggestions();
 });
+
+document.getElementById('user-profile-click').addEventListener('click',()=>{
+  showUserprofile(document.getElementById("hidden-id").innerHTML)
+})

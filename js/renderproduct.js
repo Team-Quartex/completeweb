@@ -58,7 +58,7 @@ export async function showModel(product, id) {
                       <!-- Seller's Information Section -->
                       <div class="seller-info">
                          <div class = "seller-profile-details">
-                          <img src="images/Dummy.png" alt="Seller's Avatar" class="seller-avatar" id="seller-avatar">
+                          <img src="http://127.0.0.1:8000/uploads/${productDetail.profile}" alt="Seller's Avatar" class="seller-avatar" id="seller-avatar">
                           <div class="seller-details">
                               <h3 class="seller-name" >${
                                 productDetail.sellername
@@ -82,7 +82,7 @@ export async function showModel(product, id) {
               <div class="details-section">
                 
                   <div class="item-header">
-                      <h1>Item Name</h1>
+                      <h1>${productDetail.name}</h1>
                       <div class="rating">
                           <div class="stars" data-rating="${
                             productDetail.avgReviewRate

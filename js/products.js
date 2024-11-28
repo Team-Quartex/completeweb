@@ -7,6 +7,7 @@ document.getElementById("marketplace-btn").addEventListener("click", () => {
     document.getElementById("marketplace").style.display = "block";
     document.getElementById("saved-post-container").style.display = "none";
     document.getElementById("post-container").style.display = "none";
+    document.getElementById('search').style.display="none";
 
     loadCategory(); // Load categories
     loadProducts(); // Load products

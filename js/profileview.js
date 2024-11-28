@@ -151,7 +151,7 @@ export async function showUserprofile(userId) {
     if (document.getElementById("hidden-id").innerHTML === userId) {
       showOrders(orderView);
     } else {
-      orderView.innerHTML = "";
+      orderView.classList.add('hide-order');
       // showOrders(orderView)
     }
 

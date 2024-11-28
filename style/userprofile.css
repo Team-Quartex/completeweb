@@ -213,3 +213,7 @@
 .user-profile-view-show{
     display: block;
 }
+
+.hide-order{
+    display: none;
+}

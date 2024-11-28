@@ -52,3 +52,4 @@ async function getUserDetails() {
 document.addEventListener("DOMContentLoaded", () => {
     getUserDetails();
   }); 
+

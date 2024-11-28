@@ -5,7 +5,8 @@ import { formatPostTime } from "./utilities.js";
 import { loadsuggestions } from "./suggetions.js";
 import { showUserprofile } from "./profileview.js";
 import { showPostview } from "./post-view.js";
-import {addComment} from './mainFunctions.js'
+import {addComment,addsaved,removedPost} from './mainFunctions.js'
+
 
 export function renderPosts(posts, container) {
   posts.forEach((post, index) => {
@@ -144,7 +145,7 @@ export function renderPosts(posts, container) {
                     <span class="post-time">${post.postTime}</span>
                   </div>
                   </div>
-                  <div class="save-btn"><i class="fi fi-rr-bookmark"></i></div>
+                  <div class="save-btn" data-postid="${post.postId}" data-status="${post.isSaved}">${post.isSaved==="yes"?`<i class="fi fi-sr-bookmark"></i>`:`<i class="fi fi-rr-bookmark"></i>`}</div>
                 </div>
                 
                 <div class="post-content">
@@ -265,6 +266,24 @@ export function renderPosts(posts, container) {
       showUserprofile(userId);
     });
   });
+  // saved post
+  document.querySelectorAll('.save-btn').forEach((btn)=>{
+    btn.addEventListener('click',async (e)=>{
+      e.stopPropagation();
+      const postId = btn.dataset.postid;
+      const status = btn.dataset.status;
+      console.log(status);
+      if(status==='yes'){
+        btn.innerHTML=`<i class="fi fi-rr-bookmark"></i>`
+        btn.dataset.status='no';
+        await removedPost(postId);
+      }else{
+        btn.innerHTML=`<i class="fi fi-sr-bookmark"></i>`
+        btn.dataset.status='yes';
+        await addsaved(postId);
+      }
+    })
+  })
 
   document
     .querySelectorAll(".comment-section-input")
