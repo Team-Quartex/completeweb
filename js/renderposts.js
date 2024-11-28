@@ -265,7 +265,7 @@ export function renderPosts(posts, container) {
       showUserprofile(userId);
     });
   });
-
+ 
   document
     .querySelectorAll(".comment-section-input")
     .forEach((commentContaier) => {

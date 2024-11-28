@@ -127,7 +127,7 @@
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
+    text-align: left;
     width: 20vw;
     margin: 20px auto;
     height: 55vh;
@@ -181,8 +181,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     justify-content: left;
-    margin-right: 22%;
-
+   
 }
 
 .for-rent-btn:hover {
@@ -192,7 +191,7 @@
 .button-icon-container {
     display: flex; 
     align-items: center;
-    gap: 10px; 
+    gap:40px;
 }
 
 /* Favorite Icon */

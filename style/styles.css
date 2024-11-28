@@ -161,7 +161,7 @@ left: 170px;
     align-items: center;
     margin-bottom: 20px;
 }
-.active{
+.active-btn{
     background-color: #238688;
     color:white;
    
@@ -347,6 +347,7 @@ left: 170px;
 .post-user-info .post-username {
     font-weight: bold;
     font-size:  20px;
+    cursor: pointer;
 }
 
 .post-time {
