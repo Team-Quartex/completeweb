@@ -18,7 +18,22 @@ export async function initilizeReservation() {
         const payments = await response.json(); // Assuming the API returns JSON
         console.log(payments);
 
-        
+        const resrvationHolder = document.getElementById('reservation-table');
+        resrvationHolder.innerHTML="";
+
+        payments.forEach((payment) => {
+            const row = `
+            <tr>
+                <td>${payment.userName}</td>
+                <td>${payment.sellerName}</td>
+                <td>${payment.productName}</td>
+                <td>${payment.quantity}</td>
+                <td>${payment.totPrice}</td>
+                <td>${payment.commission}</td>
+            </tr>
+            `
+            resrvationHolder.innerHTML += row;
+        });
        
 
     } catch (error) {
