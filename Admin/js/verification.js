@@ -33,7 +33,7 @@ export async function initilizeRequest() {
               </td>
               <td class="verification-btns">
                 <div class="verification-actions">
-                  <a class="action-btn approve-btn" data-id="${request.requestId} data-userid="${request.userId}">
+                  <a class="action-btn approve-btn" data-id="${request.requestId}" data-userid="${request.userId}">
                     <i class="fi fi-ss-check-circle" style="font-size: 30px"></i>
                   </a>
                   <a class="action-btn decline decline-btn" data-id="${request.requestId}">
