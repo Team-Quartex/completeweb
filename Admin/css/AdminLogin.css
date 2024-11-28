@@ -1,0 +1,86 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    scale:150%;
+    background-image: url('https://source.unsplash.com/random/1920x1080?minimal');
+    background-size: cover;
+    background-position: center;
+}
+.login-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.logo img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    filter: grayscale();
+}
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: -2vh;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+input {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+input:focus{
+    border: 1px solid #000000;
+}
+button {
+    background-color: #000000;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #151515;
+}
+.forgot-password {
+    text-align: center;
+    margin-top: 1rem;
+}
+.forgot-password a {
+    color: #1473e6;
+    text-decoration: none;
+}
+.forgot-password a:hover {
+    text-decoration: underline;
+}
