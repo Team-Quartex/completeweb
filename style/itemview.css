@@ -121,7 +121,9 @@
     border-bottom: 1px solid #eee;
     background: white;
     position: sticky;
-    top: 0;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
     z-index: 1;
 }
 
@@ -132,7 +134,7 @@
 
 .rating {
     display: flex;
-    align-items: center;
+   
     gap: 10px;
 }
 
@@ -203,13 +205,12 @@
 .price {
     font-size: 24px;
     font-weight: bold;
-    width: 180px;
-    height: 50px;
+    
     background-color: #ffffff;
     border: 2px solid #258786;
     border-radius: 30px;
     text-align: center;
-    padding: 2px;
+    padding: 10px 30px;
 
 }
 
@@ -340,12 +341,15 @@
 .seller-details {
     flex-grow: 1;
 }
-
+.seller-profile-details{
+    display: flex;
+    align-items: center;
+}
 .seller-name {
     font-size: 25px;
     font-weight: 600;
     color: #333;
-    margin: 40px 0 -1px 0;
+    
 }
 
 .contact-details  {
@@ -386,6 +390,48 @@
 
 .seller-info {
     order: -1; 
+}
+.input-review-container{
+    
+    outline: none;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+.add-review-input{
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+    
+}
+.Reviewer-details{
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+.add-review-input img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: -10px;
+}
+.add-review-btn{
+    margin-top: 20px;
+}
+.review-add-btn{
+    background: #258786;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 @media (max-width: 768px) {

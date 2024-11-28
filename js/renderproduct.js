@@ -57,13 +57,19 @@ export async function showModel(product, id) {
           
                       <!-- Seller's Information Section -->
                       <div class="seller-info">
-                          <img src="http://127.0.0.1:8000/uploads/${productDetail.profile}" alt="Seller's Avatar" class="seller-avatar" id="seller-avatar">
+                         <div class = "seller-profile-details">
+                          <img src="images/Dummy.png" alt="Seller's Avatar" class="seller-avatar" id="seller-avatar">
                           <div class="seller-details">
-                              <h3 class="seller-name" >${productDetail.sellername}</h3>
+                              <h3 class="seller-name" >${
+                                productDetail.sellername
+                              }</h3>
                               <h3 class="verified-seller">Verified Seller</h3>
-                              <p class="contact-details">Contact Details <br><i>${productDetail.email}</i></p>
+                              <p class="contact-details">Contact Details <br><i>${
+                                productDetail.email
+                              }</i></p>
                              
                           </div>
+                         </div> 
                       </div>
           
                       <!-- Other content below -->
@@ -78,14 +84,18 @@ export async function showModel(product, id) {
                   <div class="item-header">
                       <h1>Item Name</h1>
                       <div class="rating">
-                          <div class="stars" data-rating="${productDetail.avgReviewRate}">
+                          <div class="stars" data-rating="${
+                            productDetail.avgReviewRate
+                          }">
                               <i class="fas fa-star star" ></i>
                               <i class="fas fa-star star" ></i>
                               <i class="fas fa-star star" ></i>
                               <i class="fas fa-star star" ></i>
                               <i class="fas fa-star star" ></i>
                           </div>
-                          <span class="review-count">${productDetail.totalReviews} Reviews</span>
+                          <span class="review-count">${
+                            productDetail.totalReviews
+                          } Reviews</span>
                       </div>
                   </div>
     
@@ -110,7 +120,9 @@ export async function showModel(product, id) {
                       <p class="availability-message" id="availability-message">Not available in selected days</p>
     
                       <div class="price-section">
-                          <div class="price" id="price">${productDetail.price}.00</div>
+                          <div class="price" id="price">${
+                            productDetail.price
+                          }.00</div>
                           <div class="quantity-controls">
                               <button class="quantity-btn minus" id="minus">-</button>
                               <span class="quantity" id="quantity">${productQty}</span>
@@ -119,6 +131,32 @@ export async function showModel(product, id) {
                       </div>
     
                       <button class="rent-now" id="rent-now">Rent now</button>
+
+                      <div class="reviews-input-container">
+
+  <div class="add-review-input">
+  <form action="">
+  <div class="Reviewer-details">
+  
+  <img src="images/Dummy.png" alt="">
+    <textarea name="" id="" placeholder="Add review" class="input-review-container"></textarea>
+    </div>
+     <div class="rating-star-count">
+    <i class="fas fa-star star" ></i>
+    <i class="fas fa-star star" ></i>
+    <i class="fas fa-star star" ></i>
+    <i class="fas fa-star star" ></i>
+    <i class="fas fa-star star" ></i>
+  </div>
+   <div class="add-review-btn">
+    <input type="submit" value="Add review" class="review-add-btn">
+  </div>
+  </form>
+  </div>
+  
+  
+</div>
+
     
                      
                       <div class="reviews-section" id="reviews-section">
@@ -132,7 +170,7 @@ export async function showModel(product, id) {
           
       </div>
       </div>`;
-    
+
     productContainer.innerHTML = productElement;
     document.querySelectorAll(".stars").forEach((ratingContainer) => {
       const ratingValue = parseInt(ratingContainer.getAttribute("data-rating")); // Get the rating value (1 to 5)
@@ -155,13 +193,13 @@ export async function showModel(product, id) {
       }
     });
     var availables = false;
-    const plusBtn = document.getElementById('plus');
-    const minusBtn = document.getElementById('minus');
+    const plusBtn = document.getElementById("plus");
+    const minusBtn = document.getElementById("minus");
     var MaxQty = 1; // Assume maxQty is from the API, default to 10 if not provided.
-    const qtyContainer = document.getElementById('quantity');
-    const priceContainer = document.getElementById('price')
+    const qtyContainer = document.getElementById("quantity");
+    const priceContainer = document.getElementById("price");
 
-    plusBtn.addEventListener('click', (event) => {
+    plusBtn.addEventListener("click", (event) => {
       event.preventDefault();
       if (MaxQty > productQty) {
         productQty++;
@@ -170,7 +208,7 @@ export async function showModel(product, id) {
       }
     });
 
-    minusBtn.addEventListener('click', (event) => {
+    minusBtn.addEventListener("click", (event) => {
       event.preventDefault();
       if (productQty > 1) {
         productQty--;
@@ -178,44 +216,45 @@ export async function showModel(product, id) {
         priceContainer.innerHTML = conprice * productQty;
       }
     });
-    const availablemsg = document.getElementById('availability-message');
-    document.getElementById('check-button').addEventListener('click', async(e) => {
+    const availablemsg = document.getElementById("availability-message");
+    document
+      .getElementById("check-button")
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
+        const startDate = document.getElementById("start-date").value;
+        const endDate = document.getElementById("end-date").value;
+        if (startDate === "" || endDate === "") {
+          availablemsg.innerHTML = "Select Date Range";
+          availables = false;
+          return;
+        }
+        availablemsg.innerHTML = "Checking availability...";
+        MaxQty = await calculateMaxqty(id, startDate, endDate);
+        if (MaxQty === 0) {
+          availablemsg.innerHTML = "Not Available those Days";
+          availables = false;
+          return;
+        } else {
+          availablemsg.innerHTML = `${MaxQty} items Available`;
+          availables = true;
+          return;
+        }
+      });
+
+    document.getElementById("rent-now").addEventListener("click", async (e) => {
       e.preventDefault();
-      const startDate = document.getElementById('start-date').value;
-      const endDate = document.getElementById('end-date').value;
-      if(startDate==="" || endDate===""){
-        availablemsg.innerHTML= "Select Date Range";
-        availables = false;
-        return;
-      }
-      availablemsg.innerHTML = "Checking availability...";
-      MaxQty= await calculateMaxqty(id,startDate,endDate);
-      if(MaxQty===0){
-        availablemsg.innerHTML = "Not Available those Days";
-        availables = false;
-        return;
-      }else{
-        availablemsg.innerHTML = `${MaxQty} items Available`;
-        availables = true;
-        return;
+      if (availables && MaxQty >= productQty) {
+        const startDate = document.getElementById("start-date").value;
+        const endDate = document.getElementById("end-date").value;
+        await addReservation(id, startDate, endDate, productQty, availablemsg);
+      } else {
+        availablemsg.innerHTML = "Check Availibility";
       }
     });
 
-    document.getElementById('rent-now').addEventListener('click',async(e)=>{
-      e.preventDefault();
-      if(availables && MaxQty>= productQty){
-        const startDate = document.getElementById('start-date').value;
-        const endDate = document.getElementById('end-date').value;
-        await addReservation(id, startDate, endDate, productQty,availablemsg);
-      }else{
-        availablemsg.innerHTML = "Check Availibility";
-      }
-    })
-
-    document.getElementById('back-button').addEventListener('click',()=>{
+    document.getElementById("back-button").addEventListener("click", () => {
       itemView.classList.remove("model-show");
-    })
-
+    });
   } catch (error) {
     console.error("Error loading posts:", error);
   }
@@ -242,8 +281,8 @@ async function showReviews(id) {
     const reviews = await response.json(); // Assuming the API returns JSON
     console.log(reviews);
     var reviewContainer = "";
-    
-    reviews.forEach((element)=>{
+
+    reviews.forEach((element) => {
       const reviewElement = `
         <div class="review">
           <img src="http://127.0.0.1:8000/uploads/${element.profilepic}" alt="Reviewer" class="reviewer-avatar">
@@ -259,18 +298,17 @@ async function showReviews(id) {
               <p class="review-text">${element.review_content}</p>
           </div>
       </div>
-      `
-      
+      `;
+
       reviewContainer += reviewElement;
     });
     return reviewContainer;
-
   } catch (error) {
     console.error("Error loading posts:", error);
   }
 }
 
-async function calculateMaxqty(id,start,end) {
+async function calculateMaxqty(id, start, end) {
   const requestOptions = {
     method: "GET",
     credentials: "include",
@@ -290,13 +328,12 @@ async function calculateMaxqty(id,start,end) {
     const reservation = await response.json(); // Assuming the API returns JSON
     console.log(reservation);
     return reservation[0].availableQuantity;
-
   } catch (error) {
     console.error("Error loading posts:", error);
   }
 }
 
-async function addReservation(id, start, end, qty,msg) {
+async function addReservation(id, start, end, qty, msg) {
   const requestOptions = {
     method: "POST",
     credentials: "include",
@@ -321,12 +358,11 @@ async function addReservation(id, start, end, qty,msg) {
       throw new Error("Failed to add reservation");
     }
 
-    const reservation = await response.json(); 
+    const reservation = await response.json();
     console.log(reservation);
-    msg.innerHTML=reservation;
+    msg.innerHTML = reservation;
 
     return reservation.availableQuantity;
-
   } catch (error) {
     console.error("Error adding reservation:", error);
   }

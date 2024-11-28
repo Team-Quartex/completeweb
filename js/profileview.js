@@ -98,7 +98,7 @@ export async function showUserprofile(userId) {
                     </div>
 
                     <div class="user-view-right-column" id="user-view-right-column">
-                        <section class="user-view-card">
+                        <section class="user-view-card order-scroller" >
                             <h2>Order History</h2>
                             <div class="user-view-order-item">
                                 <div class="user-view-order-item-details">
@@ -304,20 +304,27 @@ async function showOrders(holder) {
     console.log(orders);
 
     orders.forEach((element) => {
-      const orderCard = `<div class="user-view-order-item">
+      const orderCard = `
+      
+      <div class="user-view-order-item">
                                 <div class="user-view-order-item-details">
+                                <div class="order-header">
                                     <img src="http://127.0.0.1:8000/uploads/${element.productImage}" alt="Order item 3"
                                         class="user-view-order-item-image" />
-                                    <div>
+                                    <div class="item-detail">
                                         <p>${element.productName}</p>
                                         <p>${element.qty}</p>
+                                         <p>${element.tot}</p><br>
                                     </div>
+                                 </div>   
                                 </div>
-                                <p>${element.tot}</p><br>
+                               
                                 <p>reserve date${element.orderTime}</p><br>
                                 <p>start ${element.startDate}</p><br>
                                 <p>end ${element.endDate}</p><br>
-                            </div>`;
+                            </div>
+                            
+                            `;
       holder.innerHTML += orderCard;
     });
   } catch (error) {
