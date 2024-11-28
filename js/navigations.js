@@ -51,4 +51,18 @@ function openpostview(){
 }
 
 
+function toggleActive(event) {
+  // Remove .active class from all buttons
+  const buttons = document.querySelectorAll('.active');
+  buttons.forEach(button => button.classList.remove('active'));
 
+  // Add .active class to the clicked button
+  const clickedButton = event.currentTarget;
+  clickedButton.classList.add('active');
+}
+
+// Attach event listeners to all buttons that need the .active behavior
+const allButtons = document.querySelectorAll('.button-class'); // Replace .button-class with your button class
+allButtons.forEach(button => {
+  button.addEventListener('click', toggleActive);
+});
