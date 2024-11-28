@@ -40,8 +40,9 @@ export async function showUserprofile(userId) {
         : ``;
     const bodyElement = `
             <div class="user-view-container">
+             <a id="user-view-back-button" class="user-view-back-button" aria-label="Go back"><i class="fi fi-rr-angle-left"></i></a>
                 <header class="user-view-header">
-                    <a id="user-view-back-button" class="user-view-back-button" aria-label="Go back">&#8592;</a>
+                   
                     <div class="user-view-profile-info">
                         <img src="http://127.0.0.1:8000/uploads/${userDetails.profilepic}" alt="User profile picture"
                             class="user-view-profile-picture" />

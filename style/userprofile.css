@@ -34,15 +34,15 @@
 }
 
 .user-view-profile-picture {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
 }
 
 .user-view-profile-details h1 {
-    font-size: 24px;
+    font-size: 60px;
     margin-bottom: 5px;
 }
 

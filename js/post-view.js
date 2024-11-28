@@ -7,7 +7,7 @@ export function showPostview(post) {
     post.images.forEach((image) => {
       postImage += `<img src="http://127.0.0.1:8000/uploads/${image}" alt="Post Image" class="post-image-comment">`;
     });
-    const postviewContent = `a
+    const postviewContent = `
           <div class="comment-box">
           <!-- Close Button -->
           <p class="close-btn-postview" onclick="closepostview()">×</p>
@@ -21,11 +21,11 @@ export function showPostview(post) {
               <div class="post-details">
                 <h3 class="post-owner-name">${
                   post.name.split(" ")[0]
-                }'s Name</h3><br>
+                }'s Post</h3><br>
                 <span class="post-time-comment">${post.postTime}</span>
               </div>
             </div>
-            <div class="post-options">...</div>
+            <div class="post-options"><i class="fi fi-rr-bookmark"></i></div>
           </div>
   
           <!-- Post Content -->
@@ -39,6 +39,7 @@ export function showPostview(post) {
               <button class="carousel-arrow right-arrow" onclick="scrollCarousel('right')">&#10095;</button>
             </div>
           </div>
+           <div class ="post-view-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</div>
   
           <!-- Action Bar -->
           <div class="action-bar">
@@ -64,7 +65,7 @@ export function showPostview(post) {
                 <img src="${document.getElementById('user-img').src}" alt="User Avatar" class="input-avatar">
                 <input type="text" placeholder="Write a comment..." class="comment-input" id="comment-input">
   
-                <input type="submit" class="comment-post-button" id="comment-post-button" value="Post">
+                <input type="submit" class="comment-post-button" id="comment-post-button" value="Post" >
   
             </div>
           </form>

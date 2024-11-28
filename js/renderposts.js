@@ -127,6 +127,7 @@ export function renderPosts(posts, container) {
     postElement.innerHTML = `
             <div class="post" data-index="${index}">
                 <div class="post-header">
+                <div class="post-header-user-details">
                   <img
                   src="http://127.0.0.1:8000/uploads/${post.profilePic}"
                     alt="${post.name}"
@@ -138,14 +139,19 @@ export function renderPosts(posts, container) {
       post.name
     }</span><span class="verified">${verify}</span>
                     ${followBtn}
+                    
                   </div>
                     <span class="post-time">${post.postTime}</span>
                   </div>
+                  </div>
+                  <div class="save-btn"><i class="fi fi-rr-bookmark"></i></div>
                 </div>
+                
                 <div class="post-content">
                     <p>${locationdata} ${formattedDescription}</p>
                 </div>
                 ${imagecontent}
+               
                 <div class="post-footer">
                             <div class="post-reactions likeclass" >
                                 <div class="reaction" >
@@ -177,7 +183,7 @@ export function renderPosts(posts, container) {
                                   post.postId
                                 }">
                                 <i class="fi fi-sr-paper-plane-top"></i>
-                                Sent
+                                
                                 </button>
                                 
                             </div>
