@@ -5,12 +5,13 @@
     position: fixed;
     top: 0;
     left: 0;
+    
     display: none;
 }
 
 .user-view-container {
     max-width: 100vw;
-    margin: 0 auto;
+    margin: 0 ;
     padding: 20px;
 }
 
@@ -19,7 +20,9 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-}
+    padding-bottom: 20px;
+    border-bottom: 0.25px solid #333;
+} 
 
 .user-view-back-button {
     font-size: 24px;
@@ -39,6 +42,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
+   
 }
 
 .user-view-profile-details h1 {
@@ -121,6 +125,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     text-align: center;
+    cursor: pointer;
 }
 
 .user-view-follower img {
@@ -128,6 +133,7 @@
     height: 60px;
     border-radius: 50%;
     margin-bottom: 5px;
+    object-fit: cover;
 }
 
 /* Order history styles */
@@ -154,7 +160,7 @@
     flex: 4;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 80vh;
+    max-height: 66.5vh;
 }
 
 /* Responsive design */
