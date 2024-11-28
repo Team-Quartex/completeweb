@@ -419,13 +419,13 @@
             <div class="profile-header">
             <div class="profile-picture">
                 <div class="profile-picture">
-                    <img src="Dummy.png" alt="hiii">
+                    <img src="Dummy.png" alt="hiii" id="seller-profile">
                     <a onclick="openeditview()" class="edit-icon"><i class="fi fi-rr-pencil"></i></a>
                 </div>
             </div>
 
             <div class="profile-info">
-                <h1>Seller's Name</h1>
+                <h1 id="seller-name-edit">Seller's Name</h1>
                 <p>Quartex Verified</p>
                 
                 <div class="rating">
@@ -444,39 +444,18 @@
         <!-- Profile Details -->
         <div class="profile-details">
             <!-- Left Container -->
-            <div class="details-container">
-                <div class="grid-details">
-                    <div><strong>Name</strong></div>
-                    <div>Name</div>
-
-                    <div><strong>Email</strong></div>
-                    <div>Email</div>
-
-                    <div><strong>Username</strong></div>
-                    <div>Username</div>
-
-                    <div><strong>Location</strong></div>
-                    <div>Location</div>
-
-                    <div><strong>Telephone number</strong></div>
-                    <div>Telephone number</div>
-
-                    <div><strong>Active Status</strong></div>
-                    <div>Active Status</div>
-                    
-                    <div><strong>Verifications</strong></div>
-                    <div>Verifications</div>
-                </div>
+            <div class="details-container" id="details-container">
+                
                
             </div>
 
             <!-- Right Container -->
             <div class="edit-container" id="edit-container">
-                <form action="">
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="User Name">
-                <input type="email" placeholder="Email">
-                <input type="tel" placeholder="Telephone number">
+                <form id="seller-edit-form">
+                <input type="text" placeholder="Name" id="edit-name">
+                <input type="text" placeholder="User Name" id="edit-username">
+                <input type="email" placeholder="Email" id="edit-email">
+                <input type="tel" placeholder="Telephone number" id="edit-number">
                 <div class="profile-input_container">
                   <label for="files" class="btn">Choose Profile Image</label>
                   <div class="profile-image-update">
@@ -599,7 +578,7 @@
     <script type="module" src="./js/navigation.js"></script>
     <script type="module" src="./js/product.js"></script>
     <script type="module" src="./js/earings.js"></script>
-    <script src="./js/profileview.js"></script>
+    <script type="module" src="./js/profileview.js"></script>
     <script>
       function openeditview(){
           document.getElementById('edit-container').style.display="block";

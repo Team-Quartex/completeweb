@@ -1,5 +1,6 @@
 import {fetchProducts,fetchCategories} from './product.js'
 import {fetchrentDetails,sellerEarnings,sellerWithdraw} from './earings.js'
+import {profileDetailsLoad} from './profileview.js'
 
 const contents = document.querySelectorAll(".main-content");
 const navbtns = document.querySelectorAll(".nav-item");
@@ -25,7 +26,7 @@ function onTabShow(index) {
     sellerEarnings();
     sellerWithdraw();
   }else if(index ===3){
-
+    profileDetailsLoad();
   }else{
     
   }
