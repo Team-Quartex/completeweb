@@ -150,9 +150,9 @@ async function showSuggestPost(search) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  showSuggestPost("");
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   showSuggestPost("");
+// });
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
