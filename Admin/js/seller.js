@@ -61,7 +61,7 @@ async function viewSeller(sid) {
 
         const sellerProducts = await response.json();
         console.log(sellerProducts);
-
+        document.getElementById('seller-name-show').innerHTML =sellerProducts[0].username??"";
         const productsHolder = document.getElementById('item-viewer-scroller');
         productsHolder.innerHTML = "";
 
