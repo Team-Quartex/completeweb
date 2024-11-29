@@ -40,3 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
 }); // Call the function to load posts
 
+
+document.getElementById('homegobtn').addEventListener('click',()=>{
+  loadPost();
+})
+
+document.getElementById('search-close').addEventListener('click',()=>{
+  loadPost();
+})

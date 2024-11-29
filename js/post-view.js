@@ -40,7 +40,7 @@ export function showPostview(post) {
               <button class="carousel-arrow right-arrow ${post.images.length<=1?`none-carsole`:""}" onclick="scrollCarousel('right')">&#10095;</button>
             </div>
           </div>
-           <div class ="post-view-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</div>
+           <div class ="post-view-description">${post.description}</div>
   
           <!-- Action Bar -->
           <div class="action-bar">

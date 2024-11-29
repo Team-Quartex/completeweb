@@ -35,7 +35,7 @@
       </div>
       <nav>
 
-        <div class="nav-item active-btn button-class" onclick="gotohome()">
+        <div class="nav-item active-btn button-class" id="homegobtn" onclick="gotohome()">
           <span class="icons"><i class="fi fi-sr-plane-alt"></i></span>
           News Feed
         </div>
@@ -144,7 +144,7 @@
     <!-- search -->
     <main class="main-content" id="search">
       <div class="header-1">
-        <p onclick="closesearch()"><i class="fi fi-rr-angle-left"></i></p><br>
+        <p onclick="closesearch()" id="search-close"><i class="fi fi-rr-angle-left"></i></p><br>
 
         <div class="search-bar-container" id="searchBarContainer">
           <span><i class="fi fi-rr-search"></i></span>
@@ -360,7 +360,7 @@
         Profile Details</div>
       <div class="settings-items" onclick="openChangePassword()"><i class="fi fi-rr-key"
           style="font-size: 25px;"></i>Change Password</div>
-      <div class="settings-items" onclick="openverify()"><i class="fi fi-rr-check-circle"
+      <div class="settings-items" id="openVerification" onclick="openverify()"><i class="fi fi-rr-check-circle"
           style="font-size: 25px;"></i>Verification</div>
       <div class="settings-items" onclick="openabout()"><i class="fi fi-rr-info" style="font-size: 25px;"></i>About
         Trova</div>
@@ -436,25 +436,25 @@
       And after requesting a verified badge, We check your profile also to prove if you are qualified!
     </p>
     <div class="verify-inputs">
-      <form action="">
+      <form id="request-verify-form">
         <div class="input-container">
 
-          <i class="fi fi-brands-youtube" style="font-size: 25px;"></i><input type="text" name="" id=""
-            placeholder="Enter Youtube channel link" class="link-texts" required>
+          <i class="fi fi-brands-youtube" style="font-size: 25px;"></i><input type="text" name="" id="ytlink"
+            placeholder="Enter Youtube channel link" class="link-texts" >
         </div>
         <div class="input-container">
 
-          <i class="fi fi-brands-linkedin" style="font-size: 25px;"></i><input type="text" name="" id=""
-            placeholder="Enter LinkedIn Account link" class="link-texts" required>
+          <i class="fi fi-brands-linkedin" style="font-size: 25px;"></i><input type="text" name="" id="linked"
+            placeholder="Enter LinkedIn Account link" class="link-texts" >
         </div>
         <div class="input-container">
 
-          <i class="fi fi-brands-twitter" style="font-size: 25px;"></i><input type="text" name="" id=""
-            placeholder="Enter Twitter link" class="link-texts" required>
+          <i class="fi fi-brands-twitter" style="font-size: 25px;"></i><input type="text" name="" id="twitter"
+            placeholder="Enter Twitter link" class="link-texts" >
         </div>
         <div class="input-container">
 
-          <i class="fi fi-sr-interrogation" style="font-size: 25px;"></i><textarea type="text" name="" id=""
+          <i class="fi fi-sr-interrogation" style="font-size: 25px;"></i><textarea type="text" name="" id="about-why"
             placeholder="Why We verify you" class="link-texts" required></textarea>
         </div>
 
@@ -520,6 +520,7 @@
     <script type="module" src="./js/citysuggestions.js"></script>
     <script type="module" src="./js/renderNotifications.js"></script>
     <script src="./js/editprofile.js"></script>
+    <script src="./js/addverification.js"></script>
     <script>
       
     </script>

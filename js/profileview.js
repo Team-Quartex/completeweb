@@ -1,6 +1,8 @@
 import { renderPosts } from "./renderposts.js";
 import { addFollow } from "./follow.js";
 import { loadsuggestions } from "./suggetions.js";
+import { loadPost } from "./post.js";
+
 
 
 const profileViewContainer = document.getElementById("user-profile-view");
@@ -138,12 +140,15 @@ export async function showUserprofile(userId) {
                 </main>
             </div>
         `;
+        
     profileViewContainer.innerHTML = bodyElement;
     const postHolder = document.getElementById("user-view-center-column");
     // profile view variables
     const orderView = document.getElementById("user-view-right-column");
     const followerView = document.getElementById("user-view-followers");
     const photoView = document.getElementById("user-view-recent-photos");
+
+    
 
     await postLoad(userId, postHolder);
     profileViewContainer.classList.add("user-profile-view-show");
@@ -166,6 +171,7 @@ export async function showUserprofile(userId) {
       .getElementById("user-view-back-button")
       .addEventListener("click", () => {
         profileViewContainer.classList.remove("user-profile-view-show");
+        loadPost();
       });
 
       const buttonQuery = document.getElementById('view-follow-btn');
@@ -242,7 +248,6 @@ async function showFollowers(id, holder) {
           const userId = user.dataset.userid;
           console.log(userId);
           showUserprofile(userId);
-          showUserprofile(userId)
         });
       });
     });
@@ -331,3 +336,5 @@ async function showOrders(holder) {
     console.error("Error loading posts:", error);
   }
 }
+
+
