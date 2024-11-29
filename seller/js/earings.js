@@ -94,21 +94,24 @@ export const sellerWithdraw = async() => {
 
     // Check if the response is successful
     if (!response.ok) {
-      throw new Error("Failed to fetch posts");
+      throw new Error("Failed to fetch data");
     }
 
     const status = await response.json(); // Assuming the API returns JSON
-    console.log(status);
+    
+    // Provide a default value if status.total_withdraw is undefined
+    const totalWithdraw = status.total_withdraw || 0;
 
-    remainingBalance = totEarnings - status[0].total_withdraw;
-    console.log(status.total_withdraw)
+    // Calculate the remaining balance
+    const remainingBalance = totEarnings - totalWithdraw;
+    // Update the HTML element with the remaining balance
     document.getElementById("amount").innerHTML = `LKR ${remainingBalance}`;
 
-
   } catch (error) {
-    console.error("Error loading posts:", error);
+    console.error("Error loading data:", error);
   }
 }
+
 
 document.getElementById('withdraw-button').addEventListener('click',(e)=>{
   e.preventDefault();
