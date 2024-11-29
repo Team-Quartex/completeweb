@@ -41,6 +41,7 @@
   function closesearch() {
     searchContainer.style.display = 'none';
     document.getElementById('post-container').style.display='block';
+    document.getElementById("search-results").innerHTML="";
   }
 function closepostview(){
     document.getElementById("comment-viewer").style.display="none";
@@ -53,12 +54,12 @@ function openpostview(){
 
 function toggleActive(event) {
   // Remove .active class from all buttons
-  const buttons = document.querySelectorAll('.active');
-  buttons.forEach(button => button.classList.remove('active'));
+  const buttons = document.querySelectorAll('.active-btn');
+  buttons.forEach(button => button.classList.remove('active-btn'));
 
   // Add .active class to the clicked button
   const clickedButton = event.currentTarget;
-  clickedButton.classList.add('active');
+  clickedButton.classList.add('active-btn');
 }
 
 // Attach event listeners to all buttons that need the .active behavior
@@ -66,3 +67,26 @@ const allButtons = document.querySelectorAll('.button-class'); // Replace .butto
 allButtons.forEach(button => {
   button.addEventListener('click', toggleActive);
 });
+
+function openMakertPlaceMobile(){
+  document.getElementById("marketplace").style.display = "block";
+  document.getElementById("saved-post-container").style.display = "none";
+  document.getElementById("post-container").style.display = "none";
+  document.getElementById('search').style.display="none";
+  loadCategory(); // Load categories
+  loadProducts(); // Load products
+
+  
+
+}
+
+function openSetiingsMobile() {
+  document.getElementById("Settingspanel").style.width = "100vw";
+}
+function closeSetiings() {
+  document.getElementById("Settingspanel").style.width = "0";
+}
+function getNotificationMobile(){
+  document.getElementById("Notificaionpanel").style.width = "100vw";
+  fetchNotifications()
+}

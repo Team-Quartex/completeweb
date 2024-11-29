@@ -161,3 +161,10 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+
+document.querySelectorAll('.search-btn-click').forEach((searchBtn)=>{
+  searchBtn.addEventListener('click',()=>{
+    showSuggestPost("");
+  })
+})

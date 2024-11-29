@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/style/userprofile.css" />
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
   
   <script src="https://kit.fontawesome.com/e82ac91667.js" crossorigin="anonymous"></script>
 
@@ -34,7 +35,7 @@
       </div>
       <nav>
 
-        <div class="nav-item active button-class" onclick="gotohome()">
+        <div class="nav-item active-btn button-class" onclick="gotohome()">
           <span class="icons"><i class="fi fi-sr-plane-alt"></i></span>
           News Feed
         </div>
@@ -63,7 +64,10 @@
         <div class="header-buttons">
 
 
-          <button class="header-button" id="search-btn-click search-btn-click" onclick="opensearch(event)">
+          <button class="header-button notification-btn" onclick="getNotificationMobile()">
+            <i class="fi fi-sr-bell" style="color: #ffffff;"></i> 
+          </button>
+          <button class="header-button search-btn-click" onclick="opensearch(event)">
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E"
               alt="Search" width="20" height="20" />
@@ -298,6 +302,23 @@
       </div>
 
     </main>
+    <nav class="bottom-nav-bar">
+      <div class="bottom-nav-item" onclick="gotohome()">
+        <i class="fi fi-sr-plane-alt"></i> 
+      </div>
+      <div class="bottom-nav-item" id="notification-panel-button" >
+        <i class="fi fi-sr-user"></i> 
+      </div>
+      <div class="bottom-nav-item" id="savepost-btn">
+        <i class="fi fi-sr-bookmark"></i> 
+      </div>
+      <div class="bottom-nav-item" id="marketplace-btn" onclick="openMakertPlaceMobile()">
+        <i class="fi fi-sr-shopping-cart"></i> 
+      </div>
+      <div class="bottom-nav-item" onclick="openSetiingsMobile()">
+        <i class="fi fi-sr-settings"></i> 
+      </div>
+    </nav>
 
     <!-- Market palce end -->
 
@@ -431,6 +452,12 @@
           <i class="fi fi-brands-twitter" style="font-size: 25px;"></i><input type="text" name="" id=""
             placeholder="Enter Twitter link" class="link-texts" required>
         </div>
+        <div class="input-container">
+
+          <i class="fi fi-sr-interrogation" style="font-size: 25px;"></i><textarea type="text" name="" id=""
+            placeholder="Why We verify you" class="link-texts" required></textarea>
+        </div>
+
 
         <input type="submit" value="Request Verification" class="Verify-btn">
       </form>
@@ -471,6 +498,7 @@
 
   <!-- user view -->
   <div class="user-profile-view" id="user-profile-view">
+    
 
   </div>
 
@@ -499,7 +527,26 @@
   <script>
 
 
+function toggleBottomNav() {
+  const bottomNav = document.querySelector('.bottom-nav-bar');
+  if (window.innerWidth <= 768) {
+    bottomNav.style.display = 'flex';
+  } else {
+    bottomNav.style.display = 'none';
+  }
+}
 
+// Call the function when the page is loaded
+window.addEventListener('resize', toggleBottomNav);
+toggleBottomNav();
+
+// Add mobile-specific event listeners
+document.querySelectorAll('.bottom-nav-item').forEach(item => {
+  item.addEventListener('click', function() {
+    // Handle navigation actions (e.g., toggle sections visibility)
+  });
+});
+ 
 
 
 
@@ -622,7 +669,6 @@
     }
   }
 
- 
 
 
   </script>

@@ -80,6 +80,8 @@
 
 .user-view-right-column {
     flex: 1;
+    max-height: 70vh;
+    overflow-y: auto;
     
 }
 
@@ -188,14 +190,27 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .user-profile-view{
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+        
+    }
+    .user-view-header{
+       
+        
+    }
     .user-view-profile-info {
         flex-direction: column;
         text-align: center;
+        
     }
 
     .user-view-profile-picture {
         margin-right: 0;
         margin-bottom: 20px;
+        text-align: center;
+        
     }
 
     .user-view-main-content {
