@@ -271,3 +271,102 @@
 .star-color{
     color: yellow;
 }
+@media screen and (max-width: 768px) {
+    /* Adjust marketplace layout for smaller screens */
+    .marketplace-grid {
+        grid-template-columns: repeat(2, 1fr); /* Show 2 items per row on mobile */
+        gap: 10px;
+    }
+
+    /* Make item containers responsive */
+    .marketplace-item {
+        width: 80%; /* Take up most of the screen width on mobile */
+        height: auto;
+        margin: 10px auto;
+    }
+
+    /* Adjust image sizes inside items */
+    .item-image img {
+        width: 80%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    /* Resize the search bar */
+    .search-bar-marketplace {
+        max-width: 100%;
+        margin-left: 10px;
+    }
+
+    .search-bar-marketplace input {
+        font-size: 14px;
+    }
+
+    .image-box {
+        width: 150px; /* Smaller images in the horizontal scroll */
+        height: 150px;
+    }
+
+    .image-scroll-horizontal {
+        gap: 20px;
+        padding: 5px 0;
+    }
+
+    /* For Rent Button */
+    .for-rent-btn {
+        font-size: 14px;
+        padding: 8px 20px;
+        margin-top: 5px;
+    }
+
+    /* Item text and ratings */
+    .item-details h3 {
+        font-size: 18px;
+        margin-left: 5%;
+    }
+
+    .item-details p {
+        font-size: 14px;
+        margin-left: 5%;
+    }
+
+    .rating {
+        font-size: 14px;
+    }
+
+    .button-icon-container {
+        gap: 10px;
+    }
+}
+
+/* Extra Small Screens (e.g., portrait mobile) */
+@media screen and (max-width: 480px) {
+    .marketplace-grid {
+        grid-template-columns: 1fr; /* Only 1 item per row */
+    }
+
+    .marketplace-item {
+        width: 100%;
+       height: 60vh;
+        margin: 5px auto;
+    }
+
+    .item-image img {
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .for-rent-btn {
+        font-size: 14px;
+        width: 100%;
+        padding: 8px 10px;
+    }
+
+    .item-details h3 {
+        font-size: 16px;
+    }
+
+    .item-details p {
+        font-size: 12px;
+    }
+}

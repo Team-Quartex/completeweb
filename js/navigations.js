@@ -66,3 +66,26 @@ const allButtons = document.querySelectorAll('.button-class'); // Replace .butto
 allButtons.forEach(button => {
   button.addEventListener('click', toggleActive);
 });
+
+function openMakertPlaceMobile(){
+  document.getElementById("marketplace").style.display = "block";
+  document.getElementById("saved-post-container").style.display = "none";
+  document.getElementById("post-container").style.display = "none";
+  document.getElementById('search').style.display="none";
+  loadCategory(); // Load categories
+  loadProducts(); // Load products
+
+  
+
+}
+
+function openSetiingsMobile() {
+  document.getElementById("Settingspanel").style.width = "100vw";
+}
+function closeSetiings() {
+  document.getElementById("Settingspanel").style.width = "0";
+}
+function getNotificationMobile(){
+  document.getElementById("Notificaionpanel").style.width = "100vw";
+  fetchNotifications()
+}
