@@ -452,11 +452,17 @@ left: 170px;
     font-size: 25px;
     margin-bottom: 15px;
 }
+.suggestions{
+  max-height: 50vh;
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
 
 .suggestion {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
+    
 }
 
 .suggestion-avatar {
