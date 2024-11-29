@@ -224,13 +224,27 @@ body {
 
 .center-withdraw{
   display: flex;
+  gap: 20px;
   flex-direction: column;
   width: 30vw;
   height: 30vh;
   background-color: white;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  border-radius: 20px;
 }
 .show{
   display: flex;
+}
+#withdraw-now{
+  border-radius: 20px;
+}
+.cancel-btn{
+  background: #E2E8F0;
+  color: #000;
+  border-radius: 20px;
+}
+.cancel-btn:hover{
+  background: #00A389;
 }

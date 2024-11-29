@@ -115,9 +115,11 @@ document.getElementById('withdraw-button').addEventListener('click',(e)=>{
   const maxWithdraw = remainingBalance - 1000;
   const withdrawContainer = document.getElementById('withdraw-container');
   const element = `<div class="center-withdraw">
-        <h4>Max Withdraw Amount LKR ${maxWithdraw}</h4>
-        <input type="number"  id="withdraw-amount">
+       
+        <h4>Minimum Withdraw Amount LKR ${maxWithdraw}</h4>
+        <input type="number"  id="withdraw-amount" placeholder="Enter the amount">
         <button id="withdraw-now">Withdraw</button>
+        <button id="cancel" class="cancel-btn">Cancel</button>
       </div>`
   withdrawContainer.innerHTML = element;
   withdrawContainer.classList.add('show');
@@ -128,6 +130,14 @@ document.getElementById('withdraw-button').addEventListener('click',(e)=>{
     addwithdraw(amount);
     withdrawContainer.classList.remove('show');
   })
+  document.getElementById('cancel').addEventListener('click',(e)=>{
+    e.preventDefault();
+    
+    withdrawContainer.classList.remove('show');
+  })
+
+
+
 })
 
 function addwithdraw(amount){
