@@ -4,8 +4,25 @@ document.getElementById('openVerification').addEventListener('click',()=>{
     const veifyPanel = document.getElementById('verifypanel');
     veifyPanel.innerHTML = `<a href="javascript:void(0)" class="closebtn" onclick="closeverify()"><i class="fi fi-sr-circle-xmark"
         style="font-size: 20px;text-decoration: none;color: black;"></i></a>`;
-    if(verify==="no"){
+    if(verify==="yes"){
+      veifyPanel.innerHTML += `<div class="verification-container">
+  <div class="verified-badge">
+    <span class="verified verify-badge"><i class="fi fi-rr-globe"></i></span>
+  </div>
+  <div class="text-verified">
+  <h1 >Verified Account</h1>
+  <h3>Your account is already verified!</h3>
+  </div>
+  <div class="verified-acc-brief">
+    <p>Your account has been successfully verified and no need to verify again</p><br>
+    <hr><br><br>
+    <p style="font-size: 12px;">Other users can follow verified accounts only<br><br>
+      Verified users can see the <b>follower</b> count<br><br>
+      Verified users will be qualified for the upcomming programs in Quartex
 
+
+    </p>
+  </div>`
     }else{
         veifyPanel.innerHTML += `<h1>Get Trova Verified</h1>
 

@@ -1023,4 +1023,9 @@ left: 170px;
     }
    
   }
-  
+  .text-verified{
+    text-align: center;
+  }
+  .verified-acc-brief{
+    margin: 70px 20px;
+  }
