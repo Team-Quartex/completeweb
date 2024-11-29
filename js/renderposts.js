@@ -332,7 +332,7 @@ function addLike(postid, userId) {
 
 function remove(postid, userId) {
   const addfavourite = fetch("http://localhost:8000/api/likes/remove", {
-    method: "DELETE",
+    method: "POST",
     headers: {
       "Content-Type": "application/json", // Ensure you're sending JSON
     },
