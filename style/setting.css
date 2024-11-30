@@ -1,0 +1,92 @@
+
+.settings-items{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+  }
+  .settings-panel-contents{
+    margin-top: 30px;
+  }
+  .profile-img-change{
+    margin-top: 20px;
+    text-align: center;
+  }
+  .profile-img-change img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .text-edit-section{
+    margin-top: 30px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+  }
+  .text-feilds{
+    width: 90%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: none;
+    border-bottom: 1px solid #444;
+    outline: none;
+    padding: 10px 0px;
+  }
+  .text-feilds:focus{
+    border-bottom: 1px solid #238688;
+  }
+  .data-save-btn{
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+   background: #238688;
+   border: none;
+   color: #fff;
+   text-align: center;
+   font-size: 16px;
+   padding: 10px 50px;
+   border-radius: 20px;
+  }
+  .edit-btn{
+    background-color: #fff;
+    color: #238688;
+    
+    padding: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top:250px;
+    left: 250px;
+  }
+  
+  #changepasswordpanel p{
+    margin: 0px 20px;
+    font-size: 12px;
+  }
+  .resetpasswordinput{
+  
+    padding: 10px 15px;
+    margin: 50px 20px;
+    width: 90%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #444;
+  }
+  .submit-btn-password-reset{
+    text-align: center;
+  
+  }
+  .resetlink{
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    background: #050505;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+  }

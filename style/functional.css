@@ -1,0 +1,53 @@
+.hashtag {
+    color: blue; /* Color for hashtags */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.location {
+    color: green; /* Color for @mentions or locations */
+    font-style: italic;
+    cursor: pointer;
+}
+
+#citySearch:focus {
+    outline: none;
+}
+
+.city-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+   
+}
+
+.city-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.city-suggestions div:last-child {
+    border-bottom: none;
+}
+
+.city-suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+.removeDisplay {
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0s 0.5s; /* Fade out with delay */
+    visibility: visible;
+}
+
+.removeDisplay.hidden {
+    opacity: 0;
+    visibility: hidden; /* Make it completely hidden */
+}

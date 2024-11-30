@@ -1,0 +1,234 @@
+.user-profile-view{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    display: none;
+}
+
+.user-view-container {
+    max-width: 100vw;
+    margin: 0 ;
+    padding: 20px;
+}
+
+/* Header styles */
+.user-view-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 0.25px solid #333;
+} 
+
+.user-view-back-button {
+    font-size: 24px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-view-profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-view-profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+   
+}
+
+.user-view-profile-details h1 {
+    font-size: 60px;
+    margin-bottom: 5px;
+}
+
+.user-view-profile-details p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.user-view-follow-button {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Main content styles */
+.user-view-main-content {
+    display: flex;
+    flex-grow: 5;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.user-view-left-column {
+    flex: 1;
+}
+
+.user-view-right-column {
+    flex: 1;
+    max-height: 70vh;
+    overflow-y: auto;
+    
+}
+
+.user-view-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-view-card h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Basic details styles */
+.user-view-basic-details dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+}
+
+.user-view-basic-details dt {
+    font-weight: bold;
+    color: #666;
+}
+
+/* Recent photos styles */
+.user-view-recent-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.user-view-recent-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Followers styles */
+.user-view-followers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-view-follower img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    object-fit: cover;
+}
+
+/* Order history styles */
+.user-view-order-item {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.user-view-order-item-details {
+    display: flex;
+    
+    align-items: center;
+}
+.order-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    gap: 20px;
+    border-bottom: 0.25px solid #333;
+    padding: 20px;
+}
+.order-scroller{
+    height: 2vh;
+}
+
+.user-view-order-item-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.item-detail{
+    display: flex;
+    justify-content: space-between;
+    gap:20px;
+}
+.user-view-center-column{
+    flex: 4;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 66.5vh;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .user-profile-view{
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+        
+    }
+    .user-view-header{
+       
+        
+    }
+    .user-view-profile-info {
+        flex-direction: column;
+        text-align: center;
+        
+    }
+
+    .user-view-profile-picture {
+        margin-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        
+    }
+
+    .user-view-main-content {
+        flex-direction: column;
+    }
+
+    .user-view-recent-photos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-view-followers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.user-profile-view-show{
+    display: block;
+}
+
+.hide-order{
+    display: none;
+}

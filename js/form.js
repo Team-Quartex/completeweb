@@ -35,6 +35,7 @@ document.getElementById('upload-form').addEventListener('submit',async function 
     const formData = new FormData();
     const files = document.getElementById("file-1").files;
     const description = document.getElementById('add-description').value;
+    const city = document.getElementById('citySearch').value;
 
     Array.from(files).forEach((file) => {
       formData.append("file-1", file);
@@ -79,7 +80,7 @@ document.getElementById('upload-form').addEventListener('submit',async function 
           credentials: "include",
           body: JSON.stringify({
             desc: description,
-            location: "123fddffdsdfdsfdsfghjgfdsffdfdsfds456",
+            location: city,
             images: imageFilenames, // Pass the filenames array here
           }),
         }

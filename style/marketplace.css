@@ -1,0 +1,372 @@
+/*Style for Marketplace*/
+
+#marketplace{
+    display: none;
+}
+
+.search-bar-marketplace {
+    overflow-x: hidden;
+    flex-grow: 1; 
+    max-width: 500px; 
+    margin-left: 20px; 
+    display: flex; 
+    align-items: center; 
+    position: relative; 
+}
+
+.search-bar-marketplace input {
+    width: 100%;
+    padding: 10px 15px 10px 40px; 
+    font-size: 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+ 
+    border-color: #1A8381;
+}
+
+.search-bar-marketplace i {
+    position: absolute; 
+    left: 15px; 
+    font-size: 18px; 
+    color: #2a2b2b; 
+}
+
+
+.header-with-search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* Horizontal Image Scroller */
+.image-scroll-horizontal {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    padding: 10px 0;
+    
+
+}
+
+/* Individual Image Box */
+.image-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeefef; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    padding: 10px;
+    width: 190px; 
+    height: 190px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Images within the boxes */
+.image-box img {
+    max-width: 150px; 
+    max-height: 140px; 
+    border-radius: 10px; 
+    object-fit: cover; 
+   
+    
+}
+.main{
+    overflow-x: scroll; 
+    scrollbar-width: none; 
+    max-height: 100vh; 
+    box-sizing: border-box; 
+    flex: 1;
+    
+    padding: 20px;
+    
+    
+
+}
+
+.image-scroll-horizontal img {
+    width: 170px;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.image-scroll-horizontal img:hover {
+    transform: scale(1.05);
+}
+
+/* Transparent Scrollbar Styling */
+.image-scroll-horizontal::-webkit-scrollbar {
+    display: none; 
+}
+
+
+
+
+/* Main Content - Marketplace Grid */
+.marketplace-grid {
+    display: grid;
+    grid-column: span 3;
+    overflow-y: auto;
+    /* height: 100vh; */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.marketplace-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    width: 20vw;
+    margin: 20px auto;
+    height: 55vh;
+}
+
+/* Style for the item container */
+.item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.item-image img {
+    width: 20vw;
+    height: auto;
+    max-height: 200px;
+    object-fit:contain;
+    border-radius: 10px;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+/* Styling the rating stars */
+.rating {
+    display: flex;
+    justify-content: left;
+    gap: 7px;
+    font-size: 17px;
+    color: #e6e6e6; 
+    margin-left: 12%;
+}
+
+
+.rating .star.active {
+    color: #f5c518; 
+    cursor: pointer;
+}
+
+/* Button Styling */
+.for-rent-btn {
+    background-color: #258786;
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-content: left;
+   
+}
+
+.for-rent-btn:hover {
+    background-color: #008378;
+}
+
+.button-icon-container {
+    display: flex; 
+    align-items: center;
+    gap:40px;
+}
+
+/* Favorite Icon */
+.favorite-icon {
+    font-size: 24px;
+    color: transparent;
+    border: none;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+}
+
+
+.favorite-icon i {
+    color: #adadad; 
+    font-size: 20px; 
+}
+
+.favorite-icon .fas.fa-heart.active {
+    color: #e63946; 
+}
+
+
+/* Style for the item details */
+.item-details {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.item-details h3 {
+    font-size: 22px;
+    color: #333;
+    margin: 10px 0;
+    text-align: left;
+    margin-left: 12%;
+}
+
+.item-details p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 15px;
+    text-align:start;
+    align-items: left;
+    margin-left: 12%;
+
+}
+
+
+
+/* Hover effect for marketplace items */
+.marketplace-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+/* Special content */
+.special-content h2 {
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+
+.special-content img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+
+.star-color{
+    color: yellow;
+}
+@media screen and (max-width: 768px) {
+    /* Adjust marketplace layout for smaller screens */
+    .marketplace-grid {
+        grid-template-columns: repeat(2, 1fr); /* Show 2 items per row on mobile */
+        gap: 10px;
+    }
+
+    /* Make item containers responsive */
+    .marketplace-item {
+        width: 80%; /* Take up most of the screen width on mobile */
+        height: auto;
+        margin: 10px auto;
+    }
+
+    /* Adjust image sizes inside items */
+    .item-image img {
+        width: 80%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    /* Resize the search bar */
+    .search-bar-marketplace {
+        max-width: 100%;
+        margin-left: 10px;
+    }
+
+    .search-bar-marketplace input {
+        font-size: 14px;
+    }
+
+    .image-box {
+        width: 150px; /* Smaller images in the horizontal scroll */
+        height: 150px;
+    }
+
+    .image-scroll-horizontal {
+        gap: 20px;
+        padding: 5px 0;
+    }
+
+    /* For Rent Button */
+    .for-rent-btn {
+        font-size: 14px;
+        padding: 8px 20px;
+        margin-top: 5px;
+    }
+
+    /* Item text and ratings */
+    .item-details h3 {
+        font-size: 18px;
+        margin-left: 5%;
+    }
+
+    .item-details p {
+        font-size: 14px;
+        margin-left: 5%;
+    }
+
+    .rating {
+        font-size: 14px;
+    }
+
+    .button-icon-container {
+        gap: 10px;
+    }
+}
+
+/* Extra Small Screens (e.g., portrait mobile) */
+@media screen and (max-width: 480px) {
+    .marketplace-grid {
+        grid-template-columns: 1fr; /* Only 1 item per row */
+    }
+
+    .marketplace-item {
+        width: 100%;
+       height: 60vh;
+        margin: 5px auto;
+    }
+
+    .item-image img {
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .for-rent-btn {
+        font-size: 14px;
+        width: 100%;
+        padding: 8px 10px;
+    }
+
+    .item-details h3 {
+        font-size: 16px;
+    }
+
+    .item-details p {
+        font-size: 12px;
+    }
+}

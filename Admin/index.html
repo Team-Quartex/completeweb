@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-mart@latest/css/emoji-mart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Admin-Panel</title>
+</head>
+
+<body>
+  <!--Starting Navigation Bar-->
+  <div class="navbar">
+    <div class="nav-icons">
+      <ul>
+        <li class="nav-btn">
+          <box-icon type="solid" name="dashboard" class="nav-icon" size="md"></box-icon title="Dashboard">
+        </li>
+        <li class="nav-btn">
+          <box-icon name="check" class="nav-icon" size="md"></box-icon title='Verifications'>
+        </li>
+        <li class="nav-btn">
+          <box-icon name="face" class="nav-icon" size="md"></box-icon title="Sellers">
+        </li>
+        <li class="nav-btn">
+          <box-icon name="food-menu" class="nav-icon" size="md"></box-icon title="Reservations">
+        </li>
+        <li class="nav-btn">
+          <box-icon name="user" class="nav-icon" size="md"></box-icon title="Users">
+        </li>
+        <li class="nav-btn">
+          <box-icon name="cog" class="nav-icon" size="md"></box-icon title="Settings">
+        </li>
+        <li id="logout-btn">
+          <box-icon name="log-in-circle" color="red" class="log-out nav-icon" size="md"></box-icon title="Logout">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--Ending Navigation Bar-->
+
+  <!--Starting Dashboard Section-->
+  <section id="dashboard" class="main-container show-content">
+    <div class="title-text-dashboard">
+      <h3>Dashboard</h3>
+    </div>
+    <div class="searchbar">
+      <input type="search" name="" id="" placeholder="Search" />
+      <h3>Welcome <label for="">Name</label></h3>
+    </div>
+    <div class="main-activities">
+      <div class="totals">
+        <h1>Income</h1>
+        <h4>Total revenue generated so far</h4>
+        <h2>LKR 00.00</h2>
+      </div>
+      <div class="totals">
+        <h1>User Count</h1>
+        <h4>Total registered users on platform</h4>
+        <h2>7300</h2>
+      </div>
+      <div class="totals">
+        <h1>Seller Count</h1>
+        <h4>Total active sellers registered</h4>
+        <h2>2000</h2>
+      </div>
+      <div class="totals">
+        <h1>Product Count</h1>
+        <h4>Total active products listed</h4>
+        <h2>574</h2>
+      </div>
+
+      <div class="totals">
+        <h1>Post Count</h1>
+        <h4>Total posts awaiting verification</h4>
+        <h2>7000</h2>
+      </div>
+    </div>
+  </section>
+  <!--Dashboard section end-->
+
+  <!--menu section start-->
+  <section id="menu" class="main-container">
+    <div class="menu-section">
+      <h3>Verification</h3>
+      <div class="search-input"></div>
+
+      <div class="user-verification-table">
+        <table class="verification-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Link</th>
+              <th>Verification</th>
+            </tr>
+          </thead>
+          <tbody id="verification-row">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- Menu Section end -->
+
+  <!-- Event Section Start-->
+  <section id="events" class="main-container">
+    <div class="Event-section">
+      <h3>Seller</h3>
+      <div class="recent-events-container">
+        <h1>Active Sellers</h1>
+        <input type="search" name="" id="" placeholder="Search " />
+        <div class="seller-tabel-scroller">
+          <table class="recent-events">
+            <thead>
+              <tr>
+                <th>Seller Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody id="seller-table">
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="add-event-container" id="view-seller">
+        <h1 id="seller-name-show">Seller Name</h1>
+        <div class="item-viewer-scroller" id="item-viewer-scroller">
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--events section end-->
+
+  <!--reserv & orders sections start-->
+  <section id="reserveorders" class="main-container">
+    <div class="reserv-order">
+      <h3>Reservations</h3>
+      <div class="reserv-container">
+        <h1>Reservations</h1>
+        <input type="search" name="" id="" placeholder="Search " />
+        <div class="reserve-scroller">
+          <table class="reserv-table">
+            <thead>
+              <tr>
+                <th>Buyer Name</th>
+                <th>Seller Name</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Commision</th>
+              </tr>
+            </thead>
+
+            <tbody id="reservation-table">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Reservation & Orders Section end-->
+
+  <!-- Users section start-->
+  <section id="users" class="main-container">
+    <div class="users-container">
+      <h3>Users</h3>
+      <div class="user-container">
+        <h1>All Active Users</h1>
+        <input type="search" name="" id="" placeholder="Search " />
+        <div class="user-table-scroller">
+          <table class="user-table">
+            <thead>
+              <tr>
+                <th>Buyer Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody id="user-table">
+              <tr>
+                <td>001</td>
+                <td>Rehan</td>
+                <td>rehan@gmail.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="add-event-container" id="view-user">
+        <h1 id="userName1">User Name</h1>
+        <div class="item-viewer-scroller" id="item-viewer-scroller1">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./js/main.js"></script>
+  <script type="module" src="./js/navigaton.js"></script>
+  <script type="module" src="./js/users.js"></script>
+</body>
+
+</html>
