@@ -5,7 +5,7 @@ import { formatPostTime } from "./utilities.js";
 import { loadsuggestions } from "./suggetions.js";
 import { showUserprofile } from "./profileview.js";
 import { showPostview } from "./post-view.js";
-import {addComment,addsaved,removedPost} from './mainFunctions.js'
+import {addComment,addsaved,removedPost,addLike,removeLike} from './mainFunctions.js'
 
 
 export function renderPosts(posts, container) {
@@ -218,9 +218,9 @@ export function renderPosts(posts, container) {
     postview.addEventListener("click", () => {
       // Access the dataset index for the current element
       const index = postview.dataset.index;
-
+      const struserId = String(userData.userid);
       // Use the index to show the post view
-      showPostview(posts[index]);
+      showPostview(posts[index],struserId);
     });
   });
 
@@ -241,7 +241,7 @@ export function renderPosts(posts, container) {
         like.dataset.status = "false";
         likesCount--; // Decrement like count
         likesCountElement.classList.remove("likeicon");
-        remove(postid, UserId);
+        removeLike(postid, UserId);
       } else {
         // Change to liked state
         like.classList.remove("fi-rr-heart");
@@ -316,30 +316,30 @@ export function renderPosts(posts, container) {
     });
 }
 
-function addLike(postid, userId) {
-  const addfavourite = fetch("http://localhost:8000/api/likes/add", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", // Ensure you're sending JSON
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      postId: postid,
-      postuser: userId,
-    }),
-  });
-}
+// function addLike(postid, userId) {
+//   const addfavourite = fetch("http://localhost:8000/api/likes/add", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json", // Ensure you're sending JSON
+//     },
+//     credentials: "include",
+//     body: JSON.stringify({
+//       postId: postid,
+//       postuser: userId,
+//     }),
+//   });
+// }
 
-function remove(postid, userId) {
-  const addfavourite = fetch("http://localhost:8000/api/likes/remove", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", // Ensure you're sending JSON
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      postId: postid,
-      postuser: userId,
-    }),
-  });
-}
+// function remove(postid, userId) {
+//   const addfavourite = fetch("http://localhost:8000/api/likes/remove", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json", // Ensure you're sending JSON
+//     },
+//     credentials: "include",
+//     body: JSON.stringify({
+//       postId: postid,
+//       postuser: userId,
+//     }),
+//   });
+// }

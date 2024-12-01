@@ -24,6 +24,7 @@ export async function loadPost() {
 
     // Get the feed container
     const mainContent = document.getElementById("feed-container");
+    mainContent.innerHTML="";
     window.postsArray.length = 0; // Clear the array in case of reload
     window.postsArray.push(...posts);
     renderPosts(posts, mainContent);

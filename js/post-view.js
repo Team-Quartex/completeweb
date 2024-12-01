@@ -1,7 +1,27 @@
-import {addComment} from './mainFunctions.js'
-export function showPostview(post) {
-    console.log(post);
+import {addComment,addLike,removeLike} from './mainFunctions.js'
+import { loadPost } from './post.js';
+export async function showPostview(postDetails,loguser) {
+    console.log(postDetails);
+    const requestOptions = {
+      method: "GET",
+      credentials: "include",
+    };
+    // call api and get posts
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/posts/singlepost?postid=${postDetails.postId}`,
+        requestOptions
+      );
+  
+      // Check if the response is successful
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+  
+      const post = await response.json(); // Assuming the API returns JSON
+      console.log(post)
     const postviewConatiner = document.getElementById("comment-viewer");
+    postviewConatiner.innerHTML="";
     postviewConatiner.style.display = "block";
     var postImage = "";
     
@@ -11,7 +31,7 @@ export function showPostview(post) {
     const postviewContent = `
           <div class="comment-box">
           <!-- Close Button -->
-          <p class="close-btn-postview" onclick="closepostview()">×</p>
+          <p class="close-btn-postview" id="close-btn-postview" onclick="closepostview()">×</p>
   
           <!-- Post Header -->
           <div class="comment-post-header">
@@ -44,10 +64,12 @@ export function showPostview(post) {
   
           <!-- Action Bar -->
           <div class="action-bar">
-            <div class="action-button"><i class="fi fi-rr-heart"></i> ${
+            <div class="action-button likeicon" id="likeButton">${post.likeduser.includes(loguser)?`<i class="fi fi-sr-heart likeicon " id="likeicons"></i><p id="like-counter"> ${
               post.likeduser.length
-            } Likes</div>
-            <div class="action-button"><i class="fi fi-rr-comments"></i> ${
+            }</p> Likes</div>`:`<i class="fi fi-rr-heart" id="likeicons"></i><p id="like-counter"> ${
+              post.likeduser.length
+            }</p> Likes</div>`}
+            <div class="action-button"><i class="fi fi-rr-comments" ></i> ${
               post.comments
             } Comments</div>
             <div class="action-button"><i class="fi fi-rr-share"></i> Shares</div>
@@ -86,7 +108,39 @@ export function showPostview(post) {
             document.getElementById('comment-input').value = "";
             await getComments(post.postId,commentHolder)
         }
+    });
+    const likeButton = document.getElementById('likeButton');
+    const liekIcons = document.getElementById('likeicons');
+    var likeCount= document.getElementById('like-counter').innerHTML;
+    likeButton.addEventListener('click',()=>{
+      if(liekIcons.classList.contains('likeicon')){
+        likeCount--;
+        console.log(likeCount)
+        document.getElementById('like-counter').innerHTML= likeCount;
+        console.log(`remove ${post.postId}`);
+        removeLike(post.postId,post.userId);
+        liekIcons.classList.remove('likeicon','fi-sr-heart');
+        liekIcons.classList.add('fi-rr-heart');
+        
+        
+      }else{
+        console.log(`add ${post.postId}`);
+        addLike(post.postId,post.userId);
+        liekIcons.classList.remove('fi-rr-heart')
+        liekIcons.classList.add('likeicon','fi-sr-heart');
+        likeCount++;
+        console.log(likeCount)
+        document.getElementById('like-counter').innerHTML= likeCount;
+      }
     })
+    const closeBtn = document.getElementById('close-btn-postview');
+    closeBtn.addEventListener('click',()=>{
+      postviewConatiner.innerHTML="";
+      loadPost();
+    })
+    } catch (error) {
+      console.error("Error loading posts:", error);
+    }
   }
   
   async function getComments(postId,holder) {

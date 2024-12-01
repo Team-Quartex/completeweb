@@ -81,3 +81,31 @@ export async function removedPost(postId){
     console.error(error);
   }
 }
+
+export function addLike(postid, userId) {
+  const addfavourite = fetch("http://localhost:8000/api/likes/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Ensure you're sending JSON
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      postId: postid,
+      postuser: userId,
+    }),
+  });
+}
+
+export function removeLike(postid, userId) {
+  const addfavourite = fetch("http://localhost:8000/api/likes/remove", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Ensure you're sending JSON
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      postId: postid,
+      postuser: userId,
+    }),
+  });
+}

@@ -1,12 +1,32 @@
-export function showPostview(post) {
-  console.log(post);
-  const postviewConatiner = document.getElementById("comment-viewer");
-  postviewConatiner.style.display = "block";
-  var postImage = "";
-  post.images.forEach((image) => {
-    postImage += `<img src="http://127.0.0.1:8000/uploads/${image}" alt="Post Image" class="post-image-comment">`;
-  });
-  const postviewContent = `a
+export async function showPostview(posts) {
+  console.log(posts);
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+  // call api and get posts
+  try {
+    const response = await fetch(
+      `http://localhost:8000/api/posts/singlepost?postid=${posts.postId}`,
+      requestOptions
+    );
+
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+
+    const post1 = await response.json(); // Assuming the API returns JSON
+    const post2 = post1[0];
+    
+
+    const postviewConatiner = document.getElementById("comment-viewer");
+    postviewConatiner.style.display = "block";
+    var postImage = "";
+    post.images.forEach((image) => {
+      postImage += `<img src="http://127.0.0.1:8000/uploads/${image}" alt="Post Image" class="post-image-comment">`;
+    });
+    const postviewContent = `a
         <div class="comment-box">
         <!-- Close Button -->
         <p class="close-btn-postview" onclick="closepostview()">×</p>
@@ -14,13 +34,11 @@ export function showPostview(post) {
         <!-- Post Header -->
         <div class="comment-post-header">
           <div class="comment-post-details">
-            <img src="http://127.0.0.1:8000/uploads/${
-              post.profilePic
-            }" alt="User Avatar" class="comment-user-avatar">
+            <img src="http://127.0.0.1:8000/uploads/${post.profilePic
+      }" alt="User Avatar" class="comment-user-avatar">
             <div class="post-details">
-              <h3 class="post-owner-name">${
-                post.name.split(" ")[0]
-              }'s Post</h3><br>
+              <h3 class="post-owner-name">${post.name.split(" ")[0]
+      }'s Post</h3><br>
               <span class="post-time-comment">${post.postTime}</span>
             </div>
           </div>
@@ -42,12 +60,10 @@ export function showPostview(post) {
 
         <!-- Action Bar -->
         <div class="action-bar">
-          <div class="action-button"><i class="fi fi-rr-heart"></i> ${
-            post.likeduser.length
-          } Likes</div>
-          <div class="action-button"><i class="fi fi-rr-comments"></i> ${
-            post.comments
-          } Comments</div>
+          <div class="action-button"><i class="fi fi-rr-heart"></i> ${post.likeduser.length
+      } Likes</div>
+          <div class="action-button"><i class="fi fi-rr-comments"></i> ${post.comments
+      } Comments</div>
           <div class="action-button"><i class="fi fi-rr-share"></i> Shares</div>
         </div>
 
@@ -104,12 +120,16 @@ export function showPostview(post) {
         </form>
       </div>
     `;
-  postviewConatiner.innerHTML = postviewContent;
-  const commentHolder = document.getElementById('comment-box-section');
-  getComments(post.postId,commentHolder)
+    postviewConatiner.innerHTML = postviewContent;
+    const commentHolder = document.getElementById('comment-box-section');
+    getComments(post.postId, commentHolder)
+
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
 }
 
-async function getComments(postId,holder) {
+async function getComments(postId, holder) {
   holder.innerHTML = "";
   const requestOptions = {
     method: "GET",
