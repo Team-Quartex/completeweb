@@ -83,14 +83,16 @@ export async function showUserprofile(userId) {
                             </div>
                         </section>
 
-                        <section class="user-view-card">
+                        <section class="user-view-card ">
                             <h2>Followers</h2>
+                            <div class ="follower-scroller">
                             <div class="user-view-followers" id="user-view-followers">
                                 <div class="user-view-follower">
                                     <img src="https://via.placeholder.com/60" alt="Follower 1" />
                                     <p>User name</p>
                                 </div>
                             </div>
+                           </div> 
                         </section>
                     </div>
 

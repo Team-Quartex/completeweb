@@ -23,7 +23,10 @@ document.getElementById('login-seller').addEventListener('submit', function (eve
                 window.location.href = 'index.html';
             }
             else if(response.status===404){
-                error.innerHTML='User Not Found';
+                error.innerHTML='User not found';
+                element.style.color = "blue";
+                element.style.fontSize = "24px";
+                element.style.fontWeight = "bold";
             }
             else if(response.status===400){
                 error.innerHTML='User name or password wrong';

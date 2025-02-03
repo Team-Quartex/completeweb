@@ -117,7 +117,9 @@ export function renderPosts(posts, container) {
       ? `<span class="location">@${post.location}</span> <br>`
       : "";
     const verify =
-      post.verify === "yes" ? `<i class="fi fi-rr-globe"></i>` : ``;
+      post.verify === "yes" ? `<div class="tooltip"><i class="fi fi-ss-check-circle verified-badge"></i> 
+  <span class="tooltiptext">This user has a verification </span>
+</div>` : ``;
     const followBtn =
       post.isFollowed === "no" &&
       post.verify === "yes" &&
@@ -160,11 +162,11 @@ export function renderPosts(posts, container) {
                                   post.likeduser.includes(struserId)
                                     ? `
                                     <i class="fi fi-sr-heart likeicon likebutton" data-status="true" data-postid="${post.postId}" data-postuser="${post.UserId}"></i>
-                                    <p class="likeicon">${post.likeduser.length}</p>
+                                    <p class="likeicon">${post.likeduser.length} Reacts</p>
                                     `
                                     : `
                                     <i class="fi fi-rr-heart likebutton" data-status="false" data-postid="${post.postId}" data-postuser="${post.UserId}"></i>
-                                    <p >${post.likeduser.length}</p>
+                                    <p >${post.likeduser.length} Reacts</p>
                                     `
                                 }
                                 </div>
@@ -172,7 +174,7 @@ export function renderPosts(posts, container) {
                                     <i class="fi fi-rr-comments"></i>
                                     <p >${
                                       post.comments === 0 ? 0 : post.comments
-                                    }</p>
+                                    } Comments</p>
                                 </button>
                             <button class="reaction">
                                 <i class="fi fi-rr-share"></i>

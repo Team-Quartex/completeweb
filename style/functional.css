@@ -49,5 +49,6 @@
 
 .removeDisplay.hidden {
     opacity: 0;
-    visibility: hidden; /* Make it completely hidden */
+    content: "Following";
+    visibility: visible; /* Make it completely hidden */
 }
