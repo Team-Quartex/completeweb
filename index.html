@@ -19,12 +19,17 @@
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
   <script src="https://kit.fontawesome.com/e82ac91667.js" crossorigin="anonymous"></script>
+  <script
+  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module"></script>
   <link rel="icon" type="image/x-icon" href="assets/logo trova-02.png">
 
 </head>
 </head>
 
 <body>
+  <div class="refresh-indicator" id="refreshIndicator"><iframe src="https://lottie.host/embed/bec6c4e4-a971-47a4-bc01-75a65908a725/2QFnSNg6j3.lottie"  frameborder="0" cellspacing="0" style="scale: 60%;margin: 0;"></iframe>
+  </div>
   <div class="container">
     <aside class="sidebar">
       <div class="user-profile" id="user-profile-click">
@@ -680,6 +685,26 @@ document.querySelectorAll('.bottom-nav-item').forEach(item => {
 
 
   </script>
+  <script>
+    let startY = 0;
+    let isRefreshing = false;
+
+    document.addEventListener("touchstart", function (e) {
+        startY = e.touches[0].clientY;
+    });
+
+    document.addEventListener("touchmove", function (e) {
+        let moveY = e.touches[0].clientY;
+        if (moveY - startY > 100 && window.scrollY === 0 && !isRefreshing) {
+            isRefreshing = true;
+            const refreshIndicator = document.getElementById("refreshIndicator");
+            refreshIndicator.style.display=('block');
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        }
+    });
+</script>
 </body>
 
 </html>

@@ -1,11 +1,11 @@
 .hashtag {
-    color: blue; /* Color for hashtags */
+    color: #6BBD99; /* Color for hashtags */
     font-weight: bold;
     cursor: pointer;
 }
 
 .location {
-    color: green; /* Color for @mentions or locations */
+    color: #46A094; /* Color for @mentions or locations */
     font-style: italic;
     cursor: pointer;
 }
@@ -24,6 +24,7 @@
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
    
 }
 
